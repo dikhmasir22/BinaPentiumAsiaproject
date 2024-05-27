@@ -1,0 +1,148 @@
+/* 
+PENTIUM GOLD PROJECT 
+- DAVA IKHSAN ALMASIR
+- ALFASO RAHAKBAUW
+- ASTRID
+- IBRAHIM AGUS
+
+&copy; 2024 PENTIUM GOLD GROUP - ALL RIGHTS RESERVED
+*/
+
+
+/* ================= ROOT CLASS ======================*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+/* link */
+
+.garis-none {
+    text-decoration: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.l-none {
+    list-style: none;
+}
+
+/* link */
+
+.gelembung {
+    transition: all .20s ease;
+}
+
+.gelembung:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+.aktif {
+    box-shadow: 0 0 15px #00abf0;
+}
+
+/* =================== ROOT END ======================*/
+
+/* ==== NAVBAR ====*/
+
+.togglesidebtn{
+    margin: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+
+.togglesidebtn:hover{
+    box-shadow: 0 0 3px #00abf0;
+}
+
+.kotak-daftar {
+    max-width: 60%;
+}
+
+/* === NAVBAR === */
+
+
+
+/* === SIDEBAR === */
+#sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.nav-sidelink {
+    min-width: 150px;
+    max-width: 200px;
+    background: transparent;
+    border: 1px solid #00abf0;
+    padding: 10px;
+    margin-top: 2rem;
+    color: #081b29;
+    transition: all .10s ease-in-out;
+}
+.nav-sidelink:hover {
+    border: 2px solid #00abf0;
+}
+
+.p-7 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.span-navbar {
+    font-size: 16px;
+}
+
+/* === MAIN ====  */
+
+#main{
+    max-width: calc(100% - 300px);
+    transition: all .90s ease;
+}
+
+@media (min-width: 1200px) {
+
+    #main {
+        margin-left: 280px;
+    }
+
+    #main.toggleside {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
+@media (max-width: 1199px) {
+
+    .togglesidebtn{
+        margin: 0;
+    }
+
+    #main {
+        margin: 10px 0 0 10px;
+        max-width: 100%;
+    }
+
+    #sidebar{
+        display: none;
+    }
+
+    .kotak-daftar{
+        max-width: 100%;
+    }
+}
+
+/* === Main === */
