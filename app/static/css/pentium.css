@@ -146,3 +146,10 @@ body {
 }
 
 /* === Main === */
+
+/* === Program === */
+.carousel-image {
+    height: 500px; 
+    object-fit: cover;
+}
+/* === Program === */
