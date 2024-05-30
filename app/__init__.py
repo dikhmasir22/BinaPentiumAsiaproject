@@ -37,4 +37,7 @@ def create_app():
     from .routes.program import program_
     app.register_blueprint(program_)
 
+    from .routes.kontak import kontak_
+    app.register_blueprint(kontak_)
+
     return app
