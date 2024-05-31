@@ -19,7 +19,9 @@ PENTIUM GOLD PROJECT
 
 body {
     overflow-x: hidden;
+    background-color: #ededed;
 }
+
 /* link */
 
 .garis-none {
@@ -48,18 +50,33 @@ body {
     box-shadow: 0 0 15px #00abf0;
 }
 
+.fs-kecil {
+    font-size: 12px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    font-family: "Nunito", sans-serif;
+    color: #081b29;
+    font-weight: 600;
+  }
+
 /* =================== ROOT END ======================*/
 
 /* ==== NAVBAR ====*/
 
-.togglesidebtn{
+.navbar {
+    z-index: 999;
+}
+
+.togglesidebtn {
     margin: 10px;
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;
 }
 
-.togglesidebtn:hover{
+.togglesidebtn:hover {
     box-shadow: 0 0 3px #00abf0;
 }
 
@@ -74,9 +91,12 @@ body {
 /* === SIDEBAR === */
 #sidebar {
     position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
     width: 250px;
-    height: 100%;
-    background: #333;
+    z-index: 996;
+    background: #ededed;
     color: white;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -94,6 +114,7 @@ body {
     color: #081b29;
     transition: all .10s ease-in-out;
 }
+
 .nav-sidelink:hover {
     border: 2px solid #00abf0;
 }
@@ -109,7 +130,10 @@ body {
 
 /* === MAIN ====  */
 
-#main{
+#main {
+    margin-top: 80px;
+    padding: 20px 30px;
+    transition: all 0.3s;
     max-width: calc(100% - 300px);
     transition: all .90s ease;
 }
@@ -125,22 +149,27 @@ body {
         max-width: 100%;
     }
 }
+
 @media (max-width: 1199px) {
 
-    .togglesidebtn{
+    .togglesidebtn {
         margin: 0;
     }
 
     #main {
         margin: 10px 0 0 10px;
         max-width: 100%;
+        margin-top: 130px;
+        padding: 30px 30px;
+        transition: all 0.3s;
     }
 
-    #sidebar{
+    #sidebar {
         display: none;
+        top: 100px;
     }
 
-    .kotak-daftar{
+    .kotak-daftar {
         max-width: 100%;
     }
 }
