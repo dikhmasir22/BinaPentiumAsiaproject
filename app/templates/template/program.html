@@ -1,5 +1,138 @@
 {% include 'template/header.html' %}
 
+<!-- Carousel -->
+<div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='image/backgroundreason.jpg') }}" class="d-block w-100" alt="Slide 1">
+            <div class="carousel-caption text-start text-dark">
+                <h3 class="slide-title fw-bold">Bina Asia DigitalIndo</h3>
+                <p class="slide-text">Menyediakan kelas terbaik dan ilmu yang sedang marak di dunia industri. 
+                    Dengan profesional sebagai mentor, yang pastinya akan memenuhi kebutuhan anda</p>
+                <p><a class="btn btn-warning gelembung" href="#">Daftar</a></p>
+                <!-- mengarah ke daftar -->
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='image/backgroundreason.jpg') }}" class="d-block w-100" alt="Slide 2">
+            <div class="carousel-caption text-start text-dark">
+                <h3 class="slide-title fw-bold">Merancang Kurikulum Pembelajaran dan Pengembangan Media</h3>
+                <p class="slide-text">Kurikulum yang digunakan adalah kurikulum dengan standar internasional yang juga di gunakan di beberapa negara maju seperti Amerika dan Cina</p>
+                <p><a class="btn btn-warning gelembung" href="#">Ayok Lihat</a></p>
+                <!-- mengarah ke semua kelas -->
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='image/backgroundreason.jpg') }}" class="d-block w-100" alt="Slide 3">
+            <div class="carousel-caption text-start text-dark">
+                <h3 class="slide-title fw-bold">Ada yang ingin di tanyakan?</h3>
+                <p class="slide-text">Kami selalu menanti untuk berhubungan dengan anda, hubungi kami kapan saja</p>
+                <p><a class="btn btn-warning gelembung" href="#">Kontak Kami</a></p>
+                <!-- mengarah ke laman kontak -->
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- Carousel -->
 
+<!-- Kelas Terunggul -->
+<div class="section kelas-unggulan">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ url_for('static', filename='image/5.png') }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h3 class="slide-title fw-bold text-body-emphasis lh-1 mb-3">Kelas Terunggul</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo eaque error, fugit quia incidunt reiciendis? 
+                Illum iusto hic temporibus deleniti quisquam excepturi magni minus natus?Quickly
+                responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <button type="button" class="btn btn-warning btn-lg px-4 me-md-2 gelembung">Lihat</button>
+              <!-- mengarah ke semua kelas & kelas saya -->
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<!-- Kelas Terunggul -->
+
+ <!-- Section Kelas -->
+ <section id="programonline" class="container shadow mt-5 p-2 mb-2 rounded"
+ style="background-image: url('../../static/image/backgroundprogram.jpg'); background-size:cover;">
+ <div class="row">
+     <h4 class="fw-bold fs-6 fs-lg-2 ps-lg-5 text-light">
+         <img src="../../static/image/bukumagic.png" width="50" alt="">
+         Rekomendasi Kelas dari kami
+     </h4>
+ </div>
+ <div class="row justify-content-center align-items-center">
+     <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
+         <div class="card" style="width:100%;">
+             <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">Judul Pelatihan</h5>
+                 <h6 class="card-title">sub judul</h6>
+                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
+                     voluptate laborum!</p>
+             </div>
+             <ul class="list-group list-group-flush">
+                 <div class="card-body d-flex justify-content-between align-items-center">
+                     <h6 class="fw-normal text-primary">Rp.99999</h6>
+                     <a href="#" class="btn btn-primary">Ikuti Kelas</a>
+                 </div>
+             </ul>
+         </div>
+     </div>
+     <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
+         <div class="card" style="width:100%;">
+             <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">Judul Pelatihan</h5>
+                 <h6 class="card-title">sub judul</h6>
+                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
+                     voluptate laborum!</p>
+             </div>
+             <ul class="list-group list-group-flush">
+                 <div class="card-body d-flex justify-content-between align-items-center">
+                     <h6 class="fw-normal text-primary">Rp.99999</h6>
+                     <a href="#" class="btn btn-primary">Ikuti Kelas</a>
+                 </div>
+             </ul>
+         </div>
+     </div>
+     <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
+         <div class="card" style="width:100%;">
+             <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">Judul Pelatihan</h5>
+                 <h6 class="card-title">sub judul</h6>
+                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
+                     voluptate laborum!</p>
+             </div>
+             <ul class="list-group list-group-flush">
+                 <div class="card-body d-flex justify-content-between align-items-center">
+                     <h6 class="fw-normal text-primary">Rp.99999</h6>
+                     <a href="#" class="btn btn-primary">Ikuti Kelas</a>
+                 </div>
+             </ul>
+         </div>
+     </div>
+ </div>
+</section>
+<!-- Section Kelas -->
 
 {% include 'template/footer.html' %}
