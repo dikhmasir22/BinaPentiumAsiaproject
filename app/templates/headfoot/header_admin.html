@@ -68,7 +68,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Kontak</a>
                     </li>
-                    {% if status : %}
+                    {% if status or status_admin : %}
                     <a class="btn btn-outline-danger ms-xl-2 me-xl-2 mb-2" onclick="sign_out()">Logout</a>
                     {% else %}
                     <a class="btn btn-outline-primary ms-xl-2 me-xl-2 mb-2" data-bs-toggle="modal"
@@ -90,6 +90,11 @@
             <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile">Profile</a></li>
             <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/semuakelas">Semua
                     Kelas</a></li>
+            {% if status_admin: %}
             <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/siswa">Siswa</a></li>
+            {% elif status %}
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/kelassaya">Kelas Saya</a></li>
+            {% endif %}
+            
         </ul>
     </section>
