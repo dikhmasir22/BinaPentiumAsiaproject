@@ -4,6 +4,7 @@ from pymongo import MongoClient
 import hashlib
 import jwt
 from datetime import datetime, timedelta
+from bson import ObjectId
 
 def create_app():
     app = Flask(__name__)
@@ -39,5 +40,8 @@ def create_app():
 
     from .routes.kontak import kontak_
     app.register_blueprint(kontak_)
+
+    from .routes.detail_siswa import detail_siswa
+    app.register_blueprint(detail_siswa)
 
     return app

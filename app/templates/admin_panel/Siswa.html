@@ -12,67 +12,23 @@
     </nav>
     <hr>
 
-    <div class="row p-2 justify-content-evenly">
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
+    <div class="row p-2 justify-content-start">
+        {% for item in Siswa : %}
+        {% if item.nama_lengkap == 'Admin' %}
+        <div class="d-none">
+        {% else %}
+        <div onclick="window.location.href='/detail_siswa/{{ item._id }}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung">
+        {% endif %}
             <div class="card" style="width:100%;">
                 <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
                 <div class="card-body text-center">
                     <hr class="text-secondary">
-                    <h5 class="card-title">Nama Siswa</h5>
+                    <h5 class="card-title">{{ item.nama_lengkap }}</h5>
                     <hr class="text-secondary">
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <hr class="text-secondary">
-                    <h5 class="card-title">Nama Siswa</h5>
-                    <hr class="text-secondary">
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <hr class="text-secondary">
-                    <h5 class="card-title">Nama Siswa</h5>
-                    <hr class="text-secondary">
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <hr class="text-secondary">
-                    <h5 class="card-title">Nama Siswa</h5>
-                    <hr class="text-secondary">
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <hr class="text-secondary">
-                    <h5 class="card-title">Nama Siswa</h5>
-                    <hr class="text-secondary">
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung m-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <hr class="text-secondary">
-                    <h5 class="card-title">Nama Siswa</h5>
-                    <hr class="text-secondary">
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
 </section>

@@ -1,0 +1,69 @@
+{% include 'headfoot/header_admin.html' %}
+
+<section id="main" class="container-fluid p-2">
+
+
+    <h3>Detail Siswa - {{ detail_Siswa.nama_depan }}</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item text-dark garis-none"><a href="/siswa">Siswa</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detail Siswa - {{ detail_Siswa.nama_depan  }}</li>
+        </ol>
+    </nav>
+    <hr>
+
+    <div class="container-fluid">
+        <div class="container d-flex shadow p-2 border border-info rounded">
+            <div class="box p-2 d-flex flex-column me-2">
+                <img src="../../static/image/5.png" width="200" alt="">
+                <a href="" class="btn btn-danger">Hapus</a>
+            </div>
+            <div style="width: 100%;" class="info_siswa">
+                <div class="nama">
+                    <h4 class="fw-bold">{{ detail_Siswa.nama_lengkap }}</h4>
+                    {% if detail_Siswa.deskripsi == '' %}
+                    <p><== User tidak memiliki Deskripsi ==></p>
+                    {% else %}
+                    <p>{{ detail_Siswa.deskripsi }}</p>
+                    {% endif %}
+                    
+                </div>
+                <div class="informasi shadow p-3 border m-2 rounded">
+                    <h4 class="fw-bold">Informasi Dasar</h4>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">Nama Lengkap : </h6>
+                            <h6 class="fw-normal ms-2">{{ detail_Siswa.nama_lengkap }}</h6>
+                    </div>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">Email : </h6>
+                            <h6 class="fw-normal ms-2">{{ detail_Siswa.email }}@gmail.com</h6>
+                    </div>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">No. Telp : </h6>
+                            <h6 class="fw-normal ms-2">{{ detail_Siswa.no_telepon }}</h6>
+                    </div>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">No. KTP : </h6>
+                            <h6 class="fw-normal ms-2">{{ detail_Siswa.no_ktp }}</h6>
+                    </div>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">Jenis Kelamin : </h6>
+                            <h6 class="fw-normal ms-2">{{ detail_Siswa.jenis_kelamin }}</h6>
+                    </div>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">Tempat, Tanggal lahir : </h6>
+                            <h6 class="fw-normal ms-2">{{ detail_Siswa.tempat_tanggal_lahir }}</h6>
+                    </div>
+                    <div class="baris d-flex justify-content-start align-items-center">
+                            <h6 class="fw-bold">Alamat : </h6>
+                            <p class="lead ms-2">{{ detail_Siswa.alamat }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% include 'headfoot/footer_admin.html' %}

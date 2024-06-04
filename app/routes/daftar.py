@@ -22,6 +22,7 @@ def sign_up():
                 "password": password_hash,                          
                 "nama_lengkap": namalengkap,
                 "nama_depan": namadepan,
+                "deskripsi" : "",
                 "no_telepon": "",
                 "no_ktp": "",
                 "jenis_kelamin": "",
