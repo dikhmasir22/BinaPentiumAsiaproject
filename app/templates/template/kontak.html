@@ -1,3 +1,78 @@
 {% include 'template/header.html' %}
 
+<br />
+<!-- Contact Start -->
+<div class="container-fluid py-5" style="background-color: whitesmoke;">
+  <div class="row justify-content-center">
+    <!-- Form Kontak -->
+    <div class="col-md-5">
+      <div class="text-center">
+        <h3 class="fw-bold">Hubungi Kami</h3>
+      </div>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" />
+        </div>
+        <div class="mb-3">
+          <label for="pesan" class="form-label">Berikan pesan disini</label>
+          <textarea class="form-control" id="pesan" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning gelembung">Kirim</button>
+      </form>
+    </div>
+    <!-- Garis Vertikal -->
+    <div class="col-md-1 d-flex align-items-center justify-content-center">
+      <div class="vr" style="height: 100%; width: 2px; background-color: #000;"></div>
+    </div>
+    
+    <!-- Platform Lain -->
+    <div class="col-md-5">
+        <div class="text-center">
+          <h3 class="fw-bold">Temukan Kami di Platform lain</h3>
+          <!-- <p class="text-muted">Ikuti kami di media sosial dan dapatkan informasi terbaru:</p> -->
+        </div>
+        <div class="row mt-5">
+          <!-- Instagram -->
+          <div class="col-lg-4 text-center mt-4">
+            <img src="{{ url_for('static', filename='image/social-media/instagram.png') }}"  alt="Instagram" width="65" height="65">
+            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Instagram »</a></p>
+          </div>
+
+          <!-- YouTube -->
+          <div class="col-lg-4 text-center mt-4">
+            <img src="{{ url_for('static', filename='image/social-media/youtube.png') }}"  alt="YouTube" width="65" height="65">
+            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">YouTube »</a></p>
+          </div>
+
+          <!-- Facebook -->
+          <div class="col-lg-4 text-center mt-4">
+            <img src="{{ url_for('static', filename='image/social-media/facebook.png') }}"  alt="Facebook" width="65" height="65">
+            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Facebook »</a></p>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="col-lg-4 text-center mt-4">
+            <img src="{{ url_for('static', filename='image/social-media/linkedin.png') }}"  alt="LinkedIn" width="65" height="65">
+            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">LinkedIn »</a></p>
+          </div>
+
+          <!-- Twitter -->
+          <div class="col-lg-4 text-center mt-4">
+            <img src="{{ url_for('static', filename='image/social-media/twitter.png') }}"  alt="Twitter" width="65" height="65">
+            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Twitter »</a></p>
+          </div>
+
+          <!-- Tiktok -->
+          <div class="col-lg-4 text-center mt-4">
+            <img src="{{ url_for('static', filename='image/social-media/tiktok.png') }}"  alt="Tiktok" width="65" height="65">
+            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Tiktok »</a></p>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+<!-- Contact End -->
+
 {% include 'template/footer.html' %}
