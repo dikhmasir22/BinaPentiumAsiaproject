@@ -182,3 +182,54 @@ body {
     object-fit: cover;
 }
 /* === Program === */
+
+/* === Materi === */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+  }
+  .konten {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px; 
+    box-sizing: border-box; 
+  }
+  .konten-utama {
+    flex: 1;
+    display: flex;
+    margin: 0 -10px; 
+  }
+  .kontainer-video,
+  .kontainer-deskripsi {
+    padding: 10px; 
+  }
+  .kontainer-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    height: 430px;
+  }
+  .kontainer-deskripsi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  .embed-responsive {
+    width: 100%;
+    height: 100%;
+  }
+  .embed-responsive-item {
+    width: 100%;
+    height: 100%;
+  }
+  .btn-navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+/* === Materi === */
