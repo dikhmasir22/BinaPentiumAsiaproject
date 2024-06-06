@@ -25,53 +25,74 @@
     <div class="col-md-1 d-flex align-items-center justify-content-center">
       <div class="vr" style="height: 100%; width: 2px; background-color: #000;"></div>
     </div>
-    
+
     <!-- Platform Lain -->
     <div class="col-md-5">
-        <div class="text-center">
-          <h3 class="fw-bold">Temukan Kami di Platform lain</h3>
-          <!-- <p class="text-muted">Ikuti kami di media sosial dan dapatkan informasi terbaru:</p> -->
+      <div class="text-center">
+        <h3 class="fw-bold">Temukan Kami di Platform lain</h3>
+        <!-- <p class="text-muted">Ikuti kami di media sosial dan dapatkan informasi terbaru:</p> -->
+      </div>
+      <div class="row mt-5">
+        <!-- Instagram -->
+        <div class="col-lg-4 text-center mt-4">
+          <img src="{{ url_for('static', filename='image/social-media/instagram.png') }}" alt="Instagram" width="65"
+            height="65">
+          <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Instagram »</a></p>
         </div>
-        <div class="row mt-5">
-          <!-- Instagram -->
-          <div class="col-lg-4 text-center mt-4">
-            <img src="{{ url_for('static', filename='image/social-media/instagram.png') }}"  alt="Instagram" width="65" height="65">
-            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Instagram »</a></p>
-          </div>
 
-          <!-- YouTube -->
-          <div class="col-lg-4 text-center mt-4">
-            <img src="{{ url_for('static', filename='image/social-media/youtube.png') }}"  alt="YouTube" width="65" height="65">
-            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">YouTube »</a></p>
-          </div>
+        <!-- YouTube -->
+        <div class="col-lg-4 text-center mt-4">
+          <img src="{{ url_for('static', filename='image/social-media/youtube.png') }}" alt="YouTube" width="65"
+            height="65">
+          <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">YouTube »</a></p>
+        </div>
 
-          <!-- Facebook -->
-          <div class="col-lg-4 text-center mt-4">
-            <img src="{{ url_for('static', filename='image/social-media/facebook.png') }}"  alt="Facebook" width="65" height="65">
-            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Facebook »</a></p>
-          </div>
+        <!-- Facebook -->
+        <div class="col-lg-4 text-center mt-4">
+          <img src="{{ url_for('static', filename='image/social-media/facebook.png') }}" alt="Facebook" width="65"
+            height="65">
+          <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Facebook »</a></p>
+        </div>
 
-          <!-- LinkedIn -->
-          <div class="col-lg-4 text-center mt-4">
-            <img src="{{ url_for('static', filename='image/social-media/linkedin.png') }}"  alt="LinkedIn" width="65" height="65">
-            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">LinkedIn »</a></p>
-          </div>
+        <!-- LinkedIn -->
+        <div class="col-lg-4 text-center mt-4">
+          <img src="{{ url_for('static', filename='image/social-media/linkedin.png') }}" alt="LinkedIn" width="65"
+            height="65">
+          <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">LinkedIn »</a></p>
+        </div>
 
-          <!-- Twitter -->
-          <div class="col-lg-4 text-center mt-4">
-            <img src="{{ url_for('static', filename='image/social-media/twitter.png') }}"  alt="Twitter" width="65" height="65">
-            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Twitter »</a></p>
-          </div>
+        <!-- Twitter -->
+        <div class="col-lg-4 text-center mt-4">
+          <img src="{{ url_for('static', filename='image/social-media/twitter.png') }}" alt="Twitter" width="65"
+            height="65">
+          <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Twitter »</a></p>
+        </div>
 
-          <!-- Tiktok -->
-          <div class="col-lg-4 text-center mt-4">
-            <img src="{{ url_for('static', filename='image/social-media/tiktok.png') }}"  alt="Tiktok" width="65" height="65">
-            <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Tiktok »</a></p>
-          </div>
+        <!-- Tiktok -->
+        <div class="col-lg-4 text-center mt-4">
+          <img src="{{ url_for('static', filename='image/social-media/tiktok.png') }}" alt="Tiktok" width="65"
+            height="65">
+          <p><a class="text-secondary fw-normal" style="text-decoration: none;" href="#">Tiktok »</a></p>
         </div>
       </div>
-
+    </div>
   </div>
+
+  <section id="hubungi" class="container-fluid mt-5">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <h4 class="mb-3">Punya Pertanyaan atau Butuh Bantuan?</h4>
+        <div class="row col-7 col-md-4 col-lg-3 col-xl-2 justify-content-center text-center">
+          <button
+            class="d-flex justify-content-evenly align-items-center btn btn-success border border-light border-1 ps-3 pe-3">
+            <i class="ri-whatsapp-line text-light fs-3"></i>
+            <span class="fw-bold" style="font-size: 14px;">Hubungi Kami</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
 <!-- Contact End -->
 

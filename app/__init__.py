@@ -41,13 +41,16 @@ def create_app():
     from .routes.kontak import kontak_
     app.register_blueprint(kontak_)
 
-    # from .routes.detail_siswa import detail_siswa_
-    # app.register_blueprint(detail_siswa_)
+    from .routes.detail_siswa import detail_siswa
+    app.register_blueprint(detail_siswa)
 
     from .routes.detailkelas import detailkelas_
     app.register_blueprint(detailkelas_)
 
     from .routes.materi import materi_
     app.register_blueprint(materi_)
+
+    from .routes.kelassaya import kelassaya_
+    app.register_blueprint(kelassaya_)
 
     return app
