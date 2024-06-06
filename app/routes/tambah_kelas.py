@@ -23,8 +23,8 @@ def tambah_kelas():
             extension = gambar.filename.split('.')[-1]
             today = datetime.now()
             mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
-            gambar_name = f'gambar- {mytime}.{extension}'
-            save_to = f'../static/image/Imgkelas/{gambar_name}'
+            gambar_name = f'gambar-{mytime}.{extension}'
+            save_to = f'app/static/image/Imgkelas/{gambar_name}'
             gambar.save(save_to)
 
             doc_kelas = {
@@ -38,7 +38,7 @@ def tambah_kelas():
 
             current_app.db.semuakelas.insert_one(doc_kelas)
             msg = 'Kelas Berhasil Ditambahkan'
-            return redirect(url_for('semuakelas.semuakelas_'), msg = msg)
+            return redirect(url_for('semuakelas.semuakelas_', msg = msg))
         
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
