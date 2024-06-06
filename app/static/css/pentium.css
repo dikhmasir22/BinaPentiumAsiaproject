@@ -187,13 +187,11 @@ body {
 html {
     height: 100%;
     margin: 0;
-    padding: 0;
-    overflow: hidden; 
+    padding: 0; 
   }
   .konten {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     padding: 20px; 
     box-sizing: border-box; 
   }
@@ -216,7 +214,7 @@ html {
   .kontainer-deskripsi {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     flex: 1;
   }
   .embed-responsive {

@@ -15,14 +15,16 @@ def semuakelas_():
             SECRET_KEY,
             algorithms=['HS256']
         )
+        msg = request.args.get('msg')
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
+        Datakelas = list(current_app.db.semuakelas.find({}))
         status = payload.get('id')
         user_admin = current_app.db.user.find_one({'email': 'admin'})
         admin = user_admin['email']
         if status == admin:
-            return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status_admin = status)
+            return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status_admin = status, datakelas = Datakelas)
         else:
-            return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status = status)
+            return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status = status, datakelas = Datakelas)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))

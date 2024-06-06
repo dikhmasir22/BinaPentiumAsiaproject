@@ -1,0 +1,84 @@
+{% include 'headfoot/header_admin.html' %}
+
+<section id="main" class="container-fluid p-2">
+
+    <h3>Tambah Kelas</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item text-dark garis-none"><a href="/semuakelas">Semua Kelas</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tambah Kelas</li>
+        </ol>
+    </nav>
+    <hr>
+
+    <form id="tambahkelas" action="/tambahkelas" method="post" enctype="multipart/form-data" class="row justify-content-start p-3 rounded shadow">
+        <div class="col-12 col-md-7 col-lg-7 col-xl-6">
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Gambar Kelas">Gambar Kelas</label>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="gambar_kelas" name="gambar_kelas">
+                </div>
+            </div>
+
+
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Nama Kelas</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas" class="form-control" id="nama_kelas">
+                </div>
+            </div>
+
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Sub Nama Kelas <span class="text-danger"
+                        style="font-size: 10px;">*Isi - jika tidak ada</span></label>
+                <div class="input-group mb-3">
+                    <input type="text" value="-" placeholder="Masukkan Sub Nama Kelas" name="sub_nama_kelas" class="form-control"
+                        id="sub_nama_kelas">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Kategori Kelas</label>
+                        <div class="input-group mb-3">
+                            <select name="kategori_kelas" class="form-select" id="kategori_kelas">
+                                <option selected>Pilih Kategori...</option>
+                                <option value="1">Pemrograman</option>
+                                <option value="2">Marketing</option>
+                                <option value="3">Business</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Harga</label>
+                <div class="input-group mb-3">
+                    <input type="number" placeholder="Masukkan Harga Kelas" name="harga_kelas" class="form-control" id="harga_kelas">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-7 col-xl-6">
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi Kelas</label>
+                <div class="form-floating">
+                    <textarea class="form-control" name="deskripsi_kelas" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Masukkan Deskripsi Kelas</label>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-end">
+                <button onclick="window.location.href='/semuakelas'" class="btn btn-danger p-2 m-2">Batal</button>
+                <button type="submit" class="btn btn-success p-2 m-2">Simpan</button>
+        </div>
+
+    </form>
+
+</section>
+
+{% include 'headfoot/footer_admin.html' %}

@@ -53,4 +53,7 @@ def create_app():
     from .routes.kelassaya import kelassaya_
     app.register_blueprint(kelassaya_)
 
+    from .routes.tambah_kelas import tambah_kelas_
+    app.register_blueprint(tambah_kelas_)
+
     return app
