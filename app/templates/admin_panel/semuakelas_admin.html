@@ -34,9 +34,9 @@
 
     <div class="row p-2 justify-content-start">
         {% for item in datakelas %}
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
+        <div onclick="window.location.href='/detailkelas/{{item._id}}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
             <div class="card" style="width:100%; max-height:300px;">
-                <img width="200" height="100" src="../../static/image/Imgkelas/{{item.gambar_kelas}}" class="card-img-top" alt="...">
+                <img style="background-size: cover;" src="../../static/image/Imgkelas/{{item.gambar_kelas}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">{{item.nama_kelas}}</h6>
                     <h6 style="font-size: 12px;" class="card-title">{{item.sub_nama_kelas}}</h6>
