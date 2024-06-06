@@ -14,8 +14,9 @@ def detailkelas():
             SECRET_KEY,
             algorithms=['HS256']
         )
+        user_info = current_app.db.user.find_one({'email': payload.get('id')})
         status = payload.get('id')
-        return render_template('template/detailkelas.html', status = status)
+        return render_template('template/detailkelas.html', status = status, user_info=user_info)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
         return render_template('template/detailkelas.html', msg=msg)

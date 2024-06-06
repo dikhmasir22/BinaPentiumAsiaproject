@@ -187,13 +187,15 @@ body {
 html {
     height: 100%;
     margin: 0;
-    padding: 0; 
+    padding: 0;
+    overflow: hidden; 
   }
   .konten {
     display: flex;
     flex-direction: column;
     padding: 20px; 
     box-sizing: border-box; 
+    overflow: hidden; 
   }
   .konten-utama {
     flex: 1;
