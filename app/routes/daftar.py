@@ -27,7 +27,8 @@ def sign_up():
                 "no_ktp": "",
                 "jenis_kelamin": "",
                 "tempat_tanggal_lahir": "",
-                "alamat": ""
+                "alamat": "",
+                "level" : "user"
             }
             current_app.db.user.insert_one(doc)
             return jsonify({'result': 'success'})

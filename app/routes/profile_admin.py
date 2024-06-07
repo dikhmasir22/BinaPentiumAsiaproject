@@ -16,9 +16,11 @@ def profile():
         )
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
         status = payload.get('id')
-        user_admin = current_app.db.user.find_one({'email': 'admin'})
-        admin = user_admin['email']
-        if status == admin:
+        user_admin = current_app.db.user.find_one({
+            'email': payload.get('id'),
+            'level': 'admin'})
+        
+        if user_admin:
             return render_template('admin_panel/profile_admin.html', user_info=user_info, status_admin = status)
         else:
             return render_template('admin_panel/profile_admin.html', user_info=user_info, status = status)

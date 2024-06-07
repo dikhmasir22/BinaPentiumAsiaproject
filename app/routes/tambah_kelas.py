@@ -12,7 +12,8 @@ def tambah_kelas():
         SECRET_KEY = current_app.config['SECRET_KEY']
         token_receive = request.cookies.get(TOKEN_KEY)
         try:
-            payload = jwt.decode(token_receive,SECRET_KEY,algorithms=['HS256'])
+            payload = jwt.decode(token_receive, SECRET_KEY,
+                                 algorithms=['HS256'])
             Nama_kelas = request.form['nama_kelas']
             sub_Nama_kelas = request.form['sub_nama_kelas']
             kategori_kelas = request.form['kategori_kelas']
@@ -28,18 +29,18 @@ def tambah_kelas():
             gambar.save(save_to)
 
             doc_kelas = {
-                'nama_kelas' : Nama_kelas,
-                'sub_nama_kelas' : sub_Nama_kelas,
-                'kategori_kelas' : kategori_kelas,
-                'harga_kelas' : harga_kelas,
-                'deskripsi_kelas' : deskripsi_kelas,
-                'gambar_kelas' : gambar_name
+                'nama_kelas': Nama_kelas,
+                'sub_nama_kelas': sub_Nama_kelas,
+                'kategori_kelas': kategori_kelas,
+                'harga_kelas': harga_kelas,
+                'deskripsi_kelas': deskripsi_kelas,
+                'gambar_kelas': gambar_name
             }
 
             current_app.db.semuakelas.insert_one(doc_kelas)
             msg = 'Kelas Berhasil Ditambahkan'
-            return redirect(url_for('semuakelas.semuakelas_', msg = msg))
-        
+            return redirect(url_for('semuakelas.semuakelas_', msg=msg))
+
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
             return redirect(url_for('homepage.homepage', msg=msg))
@@ -56,10 +57,16 @@ def tambah_kelas():
                 SECRET_KEY,
                 algorithms=['HS256']
             )
-            user_info = current_app.db.user.find_one({'email': payload.get('id')})
+            user_info = current_app.db.user.find_one(
+                {'email': payload.get('id')})
             status = payload.get('id')
-            return render_template('admin_panel/tambah_kelas.html', user_info=user_info, status_admin = status)
+            user_admin = current_app.db.user.find_one({
+            'email': payload.get('id'),
+            'level': 'admin'})
         
+            if user_admin:
+                return render_template('admin_panel/Siswa.html', user_info=user_info, status_admin=status)
+
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
             return redirect(url_for('homepage.homepage', msg=msg))

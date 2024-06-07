@@ -17,9 +17,11 @@ def siswa():
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
         Siswa = list(current_app.db.user.find({}))
         status = payload.get('id')
-        user_admin = current_app.db.user.find_one({'email': 'admin'})
-        admin = user_admin['email']
-        if status == admin:
+        user_admin = current_app.db.user.find_one({
+            'email': payload.get('id'),
+            'level': 'admin'})
+        
+        if user_admin:
             return render_template('admin_panel/Siswa.html', user_info=user_info, status_admin = status, Siswa = Siswa)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
