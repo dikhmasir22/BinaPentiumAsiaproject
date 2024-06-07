@@ -59,4 +59,7 @@ def create_app():
     from .routes.hapus_kelas import hapuskelas_
     app.register_blueprint(hapuskelas_)
 
+    from .routes.edit_kelas import edit_kelas_
+    app.register_blueprint(edit_kelas_)
+
     return app

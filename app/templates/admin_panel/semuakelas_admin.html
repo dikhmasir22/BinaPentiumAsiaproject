@@ -6,11 +6,15 @@
 <script>
     $(document).ready(function () {
         swal.fire({
-            title: "Kelas Berhasil Ditambahkan!",
+            title: "Kelas Berhasil Di tambah!",
             text: "",
             icon: "success",
         });
-    })
+      
+        setTimeout(function() {
+            window.location.href = "/semuakelas";
+        }, 2000); 
+    });
 
 </script>
 
@@ -22,8 +26,26 @@
             text: "",
             icon: "success",
         });
-        window.location.href="/semuakelas"
-    })
+      
+        setTimeout(function() {
+            window.location.href = "/semuakelas";
+        }, 2000); 
+    });
+</script>
+
+{% elif msg == 'edit' %}
+<script>
+    $(document).ready(function () {
+        swal.fire({
+            title: "Kelas Berhasil Di edit!!",
+            text: "",
+            icon: "success",
+        });
+      
+        setTimeout(function() {
+            window.location.href = "/semuakelas";
+        }, 2000); 
+    });
 </script>
 {% endif %}
 {% endif %}
@@ -76,7 +98,7 @@
                 <ul class="list-group list-group-flush">
                     {% if status_admin : %}
                     <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
+                        <a href="/editkelas/{{item._id}}" class="btn btn-warning fs-kecil m-1">Edit</a>
                         <a href="/hapus_kelas/{{item._id}}" class="btn btn-danger fs-kecil m-1">Hapus</a>
                         <h6 class="fw-normal text-primary m-1">Rp.{{item.harga_kelas}}</h6>
                     </div>

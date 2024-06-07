@@ -18,7 +18,7 @@ def detailkelas(_id):
         kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
         status = payload.get('id')
-        return render_template('template/detailkelas.html', status = status, user_info=user_info, kelas = kelas)
+        return render_template('admin_panel/detailkelas.html', status = status, user_info=user_info, kelas = kelas)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
         return render_template('template/detailkelas.html', msg=msg)

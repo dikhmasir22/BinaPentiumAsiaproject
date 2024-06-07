@@ -12,6 +12,91 @@
     </nav>
     <hr>
 
+    {% if kelas : %}
+    <form id="editkelas" action="/editkelas/{{kelas._id}}" method="post" enctype="multipart/form-data" class="row justify-content-start p-3 rounded shadow">
+        <div class="col-12 col-md-7 col-lg-7 col-xl-6">
+            <div class="form_input d-flex flex-column">
+                <label class="fw-bold mb-1" for="Gambar Kelas">Gambar Kelas</label>
+                <img class="p-2" id="gambar-preview" src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" alt="" width="120">
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="gambar_kelas" name="gambar_kelas" onchange="previewImage(event)">
+                </div>
+            </div>
+
+
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Nama Kelas</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan Nama Kelas" value="{{kelas.nama_kelas}}" name="nama_kelas" class="form-control" id="nama_kelas">
+                </div>
+            </div>
+
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Sub Nama Kelas <span class="text-danger"
+                        style="font-size: 10px;">*Isi - jika tidak ada</span></label>
+                <div class="input-group mb-3">
+                    <input type="text" value="{{kelas.sub_nama_kelas}}" placeholder="Masukkan Sub Nama Kelas" name="sub_nama_kelas" class="form-control"
+                        id="sub_nama_kelas">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Kategori Kelas</label>
+                        <div class="input-group mb-3">
+                            <select name="kategori_kelas" class="form-select" id="kategori_kelas">
+                                <option value="{{kelas.kategori_kelas}}" selected>{{kelas.kategori_kelas}}</option>
+                                <option value="pemrograman">Pemrograman</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Business">Business</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Harga</label>
+                <div class="input-group mb-3">
+                    <input type="number" placeholder="Masukkan Harga Kelas" value="{{kelas.harga_kelas}}" name="harga_kelas" class="form-control" id="harga_kelas">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-7 col-xl-6">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Tingkatan Kelas</label>
+                        <div class="input-group mb-3">
+                            <select name="tingkatan_kelas" class="form-select" id="tingkatan_kelas">
+                                <option value="{{kelas.tingkatan_kelas}}" selected>{{kelas.tingkatan_kelas}}</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form_input">
+                <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi Kelas</label>
+                <div class="form-floating">
+                    <textarea class="form-control" name="deskripsi_kelas" placeholder="Leave a comment here" id="floatingTextarea">{{kelas.deskripsi_kelas}}</textarea>
+                    <label for="floatingTextarea">Masukkan Deskripsi Kelas</label>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-end">
+                <button onclick="window.location.href='/semuakelas'" class="btn btn-danger p-2 m-2">Batal</button>
+                <button type="submit" class="btn btn-success p-2 m-2">Simpan</button>
+        </div>
+
+    </form>
+    
+    {% elif kelas is None %}
     <form id="tambahkelas" action="/tambahkelas" method="post" enctype="multipart/form-data" class="row justify-content-start p-3 rounded shadow">
         <div class="col-12 col-md-7 col-lg-7 col-xl-6">
             <div class="form_input">
@@ -64,6 +149,22 @@
 
         </div>
         <div class="col-12 col-md-7 col-lg-7 col-xl-6">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Tingkatan Kelas</label>
+                        <div class="input-group mb-3">
+                            <select name="tingkatan_kelas" class="form-select" id="tingkatan_kelas">
+                                <option selected>Pilih Kategori...</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form_input">
                 <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi Kelas</label>
                 <div class="form-floating">
@@ -71,6 +172,7 @@
                     <label for="floatingTextarea">Masukkan Deskripsi Kelas</label>
                 </div>
             </div>
+            
         </div>
         <div class="container-fluid d-flex justify-content-end">
                 <button onclick="window.location.href='/semuakelas'" class="btn btn-danger p-2 m-2">Batal</button>
@@ -78,6 +180,19 @@
         </div>
 
     </form>
+    {% endif %}
+
+    <script>
+        function previewImage(event) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                let img = document.getElementById('gambar-preview');
+                img.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    
 
 </section>
 

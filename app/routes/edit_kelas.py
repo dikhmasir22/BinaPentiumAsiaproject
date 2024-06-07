@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template, current_app, request, redirect, url_for
 import jwt
 from datetime import datetime, timedelta
+from bson import ObjectId
 
-tambah_kelas_ = Blueprint('tambah_kelas', __name__)
+edit_kelas_ = Blueprint('edit_kelas', __name__)
 
 
-@tambah_kelas_.route('/tambahkelas', methods=['GET', 'POST'])
-def tambah_kelas():
+@edit_kelas_.route('/editkelas/<_id>', methods=['GET', 'POST'])
+def editkelas(_id):
     if request.method == 'POST':
         TOKEN_KEY = current_app.config['TOKEN_KEY']
         SECRET_KEY = current_app.config['SECRET_KEY']
@@ -35,12 +36,14 @@ def tambah_kelas():
                 'kategori_kelas': kategori_kelas,
                 'harga_kelas': harga_kelas,
                 'deskripsi_kelas': deskripsi_kelas,
-                'tingkatan_kelas': tingkatan_kelas,
-                'gambar_kelas': gambar_name
+                'tingkatan_kelas': tingkatan_kelas
             }
 
-            current_app.db.semuakelas.insert_one(doc_kelas)
-            msg = 'tambah'
+            if gambar:
+                doc_kelas['gambar_kelas'] = gambar_name
+
+            current_app.db.semuakelas.update_one({'_id' : ObjectId(_id)}, {'$set' : doc_kelas})
+            msg = 'edit'
             return redirect(url_for('semuakelas.semuakelas_', msg=msg))
 
         except jwt.ExpiredSignatureError:
@@ -65,9 +68,10 @@ def tambah_kelas():
             user_admin = current_app.db.user.find_one({
             'email': payload.get('id'),
             'level': 'admin'})
+            data_kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
         
             if user_admin:
-                return render_template('admin_panel/tambah_kelas.html', user_info=user_info, status_admin=status)
+                return render_template('admin_panel/tambah_kelas.html', user_info=user_info, status_admin=status, kelas = data_kelas)
 
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
