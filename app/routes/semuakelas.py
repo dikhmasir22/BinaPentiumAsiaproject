@@ -24,7 +24,7 @@ def semuakelas_():
             'level': 'admin'})
         
         if user_admin:
-            return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status_admin = status, datakelas = Datakelas)
+            return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status_admin = status, datakelas = Datakelas, msg = msg)
         else:
             return render_template('admin_panel/semuakelas_admin.html', user_info=user_info, status = status, datakelas = Datakelas)
     except jwt.ExpiredSignatureError:

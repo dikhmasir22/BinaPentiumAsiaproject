@@ -38,7 +38,7 @@ def tambah_kelas():
             }
 
             current_app.db.semuakelas.insert_one(doc_kelas)
-            msg = 'Kelas Berhasil Ditambahkan'
+            msg = 'tambah'
             return redirect(url_for('semuakelas.semuakelas_', msg=msg))
 
         except jwt.ExpiredSignatureError:

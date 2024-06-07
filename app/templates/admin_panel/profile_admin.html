@@ -22,14 +22,16 @@
                     <div class="box d-flex flex-column p-2">
                         <h4>Nama Admin</h4>
                         {% if status %}
-                        <p class="p-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, voluptatum beatae! Aliquid!</p>
+                            {% if user_info.deskripsi == '' %}
+                            <p style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu disini <i class="ri-arrow-down-fill"></i></p>
+                            {% else %}
+                            <p class="p-2">{{user_info.deskripsi}}</p>
+                            {% endif %}
                         {% endif %}
                         <a href="" class="btn btn-warning rounded">Ubah Profile -></a>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
