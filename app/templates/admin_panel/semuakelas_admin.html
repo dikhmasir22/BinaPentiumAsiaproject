@@ -42,9 +42,11 @@
                         class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">{{item.nama_kelas}}</h6>
+                    <h6 style="font-size: 16px;" class="card-title">{{item.nama_kelas}}</h6>
                     <h6 style="font-size: 12px;" class="card-title">{{item.sub_nama_kelas}}</h6>
-                    <p style="font-size: 10px;" class="card-text">{{item.deskripsi_kelas}}</p>
+                    <div class="deskripsi d-flex">
+                        <p style="font-size: 12px;" class="card-text description">{{item.deskripsi_kelas}}</p>
+                    </div>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% if status_admin : %}
@@ -61,6 +63,7 @@
                     {% endif %}
 
                 </ul>
+                <span class="badge badge-primary lihat-kelas">Lihat Kelas</span>
             </div>
         </div>
         {% endfor %}
@@ -71,13 +74,13 @@
 <script>
 
     $(document).ready(function () {
-        const maxLength = 5;
+        const maxLength = 80;
 
         $('.description').each(function () {
             const originalText = $(this).text();
 
             if (originalText.length > maxLength) {
-                const truncatedText = originalText.substring(0, maxLength) + '...';
+                const truncatedText = originalText.substring(0, maxLength) + ' ...';
                 $(this).text(truncatedText);
                 $(this).next('.show-more').show();
 

@@ -65,7 +65,7 @@ def tambah_kelas():
             'level': 'admin'})
         
             if user_admin:
-                return render_template('admin_panel/Siswa.html', user_info=user_info, status_admin=status)
+                return render_template('admin_panel/tambah_kelas.html', user_info=user_info, status_admin=status)
 
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
