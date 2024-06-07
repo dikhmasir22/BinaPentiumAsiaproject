@@ -34,9 +34,13 @@
 
     <div class="row p-2 justify-content-start">
         {% for item in datakelas %}
-        <div onclick="window.location.href='/detailkelas/{{item._id}}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-            <div class="card" style="width:100%; max-height:300px;">
-                <img style="background-size: cover;" src="../../static/image/Imgkelas/{{item.gambar_kelas}}" class="card-img-top" alt="...">
+        <div onclick="window.location.href='/detailkelas/{{item._id}}'"
+            class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 pointer gelembung mt-3">
+            <div class="card semuakelas-card">
+                <div class="img-kontainer">
+                    <img style="background-size: cover;" src="../../static/image/Imgkelas/{{item.gambar_kelas}}"
+                        class="card-img-top" alt="...">
+                </div>
                 <div class="card-body">
                     <h6 class="card-title">{{item.nama_kelas}}</h6>
                     <h6 style="font-size: 12px;" class="card-title">{{item.sub_nama_kelas}}</h6>
@@ -47,12 +51,12 @@
                     <div class="card-body d-flex justify-content-evenly align-items-center">
                         <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
                         <a href="#" class="btn btn-danger fs-kecil m-1">Hapus</a>
-                        <h6 class="fw-normal text-primary m-1">{{item.harga_kelas}}</h6>
+                        <h6 class="fw-normal text-primary m-1">Rp.{{item.harga_kelas}}</h6>
                     </div>
 
                     {% else %}
                     <div class="card-body d-flex justify-content-end align-items-center">
-                        <h6 class="fw-normal text-primary m-1">{{item.harga_kelas}}</h6>
+                        <h6 class="fw-normal text-primary m-1">Rp.{{item.harga_kelas}}</h6>
                     </div>
                     {% endif %}
 
@@ -60,100 +64,31 @@
             </div>
         </div>
         {% endfor %}
-
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Judul Pelatihan</h5>
-                    <h6 class="card-title">sub judul</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
-                        voluptate laborum!</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
-                        <a href="#" class="btn btn-danger fs-kecil m-1">Hapus</a>
-                        <h6 class="fw-normal text-primary m-1">Rp.99999</h6>
-                    </div>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Judul Pelatihan</h5>
-                    <h6 class="card-title">sub judul</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
-                        voluptate laborum!</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
-                        <a href="#" class="btn btn-danger fs-kecil m-1">Hapus</a>
-                        <h6 class="fw-normal text-primary m-1">Rp.99999</h6>
-                    </div>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Judul Pelatihan</h5>
-                    <h6 class="card-title">sub judul</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
-                        voluptate laborum!</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
-                        <a href="#" class="btn btn-danger fs-kecil m-1">Hapus</a>
-                        <h6 class="fw-normal text-primary m-1">Rp.99999</h6>
-                    </div>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Judul Pelatihan</h5>
-                    <h6 class="card-title">sub judul</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
-                        voluptate laborum!</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
-                        <a href="#" class="btn btn-danger fs-kecil m-1">Hapus</a>
-                        <h6 class="fw-normal text-primary m-1">Rp.99999</h6>
-                    </div>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-            <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Judul Pelatihan</h5>
-                    <h6 class="card-title">sub judul</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci
-                        voluptate laborum!</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
-                        <a href="#" class="btn btn-danger fs-kecil m-1">Hapus</a>
-                        <h6 class="fw-normal text-primary m-1">Rp.99999</h6>
-                    </div>
-                </ul>
-            </div>
-        </div>
     </div>
 
 </section>
+
+<script>
+
+    $(document).ready(function () {
+        const maxLength = 5;
+
+        $('.description').each(function () {
+            const originalText = $(this).text();
+
+            if (originalText.length > maxLength) {
+                const truncatedText = originalText.substring(0, maxLength) + '...';
+                $(this).text(truncatedText);
+                $(this).next('.show-more').show();
+
+                $(this).next('.show-more').on('click', function (event) {
+                    event.preventDefault();
+                    $(this).prev('.description').text(originalText);
+                    $(this).hide();
+                });
+            }
+        });
+    });
+</script>
 
 {% include 'headfoot/footer_admin.html' %}
