@@ -20,7 +20,7 @@ def create_app():
     from .routes.homepage import homepage_
     app.register_blueprint(homepage_)
 
-    from .routes.profile_admin import profile_
+    from .routes.profile import profile_
     app.register_blueprint(profile_)
 
     from .routes.semuakelas import semuakelas
@@ -61,5 +61,8 @@ def create_app():
 
     from .routes.edit_kelas import edit_kelas_
     app.register_blueprint(edit_kelas_)
+
+    from .routes.update_profile import update_profile_
+    app.register_blueprint(update_profile_)
 
     return app

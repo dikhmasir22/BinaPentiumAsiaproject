@@ -10,10 +10,10 @@
             text: "",
             icon: "success",
         });
-      
-        setTimeout(function() {
+
+        setTimeout(function () {
             window.location.href = "/semuakelas";
-        }, 2000); 
+        }, 2000);
     });
 
 </script>
@@ -26,10 +26,10 @@
             text: "",
             icon: "success",
         });
-      
-        setTimeout(function() {
+
+        setTimeout(function () {
             window.location.href = "/semuakelas";
-        }, 2000); 
+        }, 2000);
     });
 </script>
 
@@ -41,10 +41,10 @@
             text: "",
             icon: "success",
         });
-      
-        setTimeout(function() {
+
+        setTimeout(function () {
             window.location.href = "/semuakelas";
-        }, 2000); 
+        }, 2000);
     });
 </script>
 {% endif %}
@@ -92,8 +92,37 @@
                         class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
-                    <h6 style="font-size: 16px;" class="card-title">{{item.nama_kelas}}</h6>
-                    <h6 style="font-size: 12px;" class="text-secondary">- {{item.kategori_kelas}}</h6>
+                    <div class="row justify-content-between">
+                        <div class="col-12 mb-4">
+                            <h6 style="font-size: 16px;" class="card-title">{{item.nama_kelas}}</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="katandting d-flex justify-content-between">
+                                <h6 style="font-size: 12px;" class="text-secondary">- {{item.kategori_kelas}}</h6>
+                                {% if item.tingkatan_kelas %}
+                                {% if item.tingkatan_kelas == 'Beginner' %}
+                                <p class="text-success" style="font-size: 12px;">- {{item.tingkatan_kelas}} <i
+                                        class="ri-signal-wifi-1-fill"></i></p>
+                                {% elif item.tingkatan_kelas == 'Intermediate' %}
+                                <p class="text-warning" style="font-size: 12px;">- {{item.tingkatan_kelas}} <i
+                                        class="ri-signal-wifi-2-fill"></i></p>
+                                {% elif item.tingkatan_kelas == 'Advanced' %}
+                                <p class="text-danger" style="font-size: 12px;">- {{item.tingkatan_kelas}} <i
+                                        class="ri-signal-wifi-3-fill"></i></p>
+                                {% else %}
+                                <p style="font-size: 12px;">
+                                    None <i class="ri-signal-wifi-off-fill"></i>
+                                </p>
+                                {% endif %}
+                                {% else %}
+                                <p style="font-size: 12px;">
+                                    None <i class="ri-signal-wifi-off-fill"></i>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% if status_admin : %}

@@ -18,18 +18,19 @@
                 <div class="col-12 col-md-7 col-lg-7 col-xl-4 d-flex justify-content-center">
                     <img class="p-2 m-2" src="../../static/image/5.png" width="200" alt="">
                 </div>
-                <div class="col-12 col-md-7 col-lg-7 col-xl-8">
-                    <div class="box d-flex flex-column p-2">
+                <div class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex flex-column p-2 justify-content-between">
+                    <div class="box">
                         <h4>Nama Admin</h4>
-                        {% if status %}
-                            {% if user_info.deskripsi == '' %}
-                            <p style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu disini <i class="ri-arrow-down-fill"></i></p>
-                            {% else %}
-                            <p class="p-2">{{user_info.deskripsi}}</p>
-                            {% endif %}
+
+                        {% if user_info.deskripsi == '' %}
+                        <p style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu
+                            disini <i class="ri-arrow-down-fill"></i></p>
+                        {% else %}
+                        <p class="p-2">{{user_info.deskripsi}}</p>
                         {% endif %}
-                        <a href="" class="btn btn-warning rounded">Ubah Profile -></a>
                     </div>
+
+                    <a href="/update_profile" class="btn btn-warning rounded align-self-end">Ubah Profile -></a>
                 </div>
             </div>
         </div>

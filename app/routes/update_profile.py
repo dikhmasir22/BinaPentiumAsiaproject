@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, current_app, redirect, url_for, request
 import jwt
 
-profile_ = Blueprint('profile', __name__)
+update_profile_ = Blueprint('update_profile', __name__)
 
-@profile_.route('/profile')
+@update_profile_.route('/update_profile')
 def profile():
     TOKEN_KEY = current_app.config['TOKEN_KEY']
     SECRET_KEY = current_app.config['SECRET_KEY']
@@ -21,9 +21,9 @@ def profile():
             'level': 'admin'})
         
         if user_admin:
-            return render_template('admin_panel/profile_admin.html', user_info=user_info, status_admin = status)
+            return render_template('admin_panel/update_profile.html', user_info=user_info, status_admin = status)
         else:
-            return render_template('admin_panel/profile_admin.html', user_info=user_info, status = status)
+            return render_template('admin_panel/update_profile.html', user_info=user_info, status = status)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))

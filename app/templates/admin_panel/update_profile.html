@@ -1,0 +1,171 @@
+{% include 'headfoot/header_admin.html' %}
+
+<section id="main" class="container-fluid p-2">
+
+    <script>
+        $(document).ready(function () {
+            $('#biodata').hide()
+            $('#btnpoto_profile').addClass('active')
+
+        })
+        function foto_profilee() {
+            $('#biodata').hide()
+            $('#poto_profile').show()
+            $('#btnpoto_profile').addClass('active')
+            $('#btnbiodata').removeClass('active')
+        }
+        function biodata() {
+            $('#poto_profile').hide()
+            $('#biodata').show()
+            $('#btnbiodata').addClass('active')
+            $('#btnpoto_profile').removeClass('active')
+        }
+
+    </script>
+
+    <h3>Profile</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </nav>
+    <hr>
+
+
+    <div class="container d-flex flex-column justify-content-start">
+        <div class="container-fluid d-flex justify-content-start">
+            <button id="btnpoto_profile" onclick="foto_profilee()" class="btn btn-light border gelembung">Foto
+                Profile</button>
+            <button id="btnbiodata" onclick="biodata()" class="btn btn-light border gelembung">Biodata</button>
+        </div>
+        <form id="poto_profile" class="row rounded bg-light shadow">
+            <div class="col-3 p-2">
+                <img src="../../static/image/5.png" alt="" width="200">
+            </div>
+            <div class="col-6 p-2">
+                <div class="form_input">
+                    <label class="fw-bold mb-1" for="Gambar Kelas">Foto Profile</label>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="foto_profile" name="foto_profile">
+                        <button class="btn btn-outline-secondary" type="submit">Simpan</button>
+                    </div>
+                </div>
+                <div class="deskripsifoto pb-3">
+                    <div class="alert alert-info mt-3 mb-0 small">
+                        <ul class="mb-0" style="padding-inline-start: 15px;">
+                            <li>
+                                Foto ukuran 300 x 300 px atau 300 x 400 px, tipe JPG/JPEG/PNG, max 1MB
+                            </li>
+                            <li>
+                                Foto resmi menggunakan seragam sekolah / jas almamater
+                            </li>
+                            <li>
+                                Menggunakan backdrop sesuai dengan ketentuan sekolah / kampus
+                            </li>
+                            <li>
+                                Khusus peserta <strong>prakerja</strong> gunakan foto resmi dan backdrop bebas
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form id="biodata" class="row rounded bg-light shadow p-4">
+            <div class="row justify-content-between">
+                <div class="col-9">
+                    <h5 class="mb-3">Informasi Dasar</h5>
+                </div>
+                <div class="col-3 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success align-self-end">Simpan Data</button>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form_input">
+                            <label class="fw-bold mb-1" for="Nama Kelas">Nama Lengkap</label>
+                            <div class="input-group mb-3">
+                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
+                                    class="form-control" id="nama_kelas">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form_input">
+                            <label class="fw-bold mb-1" for="Nama Kelas">Email</label>
+                            <div class="input-group mb-3">
+                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
+                                    class="form-control" id="nama_kelas">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form_input">
+                            <label class="fw-bold mb-1" for="Nama Kelas">No. Telp.</label>
+                            <div class="input-group mb-3">
+                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
+                                    class="form-control" id="nama_kelas">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form_input">
+                            <label class="fw-bold mb-1" for="Nama Kelas">No. KTP</label>
+                            <div class="input-group mb-3">
+                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
+                                    class="form-control" id="nama_kelas">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Alamat</label>
+                        <div class="form-floating">
+                            <textarea style="height: 130px;" class="form-control" name="deskripsi_kelas"
+                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                            <label class="text-secondary" for="floatingTextarea">Isikan Alamat</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 d-flex flex-column">
+                <div class="form_input">
+                    <label class="fw-bold mb-1" for="Nama Kelas">Jenis Kelamin</label>
+                    <div class="input-group mb-3">
+                        <select name="tingkatan_kelas" class="form-select" id="tingkatan_kelas">
+                            <option selected>Pilih Kategori...</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form_input">
+                    <label class="fw-bold mb-1" for="Nama Kelas">Tempat, dan Tanggal Lahir</label>
+                    <div class="input-group mb-3">
+                        <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas" class="form-control"
+                            id="nama_kelas">
+                    </div>
+                </div>
+
+                <div class="form_input">
+                    <label class="fw-bold mb-1" for="Nama Kelas">Tentang Saya</label>
+                    <div class="form-floating">
+                        <textarea style="height: 130px;" class="form-control" name="deskripsi_kelas"
+                            placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <label class="text-secondary" for="floatingTextarea">Isikan tentang diri Kamu</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</section>
+
+{% include 'headfoot/footer_admin.html' %}
