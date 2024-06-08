@@ -23,6 +23,22 @@
 
     </script>
 
+    {% if msg == 'edit' %}
+    <script>
+        $(document).ready(function () {
+            swal.fire({
+                title: "Profile Berhasil Di edit!!",
+                text: "",
+                icon: "success",
+            });
+
+            setTimeout(function () {
+                window.location.href = "/update_profile";
+            }, 2000);
+        });
+    </script>
+    {% endif %}
+
     <h3>Profile</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -44,7 +60,12 @@
         <form action="/update_profile" method="post" enctype="multipart/form-data">
             <div id="poto_profile" class="row rounded bg-light shadow">
                 <div class="col-3 p-2">
-                    <img src="../../static/image/profile.jpg" alt="" width="200">
+                    {% if user_info.foto_profile %}
+                    <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200"
+                        alt="">
+                    {% else %}
+                    <img class="p-2 m-2" src="../../static/image/profile.jpg" width="200" alt="">
+                    {% endif %}
                 </div>
                 <div class="col-6 p-2">
                     <div class="form_input">
@@ -147,7 +168,7 @@
                         <label class="fw-bold mb-1" for="Nama Kelas">Jenis Kelamin</label>
                         <div class="input-group mb-3">
                             <select name="jenis_kelamin" class="form-select" id="jenis_kelamin">
-                                <option selected>Pilih...</option>
+                                <option value="{{user_info.jenis_kelamin}}">{{user_info.jenis_kelamin}}</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
@@ -157,8 +178,9 @@
                     <div class="form_input">
                         <label class="fw-bold mb-1" for="Nama Kelas">Tempat, dan Tanggal Lahir</label>
                         <div class="input-group mb-3">
-                            <input type="text" placeholder="Masukkan Nama Kelas" value="{{user_info.tempat_tanggal_lahir}}" name="tempat_tanggal_lahir" class="form-control"
-                                id="tempat_tanggal_lahir">
+                            <input type="text" placeholder="Masukkan Nama Kelas"
+                                value="{{user_info.tempat_tanggal_lahir}}" name="tempat_tanggal_lahir"
+                                class="form-control" id="tempat_tanggal_lahir">
                         </div>
                     </div>
 
@@ -166,7 +188,8 @@
                         <label class="fw-bold mb-1" for="Nama Kelas">Tentang Saya</label>
                         <div class="form-floating">
                             <textarea style="height: 130px;" class="form-control" name="deskripsi"
-                                placeholder="Leave a comment here" id="floatingTextarea">{{user_info.deskripsi}}</textarea>
+                                placeholder="Leave a comment here"
+                                id="floatingTextarea">{{user_info.deskripsi}}</textarea>
                             <label class="text-secondary" for="floatingTextarea">Isikan tentang diri Kamu</label>
                         </div>
                     </div>

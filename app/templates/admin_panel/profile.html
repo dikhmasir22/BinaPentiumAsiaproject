@@ -16,7 +16,12 @@
         <div class="col-12 col-md-7 col-lg-7 col-xl-8 rounded shadow bg-light">
             <div class="row">
                 <div class="col-12 col-md-7 col-lg-7 col-xl-4 d-flex justify-content-center">
+                    {% if user_info.foto_profile %}
+                    <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200" alt="">
+                    {% else %}
                     <img class="p-2 m-2" src="../../static/image/profile.jpg" width="200" alt="">
+                    {% endif %}
+                    
                 </div>
                 <div class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex flex-column p-2 justify-content-between">
                     <div class="box">

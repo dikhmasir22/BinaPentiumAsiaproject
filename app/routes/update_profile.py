@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, current_app, redirect, url_for, request
 import jwt
+from datetime import datetime
+from bson import ObjectId
 
 update_profile_ = Blueprint('update_profile', __name__)
 
@@ -24,35 +26,37 @@ def update_profile():
             jenis_kelamin = request.form['jenis_kelamin']
             alamat = request.form['alamat']
             tempat_tanggal_lahir = request.form['tempat_tanggal_lahir']
+            deskripsi = request.form['deskripsi']
 
-
-
-            
+            gambar = request.files['foto_profile']
+            extension = gambar.filename.split('.')[-1]
+            today = datetime.now()
+            mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
+            gambar_name = f'gambar-{mytime}.{extension}'
+            save_to = f'app/static/image/Imgprofile/{gambar_name}'
+            gambar.save(save_to)
 
             doc = {
                 "email": email,                             
-                "password": password_hash,                          
+                "password": user_info['password'],                          
                 "nama_lengkap": namalengkap,
-                "nama_depan": namadepan,
-                "deskripsi" : "",
-                "no_telepon": "",
-                "no_ktp": "",
-                "jenis_kelamin": "",
-                "tempat_tanggal_lahir": "",
-                "alamat": "",
-                "level" : "user",
-                "foto_profile" : ""
+                "nama_depan": user_info['nama_depan'],
+                "deskripsi" : deskripsi,
+                "no_telepon": no_telepon,
+                "no_ktp": no_ktp,
+                "jenis_kelamin": jenis_kelamin,
+                "tempat_tanggal_lahir": tempat_tanggal_lahir,
+                "alamat": alamat,
+                "level" : user_info['level'],
             }
 
-
-
-            status = payload.get('id')
-            user_admin = current_app.db.user.find_one({'email': payload.get('id'),'level': 'admin'})
+            if gambar:
+                doc['foto_profile'] = gambar_name
+            
+            current_app.db.user.update_one({'_id' : ObjectId(user_info['_id'])}, {'$set' : doc})
+            msg = 'edit'
+            return redirect(url_for('update_profile.update_profile', msg=msg))
         
-            if user_admin:
-                return render_template('admin_panel/update_profile.html', user_info=user_info, status_admin = status)
-            else:
-                return render_template('admin_panel/update_profile.html', user_info=user_info, status = status)
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
             return redirect(url_for('homepage.homepage', msg=msg))
@@ -70,6 +74,7 @@ def update_profile():
                 SECRET_KEY,
                 algorithms=['HS256']
             )
+            msg = request.args.get('msg')
             user_info = current_app.db.user.find_one({'email': payload.get('id')})
             status = payload.get('id')
             user_admin = current_app.db.user.find_one({
@@ -77,9 +82,9 @@ def update_profile():
                 'level': 'admin'})
         
             if user_admin:
-                return render_template('admin_panel/update_profile.html', user_info=user_info, status_admin = status)
+                return render_template('admin_panel/update_profile.html', user_info=user_info, status_admin = status, msg = msg)
             else:
-                return render_template('admin_panel/update_profile.html', user_info=user_info, status = status)
+                return render_template('admin_panel/update_profile.html', user_info=user_info, status = status, msg = msg)
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'
             return redirect(url_for('homepage.homepage', msg=msg))
