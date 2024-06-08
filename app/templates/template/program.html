@@ -1,20 +1,22 @@
 {% include 'template/header.html' %}
 
 <!-- Carousel -->
-<div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="jumbotronCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+
     <div class="carousel-inner">
+
         <div class="carousel-item active">
             <img src="{{ url_for('static', filename='image/backgroundreason.jpg') }}" class="d-block w-100" alt="Slide 1">
             <div class="carousel-caption text-start text-dark">
                 <h3 class="slide-title fw-bold">Bina Asia DigitalIndo</h3>
                 <p class="slide-text">Menyediakan kelas terbaik dan ilmu yang sedang marak di dunia industri. 
                     Dengan profesional sebagai mentor, yang pastinya akan memenuhi kebutuhan anda</p>
-                <p><a class="btn btn-warning gelembung" data-bs-toggle="modal"
+                <p><a class="btn btn-warning gelembung fw-bold" data-bs-toggle="modal"
                     data-bs-target="#daftarmodal">Daftar</a></p>
                 <!-- mengarah ke daftar -->
             </div>
@@ -24,7 +26,7 @@
             <div class="carousel-caption text-start text-dark">
                 <h3 class="slide-title fw-bold">Merancang Kurikulum Pembelajaran dan Pengembangan Media</h3>
                 <p class="slide-text">Kurikulum yang digunakan adalah kurikulum dengan standar internasional yang juga di gunakan di beberapa negara maju seperti Amerika dan Cina</p>
-                <p><a class="btn btn-warning gelembung" href="/homepage">Ayok Lihat</a></p>
+                <p><a class="btn btn-warning gelembung fw-bold" href="/homepage">Daftar Sekarang</a></p>
                 <!-- mengarah ke semua kelas -->
             </div>
         </div>
@@ -33,7 +35,7 @@
             <div class="carousel-caption text-start text-dark">
                 <h3 class="slide-title fw-bold">Ada yang ingin di tanyakan?</h3>
                 <p class="slide-text">Kami selalu menanti untuk berhubungan dengan anda, hubungi kami kapan saja</p>
-                <p><a class="btn btn-warning gelembung" href="/kontak">Kontak Kami</a></p>
+                <p><a class="btn btn-warning gelembung fw-bold" href="/kontak">Kontak Kami</a></p>
                 <!-- mengarah ke laman kontak -->
             </div>
         </div>
@@ -50,21 +52,39 @@
 <!-- Carousel -->
 
 <!-- Kelas Terunggul -->
-<div class="section kelas-unggulan">
-    <div class="container col-xxl-8 px-4 py-5">
+<div class="section kelas-unggulan mt-5" style="background-color: whitesmoke;">
+    <div class="text-center py-3 px-4">
+        <h3 class="fw-bold">Program Terunggul Kami</h3>
+    </div>
+    <div class="container col-xxl-8 px-4 py-3">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div class="col-10 col-sm-8 col-lg-6">
-            <img src="{{ url_for('static', filename='image/banner1.png') }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <img src="{{ url_for('static', filename='image/banner.jpg') }}" class="d-block mx-lg-auto img-fluid rounded alt="Bootstrap Themes" width="700" height="500" loading="lazy" alt="">
           </div>
           <div class="col-lg-6">
-            <h3 class="slide-title fw-bold text-body-emphasis lh-1 mb-3">Kelas Terunggul</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo eaque error, fugit quia incidunt reiciendis? 
-                Illum iusto hic temporibus deleniti quisquam excepturi magni minus natus?Quickly
-                responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-warning btn-lg px-4 me-md-2 gelembung">Lihat</button>
-              <!-- mengarah ke semua kelas & kelas saya -->
-            </div>
+            <h4 class="slide-title fw-bold text-body-emphasis lh-1 mb-3">Pemrograman Web Fullstack</h4>
+            <p>Kami dengan bangga mempersembahkan <strong>Kelas Pemrograman Web Fullstack</strong>, kelas terunggul yang telah terbukti meningkatkan karir para pesertanya. 
+                Kelas ini dirancang khusus untuk mengajarkan keterampilan pemrograman web secara menyeluruh, mulai dari front-end hingga back-end. 
+                Dipimpin oleh para instruktur berpengalaman dan praktisi industri, kelas ini memberikan pengetahuan mendalam dan praktik langsung yang relevan dengan kebutuhan pasar kerja.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-3">
+          <div class="col-lg-7">
+            <img src="{{ url_for('static', filename='image/banner1.png') }}" class="d-block mx-lg-auto img-fluid rounded alt="Bootstrap Themes" width="700" height="500" loading="lazy" alt="">
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3">Pelatihan Siap Kerja</h5>
+                <p>
+                    pelatihan unggulan yang telah terbukti meningkatkan karir peserta. 
+                    Dirancang untuk mengajarkan keterampilan pemrograman web dari front-end hingga back-end, 
+                    kelas ini dipimpin oleh instruktur berpengalaman dan praktisi industri terkemuka. Peserta akan mendapatkan pengetahuan mendalam, 
+                    praktik langsung yang relevan dengan pasar kerja, serta manfaat seperti proyek nyata, bimbingan karir, dan jaringan profesional. 
+                    Jangan lewatkan kesempatan untuk menjadi profesional siap kerja dan kompeten di dunia pemrograman web!
+                </p>
           </div>
         </div>
       </div>
