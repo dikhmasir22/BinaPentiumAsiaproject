@@ -39,130 +39,143 @@
                 Profile</button>
             <button id="btnbiodata" onclick="biodata()" class="btn btn-light border gelembung">Biodata</button>
         </div>
-        <form id="poto_profile" class="row rounded bg-light shadow">
-            <div class="col-3 p-2">
-                <img src="../../static/image/5.png" alt="" width="200">
-            </div>
-            <div class="col-6 p-2">
-                <div class="form_input">
-                    <label class="fw-bold mb-1" for="Gambar Kelas">Foto Profile</label>
-                    <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="foto_profile" name="foto_profile">
-                        <button class="btn btn-outline-secondary" type="submit">Simpan</button>
-                    </div>
+
+        <!-- Foto Profile Form -->
+        <form action="/update_profile" method="post" enctype="multipart/form-data">
+            <div id="poto_profile" class="row rounded bg-light shadow">
+                <div class="col-3 p-2">
+                    <img src="../../static/image/profile.jpg" alt="" width="200">
                 </div>
-                <div class="deskripsifoto pb-3">
-                    <div class="alert alert-info mt-3 mb-0 small">
-                        <ul class="mb-0" style="padding-inline-start: 15px;">
-                            <li>
-                                Foto ukuran 300 x 300 px atau 300 x 400 px, tipe JPG/JPEG/PNG, max 1MB
-                            </li>
-                            <li>
-                                Foto resmi menggunakan seragam sekolah / jas almamater
-                            </li>
-                            <li>
-                                Menggunakan backdrop sesuai dengan ketentuan sekolah / kampus
-                            </li>
-                            <li>
-                                Khusus peserta <strong>prakerja</strong> gunakan foto resmi dan backdrop bebas
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <form id="biodata" class="row rounded bg-light shadow p-4">
-            <div class="row justify-content-between">
-                <div class="col-9">
-                    <h5 class="mb-3">Informasi Dasar</h5>
-                </div>
-                <div class="col-3 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success align-self-end">Simpan Data</button>
-                </div>
-            </div>
-            <div class="col-7">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form_input">
-                            <label class="fw-bold mb-1" for="Nama Kelas">Nama Lengkap</label>
-                            <div class="input-group mb-3">
-                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
-                                    class="form-control" id="nama_kelas">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form_input">
-                            <label class="fw-bold mb-1" for="Nama Kelas">Email</label>
-                            <div class="input-group mb-3">
-                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
-                                    class="form-control" id="nama_kelas">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form_input">
-                            <label class="fw-bold mb-1" for="Nama Kelas">No. Telp.</label>
-                            <div class="input-group mb-3">
-                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
-                                    class="form-control" id="nama_kelas">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form_input">
-                            <label class="fw-bold mb-1" for="Nama Kelas">No. KTP</label>
-                            <div class="input-group mb-3">
-                                <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas"
-                                    class="form-control" id="nama_kelas">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+                <div class="col-6 p-2">
                     <div class="form_input">
-                        <label class="fw-bold mb-1" for="Nama Kelas">Alamat</label>
-                        <div class="form-floating">
-                            <textarea style="height: 130px;" class="form-control" name="deskripsi_kelas"
-                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label class="text-secondary" for="floatingTextarea">Isikan Alamat</label>
+                        <label class="fw-bold mb-1" for="Gambar Kelas">Foto Profile</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="foto_profile" name="foto_profile">
+                            <button class="btn btn-outline-secondary" type="submit">Simpan</button>
+                        </div>
+                    </div>
+                    <div class="deskripsifoto pb-3">
+                        <div class="alert alert-info mt-3 mb-0 small">
+                            <ul class="mb-0" style="padding-inline-start: 15px;">
+                                <li>
+                                    Foto ukuran 300 x 300 px atau 300 x 400 px, tipe JPG/JPEG/PNG, max 1MB
+                                </li>
+                                <li>
+                                    Foto resmi menggunakan seragam sekolah / jas almamater
+                                </li>
+                                <li>
+                                    Menggunakan backdrop sesuai dengan ketentuan sekolah / kampus
+                                </li>
+                                <li>
+                                    Khusus peserta <strong>prakerja</strong> gunakan foto resmi dan backdrop bebas
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-4 d-flex flex-column">
-                <div class="form_input">
-                    <label class="fw-bold mb-1" for="Nama Kelas">Jenis Kelamin</label>
-                    <div class="input-group mb-3">
-                        <select name="tingkatan_kelas" class="form-select" id="tingkatan_kelas">
-                            <option selected>Pilih Kategori...</option>
-                            <option value="Beginner">Beginner</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Advanced">Advanced</option>
-                        </select>
+            <!-- Foto Profile Form -->
+
+
+
+            <!-- Form Biodata -->
+            <div id="biodata" class="row rounded bg-light shadow p-4">
+                <div class="row justify-content-between">
+                    <div class="col-9">
+                        <h5 class="mb-3">Informasi Dasar</h5>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success align-self-end">Simpan Data</button>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form_input">
+                                <label class="fw-bold mb-1" for="Nama Kelas">Nama Lengkap</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" placeholder="Isikan Nama Lengkap"
+                                        value="{{user_info.nama_lengkap}}" name="nama_lengkap" class="form-control"
+                                        id="nama_lengkap">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form_input">
+                                <label class="fw-bold mb-1" for="Nama Kelas">Email</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" placeholder="Isikan Email" value="{{user_info.email}}@gmail.com"
+                                        name="email" class="form-control" id="email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form_input">
+                                <label class="fw-bold mb-1" for="Nama Kelas">No. Telp.</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" placeholder="Isikan No Telepon" value="{{user_info.no_telepon}}"
+                                        name="no_telepon" class="form-control" id="no_telepon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form_input">
+                                <label class="fw-bold mb-1" for="Nama Kelas">No. KTP</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" placeholder="Isikan No KTP" value="{{user_info.no_ktp}}"
+                                        name="no_ktp" class="form-control" id="no_ktp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form_input">
+                            <label class="fw-bold mb-1" for="Nama Kelas">Alamat</label>
+                            <div class="form-floating">
+                                <textarea style="height: 130px;" class="form-control" name="alamat"
+                                    id="floatingTextarea">{{user_info.alamat}}</textarea>
+                                <label class="text-secondary" for="floatingTextarea">Isikan Alamat</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form_input">
-                    <label class="fw-bold mb-1" for="Nama Kelas">Tempat, dan Tanggal Lahir</label>
-                    <div class="input-group mb-3">
-                        <input type="text" placeholder="Masukkan Nama Kelas" name="nama_kelas" class="form-control"
-                            id="nama_kelas">
+                <div class="col-4 d-flex flex-column">
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Jenis Kelamin</label>
+                        <div class="input-group mb-3">
+                            <select name="jenis_kelamin" class="form-select" id="jenis_kelamin">
+                                <option selected>Pilih...</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form_input">
-                    <label class="fw-bold mb-1" for="Nama Kelas">Tentang Saya</label>
-                    <div class="form-floating">
-                        <textarea style="height: 130px;" class="form-control" name="deskripsi_kelas"
-                            placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                        <label class="text-secondary" for="floatingTextarea">Isikan tentang diri Kamu</label>
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Tempat, dan Tanggal Lahir</label>
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="Masukkan Nama Kelas" value="{{user_info.tempat_tanggal_lahir}}" name="tempat_tanggal_lahir" class="form-control"
+                                id="tempat_tanggal_lahir">
+                        </div>
+                    </div>
+
+                    <div class="form_input">
+                        <label class="fw-bold mb-1" for="Nama Kelas">Tentang Saya</label>
+                        <div class="form-floating">
+                            <textarea style="height: 130px;" class="form-control" name="deskripsi"
+                                placeholder="Leave a comment here" id="floatingTextarea">{{user_info.deskripsi}}</textarea>
+                            <label class="text-secondary" for="floatingTextarea">Isikan tentang diri Kamu</label>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Form Biodata -->
+
         </form>
+
     </div>
 
 

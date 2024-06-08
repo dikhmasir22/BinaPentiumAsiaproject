@@ -28,7 +28,8 @@ def sign_up():
                 "jenis_kelamin": "",
                 "tempat_tanggal_lahir": "",
                 "alamat": "",
-                "level" : "user"
+                "level" : "user",
+                "foto_profile" : ""
             }
             current_app.db.user.insert_one(doc)
             return jsonify({'result': 'success'})
