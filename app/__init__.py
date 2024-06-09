@@ -65,4 +65,7 @@ def create_app():
     from .routes.update_profile import update_profile_
     app.register_blueprint(update_profile_)
 
+    from .routes.ikuti_kelas import ikuti_kelas_
+    app.register_blueprint(ikuti_kelas_)
+
     return app
