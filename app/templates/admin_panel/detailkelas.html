@@ -118,7 +118,9 @@
                     </div>
                     <hr class="hr-dashed">
                     <div class="row">
-                        <button class="btn btn-primary">Ikuti Kelas</button>
+                        <form action="/ikuti_kelas/{{kelas._id}}/{{user_info._id}}" method="post">
+                            <button type="submit" class="btn btn-primary">Ikuti Kelas</button>
+                        </form>
                         <p class="text-center text-muted mb-0 xsmall fs-kecil"> Dengan menekan "Ikuti Kelas" kamu telah menyetujui <a target="_blank" href="/term_condition">syarat &amp; ketentuan</a>
                             dan <a target="_blank" href="/privacy_policy">kebijakan privasi</a> Bina Asia Digitalindo</p>
                     </div>
