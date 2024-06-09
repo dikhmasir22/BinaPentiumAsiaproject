@@ -63,7 +63,8 @@
                 <h5 class="text-info">Rp. {{kelas.harga_kelas}}</h5>
             </div>
             <div class="ikutkelas">
-                <button class="btn btn-info rounded p-2">+ Ikuti Kelas</button>
+                <button data-bs-toggle="modal" data-bs-target="#ringkasan_pembelian" class="btn btn-info rounded p-2">+
+                    Ikuti Kelas</button>
             </div>
         </div>
     </div>
@@ -93,6 +94,35 @@
                     <button class="btn">Mulai</button>
                 </div>
                 <hr style="color: black;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ringkasan Pembelian -->
+    <div class="modal fade" id="ringkasan_pembelian" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ringkasan Pembelian</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid d-flex justify-content-between">
+                        <div class="box d-flex">
+                            <img class="pe-2" src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" width="100"
+                                alt="">
+                            <h6>{{kelas.nama_kelas}}</h6>
+                        </div>
+                        <h6 class="text-secondary">Rp. {{kelas.harga_kelas}}</h6>
+                    </div>
+                    <hr class="hr-dashed">
+                    <div class="row">
+                        <button class="btn btn-primary">Ikuti Kelas</button>
+                        <p class="text-center text-muted mb-0 xsmall fs-kecil"> Dengan menekan "Ikuti Kelas" kamu telah menyetujui <a target="_blank" href="/term_condition">syarat &amp; ketentuan</a>
+                            dan <a target="_blank" href="/privacy_policy">kebijakan privasi</a> Bina Asia Digitalindo</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -78,7 +78,7 @@
 
     <!-- LOGIN -->
     <div class="modal fade" id="masukmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content p-2">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
@@ -86,21 +86,21 @@
                 </div>
                 <div class="modal-body text-center">
                     <div class="container-fluid">
-                        <div class="row vh-100">
-                            <div class="row col-12 col-xl-6 col-lg-6 justify-content-center align-items-center">
+                        <div class="row">
+                            <div class="col-12 col-xl-6 col-lg-6 d-flex justify-content-evenly align-items-center">
                                 <div class="kotak-daftar border p-4 rounded border-2 shadow">
                                     <h3 class="text-center p-2">MASUK</h3>
                                     <div class="text-center d-flex flex-column" action="/daftar" method="post">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Email</span>
                                             <input id="input-email" type="email" class="form-control"
-                                                placeholder="Silakan Inputkan Email" aria-label="Username"
+                                                placeholder="Email" aria-label="Username"
                                                 aria-describedby="basic-addon1">
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Password</span>
                                             <input id="input-password" type="password" class="form-control"
-                                                placeholder="Silakan Inputkan Password" aria-label="Username"
+                                                placeholder="Password" aria-label="Username"
                                                 aria-describedby="basic-addon1">
                                         </div>
                                         <button onclick="sign_in()" class="btn btn-primary text-center">Masuk</button>
@@ -111,8 +111,8 @@
                                 </div>
 
                             </div>
-                            <div style="background-image: url('../../static/image/bootcamp_hero.png'); background-size:cover;background-repeat:no-repeat;"
-                                class="col-6 d-none d-xl-block d-lg-block">
+                            <div style="background-image: url('../../static/image/cover.png'); background-size:cover;background-repeat:no-repeat;"
+                                class="col-6 col-lg-6">
 
                             </div>
                         </div>
@@ -124,7 +124,7 @@
 
     <!-- Daftar -->
     <div class="modal fade" id="daftarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content p-2">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
@@ -132,33 +132,33 @@
                 </div>
                 <div class="modal-body text-center">
                     <div class="container-fluid">
-                        <div class="row vh-100">
-                            <div class="row col-6 justify-content-center align-items-center">
+                        <div class="row">
+                            <div class="col-12 col-xl-6 col-lg-6 d-flex justify-content-evenly align-items-center">
                                 <div class="kotak-daftar border p-4 rounded border-2 shadow">
                                     <h3 class="text-center p-2">DAFTAR</h3>
                                     <form class="text-center d-flex flex-column" action="/daftar" method="post">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Nama</span>
                                             <input type="text" class="form-control" name="nama"
-                                                placeholder="Silakan Inputkan Nama" aria-label="Username"
+                                                placeholder="Nama Lengkap" aria-label="Username"
                                                 aria-describedby="basic-addon1">
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Email</span>
                                             <input type="email" name="email" class="form-control"
-                                                placeholder="Silakan Inputkan Email" aria-label="Username"
+                                                placeholder="Email" aria-label="Username"
                                                 aria-describedby="basic-addon1">
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Password</span>
                                             <input type="password" class="form-control"
-                                                placeholder="Silakan Inputkan Password" name="password"
+                                                placeholder="Password" name="password"
                                                 aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Password</span>
                                             <input type="password" class="form-control" name="password2"
-                                                placeholder="Silakan Ulang Password" aria-label="Username"
+                                                placeholder="Ulangi Password" aria-label="Username"
                                                 aria-describedby="basic-addon1">
                                         </div>
                                         <button class="btn btn-primary text-center">Daftar</button>
@@ -169,8 +169,8 @@
                                 </div>
 
                             </div>
-                            <div style="background-image: url('../../static/image/bootcamp_hero.png'); background-size:cover;background-repeat:no-repeat;"
-                                class="col-6">
+                            <div style="background-image: url('../../static/image/cover.png'); background-size:cover;background-repeat:no-repeat;"
+                                class="col-6 d-none d-xl-block d-lg-block">
 
                             </div>
                         </div>
@@ -179,4 +179,3 @@
             </div>
         </div>
     </div>
-
