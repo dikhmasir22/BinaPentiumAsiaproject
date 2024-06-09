@@ -49,7 +49,7 @@ def create_app():
 
     from .routes.materi import materi_
     app.register_blueprint(materi_)
-
+    
     from .routes.kelassaya import kelassaya_
     app.register_blueprint(kelassaya_)
 

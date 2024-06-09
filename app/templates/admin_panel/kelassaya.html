@@ -1,5 +1,21 @@
 {% include 'headfoot/header_admin.html' %}
 
+{% if msg == 'ikut_kelas' %}
+<script>
+    $(document).ready(function () {
+        swal.fire({
+            title: "Kelas Berhasil Diikuti!!",
+            text: "",
+            icon: "success",
+        });
+
+        setTimeout(function () {
+            window.location.href = "/kelassaya";
+        }, 2000);
+    });
+</script>
+{% endif %}
+
 <section id="main" class="container-fluid p-2">
 
     <div class="container-fluid d-flex justify-content-start align-items-center">
@@ -16,23 +32,53 @@
 
     <hr>
 
+    {% if datakelas %}
     <div class="row p-2 justify-content-start">
         {% for item in datakelas %}
-        <div onclick="window.location.href='/detailkelas/{{item._id}}'"
-            class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 pointer gelembung mt-3">
+        <div onclick="window.location.href='/detailkelas/{{item._id_kelas}}'"
+            class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3 pointer gelembung mt-3">
             <div class="card semuakelas-card">
                 <div class="img-kontainer">
                     <img style="background-size: cover;" src="../../static/image/Imgkelas/{{item.gambar_kelas}}"
                         class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
-                    <h6 style="font-size: 16px;" class="card-title">{{item.nama_kelas}}</h6>
-                    <h6 style="font-size: 12px;" class="text-secondary">- {{item.kategori_kelas}}</h6>
+                    <div class="row justify-content-between">
+                        <div class="col-12 mb-4">
+                            <h6 style="font-size: 16px;" class="card-title">{{item.nama_kelas}}</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="katandting d-flex justify-content-between">
+                                <h6 style="font-size: 12px;" class="text-secondary">- {{item.kategori_kelas}}</h6>
+                                {% if item.tingkatan_kelas %}
+                                {% if item.tingkatan_kelas == 'Beginner' %}
+                                <p class="text-success" style="font-size: 12px;">- {{item.tingkatan_kelas}} <i
+                                        class="ri-signal-wifi-1-fill"></i></p>
+                                {% elif item.tingkatan_kelas == 'Intermediate' %}
+                                <p class="text-warning" style="font-size: 12px;">- {{item.tingkatan_kelas}} <i
+                                        class="ri-signal-wifi-2-fill"></i></p>
+                                {% elif item.tingkatan_kelas == 'Advanced' %}
+                                <p class="text-danger" style="font-size: 12px;">- {{item.tingkatan_kelas}} <i
+                                        class="ri-signal-wifi-3-fill"></i></p>
+                                {% else %}
+                                <p style="font-size: 12px;">
+                                    None <i class="ri-signal-wifi-off-fill"></i>
+                                </p>
+                                {% endif %}
+                                {% else %}
+                                <p style="font-size: 12px;">
+                                    None <i class="ri-signal-wifi-off-fill"></i>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% if status_admin : %}
                     <div class="card-body d-flex justify-content-evenly align-items-center">
-                        <a href="#" class="btn btn-warning fs-kecil m-1">Edit</a>
+                        <a href="/editkelas/{{item._id}}" class="btn btn-warning fs-kecil m-1">Edit</a>
                         <a href="/hapus_kelas/{{item._id}}" class="btn btn-danger fs-kecil m-1">Hapus</a>
                         <h6 class="fw-normal text-primary m-1">Rp.{{item.harga_kelas}}</h6>
                     </div>
@@ -49,6 +95,14 @@
         </div>
         {% endfor %}
     </div>
+
+    {% else %}
+    <div class="container d-flex flex-column p-2 align-items-center justify-content-center">
+        <h6 class="pe-2">Kamu Belum mengambil kelas apapun nih, ayo lihat dan ikuti kelas disini </h6>
+        <a href="/semuakelas" class="btn btn-primary">Semua Kelas</a>
+    </div>
+    {% endif %}
+    
 
 </section>
 

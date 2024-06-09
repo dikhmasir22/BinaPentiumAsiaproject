@@ -16,7 +16,31 @@ def ikuti_kelas(_id,_idsiswa):
             algorithms=['HS256']
         )
         kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
+
+        kelas_sudah_diambil = current_app.db.kelassaya.find_one({
+            '_id_kelas' : ObjectId(_id),
+            '_id_siswa' : ObjectId(_idsiswa) 
+        })
+
+        if kelas_sudah_diambil:
+            msg = 'sudah'
+            return redirect(url_for('kelassaya.kelassaya', msg = msg))
         
+        else:
+            doc = {
+                '_id_kelas' : ObjectId(_id),
+                '_id_siswa' : ObjectId(_idsiswa),
+                'nama_kelas': kelas['nama_kelas'],
+                'sub_nama_kelas': kelas['sub_nama_kelas'],
+                'kategori_kelas': kelas['kategori_kelas'],
+                'harga_kelas': kelas['harga_kelas'],
+                'deskripsi_kelas': kelas['deskripsi_kelas'],
+                'tingkatan_kelas': kelas['tingkatan_kelas'],
+                'gambar_kelas': kelas['gambar_kelas']
+            }
+            current_app.db.kelassaya.insert_one(doc)
+            msg = 'ikut_kelas'
+            return redirect(url_for('kelassaya.kelassaya', msg = msg))
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))

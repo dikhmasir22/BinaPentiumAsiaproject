@@ -17,9 +17,9 @@ def kelassaya():
         )
         msg = request.args.get('msg')
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
-        Datakelas = list(current_app.db.semuakelas.find({}))
+        Datakelas = list(current_app.db.kelassaya.find({'_id_siswa' : user_info['_id']}))
         status = payload.get('id')
-        return render_template('admin_panel/kelassaya.html', user_info=user_info, status = status, datakelas = Datakelas)
+        return render_template('admin_panel/kelassaya.html', user_info=user_info, status = status, datakelas = Datakelas, msg = msg)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))
