@@ -17,7 +17,7 @@ def semuakelas_():
         )
         msg = request.args.get('msg')
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
-        Datakelas = list(current_app.db.semuakelas.find({}))
+        Datakelas = list(current_app.db.semuakelas.find({}))   
         status = payload.get('id')
         user_admin = current_app.db.user.find_one({
             'email': payload.get('id'),

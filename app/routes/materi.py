@@ -15,7 +15,7 @@ def materi():
             algorithms=['HS256']
         )
         status = payload.get('id')
-        return render_template('admin_panel/materi.html', status = status)
+        return render_template('materi/materi.html', status = status)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
         return render_template('template/materi.html', msg=msg)
