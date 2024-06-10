@@ -15,10 +15,15 @@ def detailkelas(_id):
             SECRET_KEY,
             algorithms=['HS256']
         )
-        kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
+        kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
+        kelas_diambil = current_app.db.kelassaya.find_one({'_id_kelas' : ObjectId(_id), '_id_siswa' :user_info['_id']})
+        
         status = payload.get('id')
-        return render_template('admin_panel/detailkelas.html', status = status, user_info=user_info, kelas = kelas)
+        if kelas_diambil:
+            return render_template('admin_panel/detailkelas.html', status = status, user_info=user_info, kelas = kelas, kelas_diambil = kelas_diambil)
+        else :
+            return render_template('admin_panel/detailkelas.html', status = status, user_info=user_info, kelas = kelas)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
         return render_template('template/detailkelas.html', msg=msg)

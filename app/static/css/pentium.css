@@ -73,6 +73,10 @@ body {
     margin: 20px 0; 
 }
 
+.kotak-modal{
+    min-height: 70vh;
+}
+
 /* =================== ROOT END ======================*/
 
 /* ==== NAVBAR ====*/
