@@ -1,181 +1,325 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bina Asia Digitalindo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="../../static/css/pentium.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../static/css/pentium.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let lokasi = window.location.pathname;
-            document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
-                link.classList.remove('active');
-            });
-            if (lokasi.includes('/dashboard')) {
-                document.querySelector('.navbar-nav .nav-link[href="/"]').classList.add('active');
-            } else if (lokasi.includes('/program')) {
-                document.querySelector('.navbar-nav .nav-link[href="/program"]').classList.add('active');
-            } else if (lokasi.includes('/kontak')) {
-                document.querySelector('.navbar-nav .nav-link[href="/kontak"]').classList.add('active');
-            } else {
-                document.querySelector('.navbar-nav .nav-link[href="/"]').classList.add('active');
-            }
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        let lokasi = window.location.pathname;
+        document
+          .querySelectorAll(".navbar-nav .nav-link")
+          .forEach(function (link) {
+            link.classList.remove("active");
+          });
+        if (lokasi.includes("/dashboard")) {
+          document
+            .querySelector('.navbar-nav .nav-link[href="/"]')
+            .classList.add("active");
+        } else if (lokasi.includes("/program")) {
+          document
+            .querySelector('.navbar-nav .nav-link[href="/program"]')
+            .classList.add("active");
+        } else if (lokasi.includes("/kontak")) {
+          document
+            .querySelector('.navbar-nav .nav-link[href="/kontak"]')
+            .classList.add("active");
+        } else {
+          document
+            .querySelector('.navbar-nav .nav-link[href="/"]')
+            .classList.add("active");
+        }
+      });
     </script>
-</head>
+  </head>
 
-<body style="background-color: white;">
-
+  <body style="background-color: white">
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg bg-light shadow">
-        <div class="container-fluid ps-xl-5 pe-4 align-items-center">
-            <a class="navbar-brand d-flex" href="/">
-                <img src="../../static/image/logo.png" width="45" height="45" alt="">
-                <span class="text-info span-navbar fw-bold">PT Bina Asia <br>Digitalindo</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/program">Program</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/kontak">Kontak</a>
-                    </li>
-                    {% if status %}
-                    <a class="btn btn-outline-secondary ms-xl-2 me-xl-2 mb-2 me-lg-2" href="/dashboard">Dashboard</a>
-                    {% else %}
-                    <a class="btn btn-outline-primary ms-xl-2 me-xl-2 mb-2 me-lg-2" data-bs-toggle="modal"
-                        data-bs-target="#masukmodal">Masuk</a>
-                    <a class="btn btn-primary text-light fw-bold me-xl-2 mb-2 me-lg-2" data-bs-toggle="modal"
-                        data-bs-target="#daftarmodal">Daftar</a>
-                    {% endif %}
-
-                </ul>
-            </div>
+      <div class="container-fluid ps-xl-5 pe-4 align-items-center">
+        <a class="navbar-brand d-flex" href="/">
+          <img
+            src="../../static/image/logo.png"
+            width="45"
+            height="45"
+            alt=""
+          />
+          <span class="text-info span-navbar fw-bold"
+            >PT Bina Asia <br />Digitalindo</span
+          >
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/program">Program</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/kontak">Kontak</a>
+            </li>
+            {% if status %}
+            <a
+              class="btn btn-outline-secondary ms-xl-2 me-xl-2 mb-2 me-lg-2"
+              href="/dashboard"
+              >Dashboard</a
+            >
+            {% else %}
+            <a
+              class="btn btn-outline-primary ms-xl-2 me-xl-2 mb-2 me-lg-2"
+              data-bs-toggle="modal"
+              data-bs-target="#masukmodal"
+              >Masuk</a
+            >
+            <a
+              class="btn btn-primary text-light fw-bold me-xl-2 mb-2 me-lg-2"
+              data-bs-toggle="modal"
+              data-bs-target="#daftarmodal"
+              >Daftar</a
+            >
+            {% endif %}
+          </ul>
         </div>
+      </div>
     </nav>
     <!-- End Navbar -->
 
     <!-- LOGIN -->
-    <div class="modal fade" id="masukmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content p-2">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="container-fluid">
-                        <div class="row kotak-modal">
-                            <div class="col-12 col-xl-4 col-lg-6 d-flex justify-content-center align-items-center">
-                                <div class="kotak-daftar border p-4 rounded border-2 shadow">
-                                    <h3 class="text-center p-2">MASUK</h3>
-                                    <div class="text-center d-flex flex-column" action="/daftar" method="post">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Email</span>
-                                            <input id="input-email" type="email" class="form-control"
-                                                placeholder="Email" aria-label="Username"
-                                                aria-describedby="basic-addon1">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Password</span>
-                                            <input id="input-password" type="password" class="form-control"
-                                                placeholder="Password" aria-label="Username"
-                                                aria-describedby="basic-addon1">
-                                        </div>
-                                        <button onclick="sign_in()" class="btn btn-primary text-center">Masuk</button>
-                                        <a class="text-center" href="" data-bs-toggle="modal"
-                                            data-bs-target="#daftarmodal">Belum Punya
-                                            Akun? Masuk</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="background-image: url('../../static/image/cover.png'); background-size:cover;background-repeat:no-repeat;"
-                            class="col-8 d-none d-xl-block d-lg-block">
-
-                            </div>
-                        </div>
+    <div
+      class="modal fade"
+      id="masukmodal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content p-2">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="container-fluid">
+              <div class="row kotak-modal">
+                <div
+                  class="col-12 col-xl-4 col-lg-6 d-flex justify-content-center align-items-center"
+                >
+                  <div class="kotak-daftar border p-4 rounded border-2 shadow">
+                    <h3 class="text-center p-2">MASUK</h3>
+                    <div
+                      class="text-center d-flex flex-column"
+                      action="/daftar"
+                      method="post"
+                    >
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"
+                          >Email</span
+                        >
+                        <input
+                          id="input-email"
+                          type="email"
+                          class="form-control"
+                          placeholder="Email"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"
+                          >Password</span
+                        >
+                        <input
+                          id="input-password"
+                          type="password"
+                          class="form-control"
+                          placeholder="Password"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <button
+                        onclick="sign_in()"
+                        class="btn btn-primary text-center"
+                      >
+                        Masuk
+                      </button>
+                      <a
+                        class="text-center"
+                        href=""
+                        data-bs-toggle="modal"
+                        data-bs-target="#daftarmodal"
+                        >Belum Punya Akun? Masuk</a
+                      >
                     </div>
+                  </div>
                 </div>
+                <div
+                  style="
+                    background-image: url('../../static/image/cover.png');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                  "
+                  class="col-8 d-none d-xl-block d-lg-block"
+                ></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Daftar -->
-    <div class="modal fade" id="daftarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content p-2">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div
+      class="modal fade"
+      id="daftarmodal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content p-2">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="container-fluid">
+              <div class="row kotak-modal">
+                <div
+                  class="col-12 col-xl-4 col-lg-6 d-flex justify-content-center align-items-center"
+                >
+                  <div class="kotak-daftar border p-4 rounded border-2 shadow">
+                    <h3 class="text-center p-2">DAFTAR</h3>
+                    <form
+                      class="text-center d-flex flex-column"
+                      action="/daftar"
+                      method="post"
+                    >
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"
+                          >Nama</span
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="nama"
+                          placeholder="Nama Lengkap"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"
+                          >Email</span
+                        >
+                        <input
+                          type="email"
+                          name="email"
+                          class="form-control"
+                          placeholder="Email"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"
+                          >Password</span
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          placeholder="Password"
+                          name="password"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"
+                          >Password</span
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          name="password2"
+                          placeholder="Ulangi Password"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                      <button class="btn btn-primary text-center">
+                        Daftar
+                      </button>
+                      <a
+                        class="text-center"
+                        href=""
+                        data-bs-toggle="modal"
+                        data-bs-target="#masukmodal"
+                        >Sudah Punya Akun? Masuk</a
+                      >
+                    </form>
+                  </div>
                 </div>
-                <div class="modal-body text-center">
-                    <div class="container-fluid">
-                        <div class="row kotak-modal">
-                            <div class="col-12 col-xl-4 col-lg-6 d-flex justify-content-center align-items-center">
-                                <div class="kotak-daftar border p-4 rounded border-2 shadow">
-                                    <h3 class="text-center p-2">DAFTAR</h3>
-                                    <form class="text-center d-flex flex-column" action="/daftar" method="post">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Nama</span>
-                                            <input type="text" class="form-control" name="nama"
-                                                placeholder="Nama Lengkap" aria-label="Username"
-                                                aria-describedby="basic-addon1">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Email</span>
-                                            <input type="email" name="email" class="form-control"
-                                                placeholder="Email" aria-label="Username"
-                                                aria-describedby="basic-addon1">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Password</span>
-                                            <input type="password" class="form-control"
-                                                placeholder="Password" name="password"
-                                                aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Password</span>
-                                            <input type="password" class="form-control" name="password2"
-                                                placeholder="Ulangi Password" aria-label="Username"
-                                                aria-describedby="basic-addon1">
-                                        </div>
-                                        <button class="btn btn-primary text-center">Daftar</button>
-                                        <a class="text-center" href="" data-bs-toggle="modal"
-                                            data-bs-target="#masukmodal">Sudah Punya
-                                            Akun? Masuk</a>
-                                    </form>
-                                </div>
-
-                            </div>
-                            <div style="background-image: url('../../static/image/cover.png'); background-size:cover;background-repeat:no-repeat;"
-                                class="col-8 d-none d-xl-block d-lg-block">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div
+                  style="
+                    background-image: url('../../static/image/cover.png');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                  "
+                  class="col-8 d-none d-xl-block d-lg-block"
+                ></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </body>
+</html>
