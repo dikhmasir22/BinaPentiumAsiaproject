@@ -32,3 +32,62 @@ function sign_out () {
   alert('Kamu telah Logged Out!')
   window.location.href = '/'
 }
+
+
+function tampil_form() {
+    $('#tambah_materi').addClass('d-none');
+    $('#bungkus').removeClass('d-none');
+    setTimeout(function() {
+        $('#bungkus').addClass('tampil');
+    }, 10);
+    $('#input-materi').focus();
+}
+
+function batal() {
+    $('#bungkus').removeClass('tampil');
+    $('#bungkus').addClass('d-none');
+    $('#tambah_materi').removeClass('d-none');
+}
+
+function link_youtube(){
+    $('#bungkusan-link-yutub').removeClass('d-none');
+    setTimeout(function() {
+        $('#bungkusan-link-yutub').addClass('tampil');
+    }, 10);
+    $('#bungkusan-gambar').removeClass('tampil');
+    $('#bungkusan-penjelasan').removeClass('tampil');
+    setTimeout(function() {
+        $('#bungkusan-gambar, #bungkusan-penjelasan').addClass('d-none');
+    }, 500);
+}
+
+function gambar_tambah(){
+    $('#bungkusan-link-yutub').removeClass('tampil');
+    $('#bungkusan-gambar').removeClass('d-none');
+    setTimeout(function() {
+        $('#bungkusan-gambar').addClass('tampil');
+    }, 10);
+    $('#bungkusan-penjelasan').removeClass('tampil');
+    setTimeout(function() {
+        $('#bungkusan-link-yutub, #bungkusan-penjelasan').addClass('d-none');
+    }, 500);
+}
+
+function penjelasan() {
+    $('#bungkusan-link-yutub').removeClass('tampil');
+    $('#bungkusan-gambar').removeClass('tampil');
+    $('#bungkusan-penjelasan').removeClass('d-none');
+    setTimeout(function() {
+        $('#bungkusan-penjelasan').addClass('tampil');
+    }, 10);
+    setTimeout(function() {
+        $('#bungkusan-link-yutub, #bungkusan-gambar').addClass('d-none');
+    }, 500);
+}
+
+function batalkan() {
+    $('#bungkusan-link-yutub, #bungkusan-gambar, #bungkusan-penjelasan').removeClass('tampil');
+    setTimeout(function() {
+        $('#bungkusan-link-yutub, #bungkusan-gambar, #bungkusan-penjelasan').addClass('d-none');
+    }, 500);
+}

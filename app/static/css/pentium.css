@@ -62,20 +62,32 @@ body {
     font-weight: 600;
 }
 
-.input-group-text{
+.input-group-text {
     min-width: 40%;
 }
 
 .hr-dashed {
     border: none;
-    border-top: 4px dashed black; 
+    border-top: 4px dashed black;
     height: 1px;
-    margin: 20px 0; 
+    margin: 20px 0;
 }
 
-.kotak-modal{
+.kotak-modal {
     min-height: 70vh;
 }
+
+.transisi {
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.transisi.tampil {
+    opacity: 1;
+    transform: scale(1);
+}
+
 
 /* =================== ROOT END ======================*/
 
@@ -197,6 +209,7 @@ body {
     height: 500px;
     object-fit: cover;
 }
+
 /* === Program === */
 
 /* === Materi === */
@@ -290,16 +303,16 @@ html {
 
 .lihat-kelas {
     position: absolute;
-    top: -10px; 
-    right: -10px; 
+    top: -10px;
+    right: -10px;
     background-color: #007bff;
-    color: white; 
-    padding: 5px 10px; 
+    color: white;
+    padding: 5px 10px;
     font-size: 10px;
-    border-radius: 5px; 
+    border-radius: 5px;
     transition: all .20s ease;
 }
 
-.lihat-kelas:hover{
+.lihat-kelas:hover {
     right: -5px;
 }

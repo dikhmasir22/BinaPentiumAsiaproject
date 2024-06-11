@@ -67,12 +67,21 @@
             <div class="harga">
                 <h5 class="text-info">Rp. {{kelas.harga_kelas}}</h5>
             </div>
+
             <div class="ikutkelas">
+                {% if status_admin %}
+                <a href="/detailmateri/{{kelas._id}}/none" class="btn btn-info rounded p-2">Edit Materi Kelas</a>
+                {% else %}
                 {% if kelas_diambil %}
-                <button class="btn btn-info rounded p-2">Mulai Kelas -></button>
+                {% if user_pernah_mulai %}
+                <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}" class="btn btn-warning rounded p-2">Lanjutkan -></a>
+                {% else %}
+                <a href="/detailmateri/{{kelas._id}}/none" class="btn btn-info rounded p-2">Mulai Kelas -></a>
+                {% endif %}
                 {% else %}
                 <button data-bs-toggle="modal" data-bs-target="#ringkasan_pembelian" class="btn btn-info rounded p-2">+
                     Ikuti Kelas</button>
+                {% endif %}
                 {% endif %}
             </div>
         </div>

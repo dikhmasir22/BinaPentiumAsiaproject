@@ -68,4 +68,10 @@ def create_app():
     from .routes.ikuti_kelas import ikuti_kelas_
     app.register_blueprint(ikuti_kelas_)
 
+    from .routes.detail_materi import detail_materi
+    app.register_blueprint(detail_materi)
+
+    from .routes.tambah_materi_baru import tambah_materi_baru
+    app.register_blueprint(tambah_materi_baru)
+
     return app
