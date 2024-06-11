@@ -115,30 +115,34 @@
 <!-- Carousel -->
 
 <!-- Kelas Terunggul -->
-<div class="section kelas-unggulan mt-5" style="background-color: whitesmoke">
+<div class="section kelas-unggulan mt-5 py-5" style="background-color: #f9f9f9;">
   <div class="text-center py-3 px-4">
     <h3 class="fw-bold mt-3">Program Terunggul Kami</h3>
   </div>
 
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-3">
-      <div class="col-lg-7">
-        <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3">
-          Pemrograman Web Fullstack
-        </h5>
-        <p>
-          Pelatihan unggulan yang terbukti meningkatkan karir, mengajarkan
-          keterampilan pemrograman web dari front-end hingga back-end. Dipimpin
-          oleh instruktur berpengalaman, peserta mendapatkan pengetahuan
-          mendalam, praktik langsung, proyek nyata, bimbingan karir, dan
-          jaringan profesional. Jangan lewatkan kesempatan menjadi profesional
-          siap kerja dan kompeten di dunia pemrograman web!
-        </p>
+      <div class="col-lg-7 order-lg-2">
+        <div class="card border-0 shadow-sm h-100 gelembung">
+          <img src="{{ url_for('static', filename='image/banner3.jpg') }}" class="card-img-top img-fluid rounded" alt="Pemrograman Web Fullstack">
+          <div class="card-body">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
+              <i class="bi bi-code-slash me-2"></i>Pemrograman Web Fullstack
+            </h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-10 mx-auto col-lg-5">
-        <img src="{{ url_for('static', filename='image/banner3.jpg') }}"
-        class="d-block mx-lg-auto img-fluid rounded alt=" Bootstrap Themes"
-        width="700" height="500" loading="lazy" alt="">
+      <div class="col-md-10 mx-auto col-lg-5 order-lg-1">
+        <div class="card border-0 shadow-sm h-100 gelembung">
+          <div class="card-body">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
+              <i class="bi bi-code-slash me-2"></i>Pemrograman Web Fullstack
+            </h5>
+            <p class="text-secondary">
+              Pelatihan unggulan yang terbukti meningkatkan karir, mengajarkan keterampilan pemrograman web dari front-end hingga back-end. Dipimpin oleh instruktur berpengalaman, peserta mendapatkan pengetahuan mendalam, praktik langsung, proyek nyata, bimbingan karir, dan jaringan profesional. Jangan lewatkan kesempatan menjadi profesional siap kerja dan kompeten di dunia pemrograman web!
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -146,94 +150,34 @@
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-3">
       <div class="col-lg-7">
-        <img src="{{ url_for('static', filename='image/banner1.png') }}"
-        class="d-block mx-lg-auto img-fluid rounded alt=" Bootstrap Themes"
-        width="700" height="500" loading="lazy" alt="">
+        <div class="card border-0 shadow-sm h-100 gelembung">
+          <img src="{{ url_for('static', filename='image/banner1.png') }}" class="card-img-top img-fluid rounded" alt="Pelatihan Siap Kerja">
+          <div class="card-body">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
+              <i class="bi bi-briefcase me-2"></i>Pelatihan Siap Kerja
+            </h5>
+          </div>
+        </div>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3">
-          Pelatihan Siap Kerja
-        </h5>
-        <p>
-          Pelatihan unggulan yang terbukti meningkatkan karir, mengajarkan
-          keterampilan pemrograman web dari front-end hingga back-end. Dipimpin
-          oleh instruktur berpengalaman, peserta mendapatkan pengetahuan
-          mendalam, praktik langsung, proyek nyata, bimbingan karir, dan
-          jaringan profesional. Jangan lewatkan kesempatan menjadi profesional
-          siap kerja dan kompeten di dunia pemrograman web!
-        </p>
+        <div class="card border-0 shadow-sm h-100 gelembung">
+          <div class="card-body">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
+              <i class="bi bi-briefcase me-2"></i>Pelatihan Siap Kerja
+            </h5>
+            <p class="text-secondary">
+              Pelatihan unggulan yang terbukti meningkatkan karir, mengajarkan keterampilan pemrograman web dari front-end hingga back-end. Dipimpin oleh instruktur berpengalaman, peserta mendapatkan pengetahuan mendalam, praktik langsung, proyek nyata, bimbingan karir, dan jaringan profesional. Jangan lewatkan kesempatan menjadi profesional siap kerja dan kompeten di dunia pemrograman web!
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <!-- Kelas Terunggul -->
 
-<!-- coba -->
-<!-- <div class="container px-4" width="100%">
-  <div class="row justify-content-center mb-5 pb-2">
-    <div
-      class="col-md-8 text-center heading-section ftco-animate fadeInUp ftco-animated"
-    >
-      <h2 class="mb-4"><span>Kelas</span> Kami</h2>
-      <p>
-        Separated they live in. A small river named Duden flows by their place
-        and supplies it with the necessary regelialia. It is a paradisematic
-        country
-      </p>
-    </div>
-  </div>
-  <div class="row" width="70%">
-    <div
-      class="col-md-4 course ftco-animate fadeInUp ftco-animated"
-    >
-      <div
-        class="img"
-        style="background-image: url(../../../static/image/logo.png)"
-      ></div>
-      <div class="text pt-4">
-        <h3><a href="#">Electric Engineering</a></h3>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium
-          repellat facere ea enim exercitationem quisquam?
-        </p>
-        <p><a href="#" class="btn btn-primary">Daftar Sekarang</a></p>
-      </div>
-    </div>
-    <div
-      class="col-md-4 course ftco-animate fadeInUp ftco-animated"
-    >
-      <div
-        class="img"
-        style="background-image: url(../../static/image/logo.png)"
-      ></div>
-      <div class="text pt-4">
-        <h3><a href="#">Electric Engineering</a></h3>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium
-          repellat facere ea enim exercitationem quisquam?
-        </p>
-        <p><a href="#" class="btn btn-primary">Daftar Sekarang</a></p>
-      </div>
-    </div>
-    <div
-      class="col-md-4 course ftco-animate fadeInUp ftco-animated"
-    >
-      <div
-        class="img"
-        style="background-image: url(../../static/image/logo.png)"
-      ></div>
-      <div class="text pt-4">
-        <h3><a href="#">Electric Engineering</a></h3>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium
-          repellat facere ea enim exercitationem quisquam?
-        </p>
-        <p><a href="#" class="btn btn-primary">Daftar Sekarang</a></p>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- coba -->
+
+
 
 <!-- Section Kelas -->
 <section
