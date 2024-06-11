@@ -265,11 +265,54 @@ html {
 
 .btn-navigation {
     margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+display: flex;
+justify-content: space-between;
 }
 
-/* === Materi === */
+    /* kelas terunggul */
+
+    .kelas-unggulan .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      
+      .kelas-unggulan .card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .kelas-unggulan .slide-title {
+        font-size: 1.5rem;
+        color: #007bff;
+      }
+      
+      .kelas-unggulan .text-secondary {
+        color: #6c757d !important;
+      }
+
+      @media (max-width: 767.98px) {
+        .kelas-unggulan .card {
+          margin-bottom: 20px;
+        }
+      }
+      
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        .kelas-unggulan .row > div {
+          padding: 10px;
+        }
+      }
+      
+      @media (min-width: 992px) {
+        .kelas-unggulan .row > div {
+          padding: 20px;
+        }
+      }
+      
+
+      
+
 
 /* === Semua Kelas === */
 .img-kontainer {
