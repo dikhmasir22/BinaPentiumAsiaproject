@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Materi - {{info_kelas.nama_kelas}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
@@ -41,7 +41,8 @@
                     {% if menu_materi %}
                     {% for item in menu_materi %}
                     <!-- Menu Normal -->
-                    <div class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between"
+                    <div onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id}}'"
+                        class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
                         style="min-width:95%">
                         <div class="colom" style="width: 75%;">
                             <p class="text-dark fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
@@ -123,21 +124,30 @@
 
 
                     <!-- JIKA ADMIN AKSES WEB -->
-
                 </div>
             </div>
+
+            <!-- BAGIAN KONTEN UTAMA -->
             <div class="col-9 d-flex flex-column rounded align-items-center justify-content-center">
                 <div class="box-materi d-flex flex-column align-items-center p-2 shadow bg-light rounded mt-2"
                     style="overflow-x: auto; min-height:100vh; max-height:100vh; width: 95%;">
+
+
                     {% if kosong %}
                     <div class="box-judul d-flex justify-content-start mb-3" style="width: 100%;">
                         <h5 class="text-dark"></h5>
                     </div>
 
                     {% else %}
+                    {% if not belum_klik_menu %}
+                    {% if menu_materi_sekarang %}
                     <div class="box-judul d-flex justify-content-start mb-3" style="width: 100%;">
-                        <h5 class="text-dark">Bacaan : {{menu_materi.judul}}</h5>
+                        <h5 class="text-dark">Bacaan : {{menu_materi_sekarang.judul_materi}}</h5>
                     </div>
+                    {% endif %}
+
+                    {% endif %}
+
                     {% endif %}
 
 
@@ -151,6 +161,7 @@
                             Tambah Materi</button>
                     </div>
                     {% else %}
+                    {% if not belum_klik_menu %}
                     <div class="box-input d-flex justify-content-evenly">
                         <button onclick="link_youtube()" class="btn btn-success me-3 m-3"><i
                                 class="ri-video-add-line"></i>Tambah Video</button>
@@ -159,147 +170,153 @@
                         <button onclick="penjelasan()" class="btn btn-success ms-3 m-3"><i
                                 class="ri-menu-add-line"></i>Tambah Penjelasan</button>
                     </div>
-                    {% endif %}
-
-
-
-                    <!-- Link Youtube Form -->
-                    <div id="bungkusan-link-yutub"
-                        class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
-                        style="width: 90%;">
-                        <div style="width: 100%;">
-                            <div class="form_input" style="width: 100%;">
-                                <h6>Link Youtube</h6>
-                                <div class="input-group">
-                                    <input id="input-materi" type="text" placeholder="Inputkan Link Video Youtube"
-                                        name="nama_kelas" class="form-control" id="nama_kelas">
+                    {% else %}
+                    <div class="box-input d-flex flex-column justify-content-center align-content-center">
+                        <h5>Klik Menu Materi yang ada untuk menambahkan Konten</h5>
+                        <h3>
+                            <<<<<< </h3>
+                                {% if menu_materi %}
+                                <h4 class="text-center">Materi yang ada</h4>
+                                <div class="box d-flex justify-content-center"></div>
+                                {% for item in menu_materi%}
+                                <a class="btn btn-primary m-2" href="/detailmateri/{{item._id_kelas}}/{{item._id}}">{{item.judul_materi}}</a>
+                                {% endfor %}
                                 </div>
-                            </div>
-                            <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
-                                <button onclick="batalkan()" class="btn btn-danger me-3">Batalkan</button>
-                                <button class="btn btn-success">Simpan</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Link Youtube Form -->
-
-                    <!-- Gambar Form -->
-                    <div id="bungkusan-gambar"
-                        class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
-                        style="width: 90%;">
-                        <div style="width: 100%;">
-                            <div class="form_input d-flex flex-column">
-                                <label class="fw-bold mb-1" for="Gambar Kelas">Pilih Gambar</label>
-                                <img class="p-2" id="gambar-preview" src="" alt="" width="120">
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="gambar_kelas" name="gambar_kelas"
-                                        onchange="previewImage(event)">
-                                </div>
-                            </div>
-                            <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
-                                <button onclick="batalkan()" class="btn btn-danger me-3">Batalkan</button>
-                                <button class="btn btn-success">Simpan</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Gambar Form -->
-
-
-                    <!-- Penjelasan Form -->
-                    <div id="bungkusan-penjelasan"
-                        class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
-                        style="width: 90%;">
-                        <div style="width: 100%;">
-                            <div class="form_input mb-3" style="width: 100%;">
-                                <h6>Judul</h6>
-                                <div class="input-group">
-                                    <input id="input-materi" type="text" placeholder="Inputkan Link Video Youtube"
-                                        name="nama_kelas" class="form-control" id="nama_kelas">
-                                </div>
-                            </div>
-                            <div class="form_input">
-                                <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi</label>
-                                <div class="form-floating">
-                                    <textarea class="form-control" name="deskripsi_kelas"
-                                        placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                    <label for="floatingTextarea">Masukkan Deskripsi Kelas</label>
-                                </div>
-                            </div>
-                            <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
-                                <button onclick="batalkan()" class="btn btn-danger me-3">Batalkan</button>
-                                <button class="btn btn-success">Simpan</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Penjelasan Form -->
-                    <!-- Admin Session -->
-                    {% endif %}
-
-                    <!-- Konten Gambar -->
-                    <div class="box-video d-flex justify-content-center align-self-center mb-3 rounded"
-                        style="width: 90%;">
-                        <img class="rounded" src="../../static/image/backgroundprogram.jpg" width="100%" alt="">
-                    </div>
-                    <!-- Konten Gambar -->
-
-                    <!-- Konten Penjelasan -->
-                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
-                        style="width: 90%;">
-                        <h6 class="mb-3">Judul Penjelasan</h6>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima nemo sapiente, repellendus
-                            recusandae commodi a dicta quaerat vel deserunt vero tempora. Voluptate nam alias optio
-                            saepe magnam doloribus debitis ipsam consectetur, porro facilis repellendus ab veniam
-                            explicabo illum perspiciatis fugiat mollitia, eum, assumenda corrupti neque architecto.
-                            Error quis dolor deserunt sapiente consectetur ratione iure libero perferendis molestiae
-                            alias id doloremque, accusantium suscipit cupiditate quos, ad natus recusandae aut!
-                            Necessitatibus quo et a ipsum inventore nihil officia! Illum quidem iste odit error
-                            voluptates repudiandae impedit numquam. Consequatur minima ut dolor ullam vel. Hic
-                            asperiores suscipit tenetur architecto in veniam voluptatem, alias quibusdam enim cum
-                            cupiditate beatae quas ipsam. Totam expedita, quis assumenda non possimus accusantium quas
-                            repellendus? Recusandae quod nobis id aspernatur repellendus ab in nam qui, mollitia et
-                            eligendi, ea cumque! Consequuntur tempora in quibusdam obcaecati amet placeat error
-                            consectetur. Enim magni veritatis reprehenderit mollitia natus ullam temporibus dicta earum,
-                            nisi eaque quisquam tempore dolorum officia praesentium, itaque officiis sit molestiae amet
-                            suscipit eos fuga hic. Sint minus, beatae tenetur eveniet rerum est sed animi? Incidunt,
-                            placeat voluptate. Dolore eius porro explicabo excepturi impedit perferendis alias incidunt
-                            sequi harum quos, consequatur vel illo magni ea tempore, ratione laboriosam distinctio
-                            magnam nesciunt minus similique. Velit voluptatem dolores non exercitationem est aspernatur
-                            reiciendis! Ut, praesentium voluptatem. Tempora quos officiis dicta voluptas facilis
-                            voluptates, nisi enim nam libero sequi ab, cumque molestias iste! Placeat reprehenderit
-                            dicta sed rerum laborum expedita consectetur unde accusamus ipsum, distinctio consequatur,
-                            accusantium autem aperiam ullam illo corrupti repudiandae facere quas, est quo voluptatem.
-                            Iure neque, velit consequuntur ut animi modi numquam quasi a culpa est natus optio
-                            blanditiis saepe alias. Itaque architecto suscipit doloribus soluta minus cumque ratione
-                            iure, doloremque ab consectetur deserunt obcaecati ut quam. Sit quod aliquid totam ea quo,
-                            tempora laboriosam quis magni. Maxime, iste!</p>
-                    </div>
-                    <!-- Konten Penjelasan -->
-
-                    <!-- Konten Youtube -->
-                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
-                        style="width: 90%;">
-                        <div class="container mt-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-12">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.youtube.com/embed/36t6paMzU5U?si=yYX3BLzTs0OrbxMO"
-                                            title="YouTube video" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Konten Youtube -->
-
-                    {% if status %}
-                    <div class="box-penjelasan d-flex justify-content-center align-items-center mb-3 rounded"
-                        style="width: 90%;">
-                        <a href="" class="btn btn-success">Selesai Materi</a>
-                    </div>
                     {% endif %}
                 </div>
+                {% endif %}
+
+                {% endif %}
+
+                {% if menu_materi_sekarang%}
+                <!-- Link Youtube Form -->
+                <form action="/save_video/{{info_kelas._id}}/{{menu_materi_sekarang._id}}" method="post"
+                    id="bungkusan-link-yutub"
+                    class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
+                    style="width: 90%;">
+                    <div style="width: 100%;">
+                        <div class="form_input" style="width: 100%;">
+                            <h6>Link Youtube</h6>
+                            <div class="input-group">
+                                <input id="input-link-yutub" type="text" placeholder="Inputkan Link Video Youtube"
+                                    name="link_video" class="form-control" id="nama_kelas">
+                            </div>
+                        </div>
+                        <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
+                            <div onclick="batalkan()" class="btn btn-danger me-3">Batalkan</div>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Link Youtube Form -->
+
+                <!-- Gambar Form -->
+                <form action="/save_gambar/{{info_kelas._id}}/{{menu_materi_sekarang._id}}" method="post"
+                    enctype="multipart/form-data" id="bungkusan-gambar"
+                    class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
+                    style="width: 90%;">
+                    <div style="width: 100%;">
+                        <div class="form_input d-flex flex-column">
+                            <label class="fw-bold mb-1" for="Gambar Kelas">Pilih Gambar</label>
+                            <img class="p-2" id="gambar-preview" src="" alt="" width="120">
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" id="gambar_kelas" name="gambar_konten"
+                                    onchange="previewImage(event)">
+                            </div>
+                        </div>
+                        <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
+                            <div onclick="batalkan()" class="btn btn-danger me-3">Batalkan</div>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Gambar Form -->
+
+
+                <!-- Penjelasan Form -->
+                <form action="/save_penjelasan/{{info_kelas._id}}/{{menu_materi_sekarang._id}}" method="post" id="bungkusan-penjelasan"
+                    class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
+                    style="width: 90%;">
+                    <div style="width: 100%;">
+                        <div class="form_input mb-3" style="width: 100%;">
+                            <h6>Judul</h6>
+                            <div class="input-group">
+                                <input id="input-materi" type="text" placeholder="Berikan Judul, kosongkan jika tidak ada"
+                                    name="judul_penjelasan" class="form-control" id="nama_kelas">
+                            </div>
+                        </div>
+                        <div class="form_input">
+                            <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi</label>
+                            <div class="form-floating">
+                                <textarea class="form-control" name="deskripsi_penjelasan" placeholder="Leave a comment here"
+                                    id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea">Penjelasan</label>
+                            </div>
+                        </div>
+                        <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
+                            <div onclick="batalkan()" class="btn btn-danger me-3">Batalkan</div>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Penjelasan Form -->
+                {% endif %}
+
+                <!-- Admin Session -->
+                {% endif %}
+
+                {% if konten_materi %}
+                {% for items in konten_materi %}
+
+                {% if items.tipe == 'video' %}
+                <!-- Konten Youtube -->
+                <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
+                    style="width: 90%;">
+                    <div class="container mt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/{{items.link_video}}"
+                                        title="YouTube video" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Konten Youtube -->
+                {% elif items.tipe == 'gambar' %}
+                <!-- Konten Gambar -->
+                <div class="box-video d-flex justify-content-center align-self-center mb-3 rounded" style="width: 90%;">
+                    <img class="rounded" src="../../static/image/Img_konten/{{items.gambar_konten}}" width="100%"
+                        alt="">
+                </div>
+                <!-- Konten Gambar -->
+
+                {% elif items.tipe == 'penjelasan' %}
+                <!-- Konten Penjelasan -->
+                <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
+                    style="width: 90%;">
+                    <h6 class="mb-3">{{items.judul_penjelasan}}</h6>
+                    <p>{{items.deskripsi_penjelasan}}</p>
+                </div>
+                <!-- Konten Penjelasan -->
+                {% endif %}
+
+
+                {% endfor %}
+                {% endif %}
+
+                {% if status %}
+                <div class="box-penjelasan d-flex justify-content-center align-items-center mb-3 rounded"
+                    style="width: 90%;">
+                    <a href="" class="btn btn-success">Selesai Materi</a>
+                </div>
+                {% endif %}
+
             </div>
         </div>
+
+    </div>
     </div>
     </div>
 

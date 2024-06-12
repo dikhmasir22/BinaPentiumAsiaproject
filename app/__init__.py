@@ -74,4 +74,13 @@ def create_app():
     from .routes.tambah_materi_baru import tambah_materi_baru
     app.register_blueprint(tambah_materi_baru)
 
+    from .routes.tambah_konten_yutub import tambah_konten_yutub
+    app.register_blueprint(tambah_konten_yutub)
+
+    from .routes.tambah_konten_gambar import tambah_konten_gambar
+    app.register_blueprint(tambah_konten_gambar)
+
+    from .routes.tambah_konten_penjelasan import tambah_konten_penjelasan
+    app.register_blueprint(tambah_konten_penjelasan)
+
     return app

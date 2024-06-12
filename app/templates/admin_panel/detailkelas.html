@@ -63,10 +63,18 @@
         </div>
     </div>
     <div class="row shadow rounded-bottom p-2">
+        {% if kelas_diambil %}
+        <div class="container d-flex justify-content-end">
+        {% else %}
         <div class="container d-flex justify-content-between">
+        {% endif %}
+        
+            {% if not kelas_diambil %}
             <div class="harga">
                 <h5 class="text-info">Rp. {{kelas.harga_kelas}}</h5>
             </div>
+            {% endif %}
+
 
             <div class="ikutkelas">
                 {% if status_admin %}
@@ -74,7 +82,8 @@
                 {% else %}
                 {% if kelas_diambil %}
                 {% if user_pernah_mulai %}
-                <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}" class="btn btn-warning rounded p-2">Lanjutkan -></a>
+                <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}"
+                    class="btn btn-warning rounded p-2">Lanjutkan -></a>
                 {% else %}
                 <a href="/detailmateri/{{kelas._id}}/none" class="btn btn-info rounded p-2">Mulai Kelas -></a>
                 {% endif %}

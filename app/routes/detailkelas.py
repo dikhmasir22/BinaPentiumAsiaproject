@@ -22,7 +22,9 @@ def detailkelas(_id):
             'email': payload.get('id'),
             'level': 'admin'})     
         status = payload.get('id')
-        user_pernah_mulai = current_app.db.menumaterisiswa.find_one({'_id_siswa' : user_info['_id'], '_id_kelas' : kelas_diambil['_id_kelas']})
+
+        if kelas_diambil:
+            user_pernah_mulai = current_app.db.menumaterisiswa.find_one({'_id_siswa' : user_info['_id'], '_id_kelas' : kelas_diambil['_id_kelas']})
 
         if user_admin:
             return render_template('admin_panel/detailkelas.html', status_admin = status, user_info=user_info, kelas = kelas)
