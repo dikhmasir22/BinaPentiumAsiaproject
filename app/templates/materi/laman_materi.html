@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-3 d-flex flex-column rounded align-items-center">
                 <div class="box shadow bg-info border rounded m-3" style="width: 95%;">
-                    <a href="/detailkelas/{{info_kelas._id}}" class="ms-3 mt-4 btn btn-light"><- Kembali</a>
+                    <a href="/detailkelas/{{info_kelas._id}}" class="ms-3 mt-4 btn btn-light fw-bold"><- Kembali</a>
                             <h6 class="p-3">Materi Course {{info_kelas.nama_kelas}}</h6 class="p-3">
                 </div>
                 <div class="box-materi d-flex flex-column align-items-center p-2 shadow bg-light rounded mt-2 mb-2"
@@ -36,8 +36,30 @@
                     </div>
                     {% endif %}
 
-
-
+                    {% if status_admin %}
+                    {% if menu_materi %}
+                    {% for item in menu_materi %}
+                    <!-- Menu Normal -->
+                    <div onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id}}'"
+                        class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
+                        style="min-width:95%">
+                        <div
+                            class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-dark-subtle">
+                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                        </div>
+                        <div class="colom" style="width: 75%;">
+                            <p class="text-dark fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
+                                    class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
+                        </div>
+                        <div class="colom d-flex justify-content-end align-items-center" style="width: 25%;">
+                            <p class="text-light bg-dark rounded p-2"><i class="ri-check-double-line"></i></p>
+                        </div>
+                    </div>
+                    <!-- Menu Normal -->
+                    {% endfor %}
+                    {% endif %}
+                    {% elif status %}
                     {% if menu_materi %}
                     {% for item in menu_materi %}
                     <!-- Menu Normal -->
@@ -93,9 +115,10 @@
                         </div>
                     </div>
                     <!-- Menu sudah Selesai -->
-
-
                     {% endif %}
+                    {% endif %}
+
+
 
                     <!-- JIKA ADMIN AKSES WEB -->
                     {% if status_admin %}
@@ -142,7 +165,7 @@
                     {% if not belum_klik_menu %}
                     {% if menu_materi_sekarang %}
                     <div class="box-judul d-flex justify-content-start mb-3" style="width: 100%;">
-                        <h5 class="text-dark">Bacaan : {{menu_materi_sekarang.judul_materi}}</h5>
+                        <h5 class="text-dark">Materi : {{menu_materi_sekarang.judul_materi}}</h5>
                     </div>
                     {% endif %}
 
@@ -150,7 +173,70 @@
 
                     {% endif %}
 
+                    {% if konten_materi %}
+                    {% for items in konten_materi %}
 
+                    {% if items.tipe == 'video' %}
+                    <!-- Konten Youtube -->
+                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
+                        style="width: 90%;">
+                        <div class="container mt-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 position-relative">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/{{items.link_video}}"
+                                            title="YouTube video" allowfullscreen></iframe>
+                                    </div>
+                                    <div
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
+                                        <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                                        <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Konten Youtube -->
+                    {% elif items.tipe == 'gambar' %}
+                    <!-- Konten Gambar -->
+                    <div class="box-video d-flex justify-content-center align-self-center mb-5 rounded position-relative"
+                        style="width: 90%;">
+                        <img class="rounded" src="../../static/image/Img_konten/{{items.gambar_konten}}" width="100%"
+                            alt="">
+                        <div
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
+                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                        </div>
+                    </div>
+                    <!-- Konten Gambar -->
+
+                    {% elif items.tipe == 'penjelasan' %}
+                    <!-- Konten Penjelasan -->
+                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-5 rounded position-relative"
+                        style="width: 90%;">
+                        <h6 class="mb-3">{{items.judul_penjelasan}}</h6>
+                        <p>{{items.deskripsi_penjelasan}}</p>
+                        <div
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
+                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                        </div>
+                    </div>
+                    <!-- Konten Penjelasan -->
+                    {% endif %}
+
+
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if status %}
+                    <div class="box-penjelasan d-flex justify-content-center align-items-center mb-5 rounded"
+                        style="width: 90%;">
+                        <a href="" class="btn btn-success">Selesai Materi</a>
+                    </div>
+                    {% endif %}
 
                     {% if status_admin %}
                     <!-- Admin Session -->
@@ -179,9 +265,10 @@
                                 <h4 class="text-center">Materi yang ada</h4>
                                 <div class="box d-flex justify-content-center"></div>
                                 {% for item in menu_materi%}
-                                <a class="btn btn-primary m-2" href="/detailmateri/{{item._id_kelas}}/{{item._id}}">{{item.judul_materi}}</a>
+                                <a class="btn btn-primary m-2"
+                                    href="/detailmateri/{{item._id_kelas}}/{{item._id}}">{{item.judul_materi}}</a>
                                 {% endfor %}
-                                </div>
+                    </div>
                     {% endif %}
                 </div>
                 {% endif %}
@@ -234,22 +321,24 @@
 
 
                 <!-- Penjelasan Form -->
-                <form action="/save_penjelasan/{{info_kelas._id}}/{{menu_materi_sekarang._id}}" method="post" id="bungkusan-penjelasan"
+                <form action="/save_penjelasan/{{info_kelas._id}}/{{menu_materi_sekarang._id}}" method="post"
+                    id="bungkusan-penjelasan"
                     class="box-input d-flex justify-content-center align-self-center mb-3 rounded d-none transisi"
                     style="width: 90%;">
                     <div style="width: 100%;">
                         <div class="form_input mb-3" style="width: 100%;">
                             <h6>Judul</h6>
                             <div class="input-group">
-                                <input id="input-materi" type="text" placeholder="Berikan Judul, kosongkan jika tidak ada"
-                                    name="judul_penjelasan" class="form-control" id="nama_kelas">
+                                <input id="input-materi" type="text"
+                                    placeholder="Berikan Judul, kosongkan jika tidak ada" name="judul_penjelasan"
+                                    class="form-control" id="nama_kelas">
                             </div>
                         </div>
                         <div class="form_input">
                             <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi</label>
                             <div class="form-floating">
-                                <textarea class="form-control" name="deskripsi_penjelasan" placeholder="Leave a comment here"
-                                    id="floatingTextarea"></textarea>
+                                <textarea class="form-control" name="deskripsi_penjelasan"
+                                    placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                                 <label for="floatingTextarea">Penjelasan</label>
                             </div>
                         </div>
@@ -261,56 +350,7 @@
                 </form>
                 <!-- Penjelasan Form -->
                 {% endif %}
-
                 <!-- Admin Session -->
-                {% endif %}
-
-                {% if konten_materi %}
-                {% for items in konten_materi %}
-
-                {% if items.tipe == 'video' %}
-                <!-- Konten Youtube -->
-                <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
-                    style="width: 90%;">
-                    <div class="container mt-5">
-                        <div class="row justify-content-center">
-                            <div class="col-md-12">
-                                <div class="ratio ratio-16x9">
-                                    <iframe src="https://www.youtube.com/embed/{{items.link_video}}"
-                                        title="YouTube video" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Konten Youtube -->
-                {% elif items.tipe == 'gambar' %}
-                <!-- Konten Gambar -->
-                <div class="box-video d-flex justify-content-center align-self-center mb-3 rounded" style="width: 90%;">
-                    <img class="rounded" src="../../static/image/Img_konten/{{items.gambar_konten}}" width="100%"
-                        alt="">
-                </div>
-                <!-- Konten Gambar -->
-
-                {% elif items.tipe == 'penjelasan' %}
-                <!-- Konten Penjelasan -->
-                <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
-                    style="width: 90%;">
-                    <h6 class="mb-3">{{items.judul_penjelasan}}</h6>
-                    <p>{{items.deskripsi_penjelasan}}</p>
-                </div>
-                <!-- Konten Penjelasan -->
-                {% endif %}
-
-
-                {% endfor %}
-                {% endif %}
-
-                {% if status %}
-                <div class="box-penjelasan d-flex justify-content-center align-items-center mb-3 rounded"
-                    style="width: 90%;">
-                    <a href="" class="btn btn-success">Selesai Materi</a>
-                </div>
                 {% endif %}
 
             </div>
