@@ -60,10 +60,10 @@
                     {% endfor %}
                     {% endif %}
                     {% elif status %}
-                    {% if menu_materi %}
-                    {% for item in menu_materi %}
+                    {% if menu_materi_siswa %}
+                    {% for item in menu_materi_siswa %}
                     <!-- Menu Normal -->
-                    <div onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id}}'"
+                    <div onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
                         class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
                         style="min-width:95%">
                         <div class="colom" style="width: 75%;">
@@ -232,10 +232,13 @@
                     {% endif %}
 
                     {% if status %}
-                    <div class="box-penjelasan d-flex justify-content-center align-items-center mb-5 rounded"
+                    {% if menu_materi_siswa %}
+                    <form action="/update_status_materi/{{menu_materi_sekarang._id}}/{{user_info._id}}" method="post" class="box-penjelasan d-flex justify-content-center align-items-center mb-5 rounded"
                         style="width: 90%;">
-                        <a href="" class="btn btn-success">Selesai Materi</a>
-                    </div>
+                        <button href="" class="btn btn-success">Selesai Materi</button>
+                    </form>
+                    {% endif %}
+
                     {% endif %}
 
                     {% if status_admin %}
@@ -329,16 +332,16 @@
                         <div class="form_input mb-3" style="width: 100%;">
                             <h6>Judul</h6>
                             <div class="input-group">
-                                <input id="input-materi" type="text"
+                                <input id="input-judul-penjelasan" type="text"
                                     placeholder="Berikan Judul, kosongkan jika tidak ada" name="judul_penjelasan"
-                                    class="form-control" id="nama_kelas">
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="form_input">
                             <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi</label>
                             <div class="form-floating">
                                 <textarea class="form-control" name="deskripsi_penjelasan"
-                                    placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                    placeholder="Leave a comment here" id="textarea-penjelasan"></textarea>
                                 <label for="floatingTextarea">Penjelasan</label>
                             </div>
                         </div>

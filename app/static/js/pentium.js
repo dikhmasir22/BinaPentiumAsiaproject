@@ -83,6 +83,8 @@ function penjelasan() {
     setTimeout(function() {
         $('#bungkusan-link-yutub, #bungkusan-gambar').addClass('d-none');
     }, 500);
+    $('#input-judul-penjelasan').focus()
+    $('#textarea-penjelasan').focus()
 }
 
 function batalkan() {
