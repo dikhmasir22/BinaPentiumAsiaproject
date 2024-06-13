@@ -17,14 +17,17 @@
         {% if item.nama_lengkap == 'Admin' %}
         <div class="d-none">
         {% else %}
-        <div onclick="window.location.href='/detail_siswa/{{ item._id }}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung">
+        <div onclick="window.location.href='/detail_siswa/{{ item._id }}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mb-3">
         {% endif %}
             <div class="card" style="width:100%;">
-                <img src="../../static/image/banner.jpg" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <hr class="text-secondary">
+                {% if item.foto_profile %}
+                <img src="../../static/image/Imgprofile/{{ item.foto_profile}}" class="card-img-top gambar-fit" alt="...">
+                {% else %}
+                <img src="../../static/image/profile.jpg" class="card-img-top gambar-fit" alt="...">
+                {% endif %}
+                
+                <div class="card-body text-center border-top">
                     <h5 class="card-title">{{ item.nama_lengkap }}</h5>
-                    <hr class="text-secondary">
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@ def updatestatusmateri_(_id_kelas,_id_menu, _id_siswa):
                  {'$set': {'status' : 'selesai'}}
                 )
             
-            msg = 'tambah_yutub'
+            msg = 'selesai_materi'
             return redirect(url_for('detail_materi.det_materi', msg=msg, _id_kelas = _id_kelas, _id_menu = _id_menu))
 
         except jwt.ExpiredSignatureError:

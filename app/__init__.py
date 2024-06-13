@@ -89,4 +89,7 @@ def create_app():
     from .routes.hapus_konten_materi import hapus_konten_materi
     app.register_blueprint(hapus_konten_materi)
 
+    from .routes.hapus_materi import hapus_materi
+    app.register_blueprint(hapus_materi)
+
     return app

@@ -18,9 +18,9 @@
     <div class="row justify-content-evenly mb-3">
         <div
             class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded shadow bg-light">
-            <img class="p-2 m-2" src="../../static/image/5.png" width="120" alt="">
+            <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="120" alt="">
             <div class="box d-flex flex-column">
-                <h4>Selamat Datang, Nama User</h4>
+                <h4>Selamat Datang, {{user_info.nama_lengkap}}</h4>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita quae cupiditate ipsam?</p>
             </div>
         </div>
@@ -31,9 +31,9 @@
                 <h3>99</h3>
             </div>
             {% else %}
-            <h4>Jumlah Kelas</h4>
+            <h6>Jumlah Kelas yang diambil</h6>
             <div class="box d-flex flex-column text-center">
-                <h3>99</h3>
+                <h3><i class="ri-book-read-fill"></i> 99</h3>
             </div>
             {% endif %}
             

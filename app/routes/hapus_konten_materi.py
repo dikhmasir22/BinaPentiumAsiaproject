@@ -3,7 +3,7 @@ import jwt
 import os
 from bson import ObjectId
 
-hapus_konten_materi = Blueprint('hapusmateri', __name__)
+hapus_konten_materi = Blueprint('hapuskontenmateri', __name__)
 
 
 @hapus_konten_materi.route('/hapus_konten_materi/<_id_kelas>/<_id_menu>/<_id_konten>', methods=['GET', 'POST'])
