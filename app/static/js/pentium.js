@@ -71,6 +71,7 @@ function gambar_tambah(){
     setTimeout(function() {
         $('#bungkusan-link-yutub, #bungkusan-penjelasan').addClass('d-none');
     }, 500);
+    $('#form-gambar-tambah').focus()
 }
 
 function penjelasan() {
@@ -83,6 +84,8 @@ function penjelasan() {
     setTimeout(function() {
         $('#bungkusan-link-yutub, #bungkusan-gambar').addClass('d-none');
     }, 500);
+    $('#input-judul-penjelasan').focus()
+    $('#textarea-penjelasan').focus()
 }
 
 function batalkan() {

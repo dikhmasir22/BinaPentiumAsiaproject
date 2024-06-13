@@ -20,7 +20,7 @@ def det_materi(_id_kelas, _id_menu):
         if _id_kelas is None:
             _id_kelas = request.args.get('_id_kelas')
 
-        detail_kelas = current_app.db.kelassaya.find_one({'_id_kelas' : ObjectId(_id_kelas)})
+        detail_kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id_kelas)})
         info_kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id_kelas)})
         status = payload.get('id')
         user_admin = current_app.db.user.find_one({
@@ -28,7 +28,7 @@ def det_materi(_id_kelas, _id_menu):
             'level': 'admin'})
         
         if _id_menu == 'none':
-            menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : detail_kelas['_id_kelas']}))
+            menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : detail_kelas['_id']}))
             if menu_materi:
                 if user_admin:
                     belum_klik_menu = 'belum'
@@ -46,15 +46,15 @@ def det_materi(_id_kelas, _id_menu):
                                 'status' : 'belum'
                             }
                             current_app.db.menumaterisiswa.insert_one(doc_menu_materi_siswa)
-                    menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
-                    return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi = menu_materi_siswa, info_kelas = info_kelas)
+                    menu_materi_siswa = current_app.db.menumaterisiswa.find_one({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)})
+                    return redirect(url_for('detail_materi.det_materi', _id_kelas = _id_kelas, _id_menu = menu_materi_siswa['_id_menu']))
             else:
                 if user_admin:
                     return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, kosong = 'kosong', info_kelas = info_kelas)
                 else:
                     return render_template('materi/laman_materi.html', user_info=user_info, status = status, kosong = 'kosong', info_kelas = info_kelas)
         else:
-            menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : detail_kelas['_id_kelas']}))
+            menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : detail_kelas['_id']}))
             menu_materi_sekarang = current_app.db.menumateri.find_one({'_id' : ObjectId(_id_menu)})
             konten_materi = list(current_app.db.kontenmateri.find({'_id_menu' : ObjectId(_id_menu)}))
 
@@ -64,7 +64,7 @@ def det_materi(_id_kelas, _id_menu):
                 return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
             else:
                 menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
-                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
+                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
 
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'

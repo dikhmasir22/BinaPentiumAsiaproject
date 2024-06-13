@@ -18,6 +18,8 @@ def hapuskelas(_id):
                 algorithms=['HS256']
             )
             current_app.db.semuakelas.delete_one({'_id': ObjectId(_id)})
+            current_app.db.menumateri.delete_many({'_id_kelas' : ObjectId(_id)})
+            current_app.db.kontenmateri.delete_many({'id_kelas' : ObjectId(_id)})
             msg = 'hapus'
             
             return redirect(url_for('semuakelas.semuakelas_', msg = msg))
