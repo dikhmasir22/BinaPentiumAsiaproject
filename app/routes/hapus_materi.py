@@ -2,11 +2,11 @@ from flask import Blueprint, render_template, current_app, request, redirect, ur
 import jwt
 from bson import ObjectId
 
-hapuskelas_ = Blueprint('hapuskelas', __name__)
+hapus_materi = Blueprint('hapusmateri', __name__)
 
 
-@hapuskelas_.route('/hapus_kelas/<_id>', methods=['GET', 'POST'])
-def hapuskelas(_id):
+@hapus_materi.route('/hapus_kelas/<_id_kelas>/<_id_menu>', methods=['GET', 'POST'])
+def hapus_materi_(_id_kelas, _id_menu):
         
         TOKEN_KEY = current_app.config['TOKEN_KEY']
         SECRET_KEY = current_app.config['SECRET_KEY']
@@ -17,12 +17,10 @@ def hapuskelas(_id):
                 SECRET_KEY,
                 algorithms=['HS256']
             )
-            current_app.db.semuakelas.delete_one({'_id': ObjectId(_id)})
-            current_app.db.menumateri.delete_many({'_id_kelas' : ObjectId(_id)})
-            current_app.db.kontenmateri.delete_many({'id_kelas' : ObjectId(_id)})
+            current_app.db.menumateri.delete_one({'_id' : ObjectId(_id_menu), '_id_kelas' : ObjectId(_id_kelas)})
+            current_app.db.kontenmateri.delete_many({'_id_menu' : ObjectId(_id_menu)})
             msg = 'hapus'
-            
-            return redirect(url_for('semuakelas.semuakelas_', msg = msg))
+            return redirect(url_for('detail_materi.det_materi', msg = msg, _id_kelas = _id_kelas, _id_menu = 'none'))
 
         except jwt.ExpiredSignatureError:
             msg = 'Your Token Has Expired'

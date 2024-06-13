@@ -83,4 +83,10 @@ def create_app():
     from .routes.tambah_konten_penjelasan import tambah_konten_penjelasan
     app.register_blueprint(tambah_konten_penjelasan)
 
+    from .routes.update_materi_selesai import update_status_materi
+    app.register_blueprint(update_status_materi)
+
+    from .routes.hapus_konten_materi import hapus_konten_materi
+    app.register_blueprint(hapus_konten_materi)
+
     return app

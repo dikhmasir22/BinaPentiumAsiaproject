@@ -15,7 +15,8 @@ def tambah_konten_yutub_(_id_kelas, _id_menu):
         try:
             payload = jwt.decode(token_receive, SECRET_KEY,algorithms=['HS256'])
             link_video = request.form['link_video']
-            link_video = link_video.split('=')[-1]
+            link_video = link_video.split('/')[-1]
+            link_video = link_video.split('?')[0]
 
             doc_konten = {
                 '_id_kelas' : ObjectId(_id_kelas),

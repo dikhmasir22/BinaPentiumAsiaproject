@@ -19,7 +19,7 @@ def tambah_konten_gambar_(_id_kelas, _id_menu):
             extension = gambar.filename.split('.')[-1]
             today = datetime.now()
             mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
-            gambar_name = f'gambar-{mytime}.{extension}'
+            gambar_name = f'gambarkonten-{mytime}.{extension}'
             save_to = f'app/static/image/Img_konten/{gambar_name}'
             gambar.save(save_to)
 

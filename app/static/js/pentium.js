@@ -71,6 +71,7 @@ function gambar_tambah(){
     setTimeout(function() {
         $('#bungkusan-link-yutub, #bungkusan-penjelasan').addClass('d-none');
     }, 500);
+    $('#form-gambar-tambah').focus()
 }
 
 function penjelasan() {

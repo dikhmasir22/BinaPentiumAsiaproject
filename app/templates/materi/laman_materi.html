@@ -39,17 +39,89 @@
                     {% if status_admin %}
                     {% if menu_materi %}
                     {% for item in menu_materi %}
-                    <!-- Menu Normal -->
-                    <div onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id}}'"
-                        class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
+                    {% if menu_materi_sekarang %}
+                    {% if item._id == menu_materi_sekarang._id %}
+                    <!-- Jika Link Aktif belum beres -->
+                    <div class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
                         style="min-width:95%">
+                        <div class="modal fade" id="modalmateriadmin" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-center">Anda yakin ingin menghapus Materi?</h4>
+                                        <h6 class="text-center fs-kecil text-warning">{{item.judul_materi}}</h6>
+                                        <p class="text-center text-danger fs-kecil">*Tindakan ini akan menghapus semua konten Video, Gambar, atau Penjelasan dalam Materi</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                            </div>
+                                            <div class="row col-6">
+                                                <a href="/hapus_konten_materi/{{info_kelas._id}}/{{item._id_menu}}/{{item._id}}"
+                                                    class="btn btn-danger">Hapus</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div
                             class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-dark-subtle">
                             <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
-                            <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modalmateriadmin"
+                                class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                         </div>
                         <div class="colom" style="width: 75%;">
-                            <p class="text-dark fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
+                            <p onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id}}'"
+                                class="text-danger fs-normal fw-normal pointer"><i class="ri-git-repository-line"></i><i
+                                    class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
+                        </div>
+                        <div class="colom d-flex justify-content-end align-items-center" style="width: 25%;">
+                            <p class="text-light bg-dark rounded p-2"><i class="ri-check-double-line"></i></p>
+                        </div>
+                    </div>
+                    <!-- Jika link Aktif Belum Beres -->
+                    {% else %}
+                    <!-- Menu Normal -->
+                    <div class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
+                        style="min-width:95%">
+                        <div class="modal fade" id="modalmateriadmin" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-center">Anda yakin ingin menghapus Materi?</h4>
+                                        <p class="text-center text-danger fs-kecil">*Tindakan ini akan menghapus semua konten Video, Gambar, atau Penjelasan dalam Materi</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                            </div>
+                                            <div class="row col-6">
+                                                <a href="/hapus_konten_materi/{{info_kelas._id}}/{{item._id_menu}}/{{item._id}}"
+                                                    class="btn btn-danger">Hapus</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-dark-subtle">
+                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modalmateriadmin"
+                                class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
+                        </div>
+                        <div class="colom" style="width: 75%;">
+                            <p onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id}}'"
+                                class="text-dark fs-normal fw-normal pointer"><i class="ri-git-repository-line"></i><i
                                     class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
                         </div>
                         <div class="colom d-flex justify-content-end align-items-center" style="width: 25%;">
@@ -57,13 +129,37 @@
                         </div>
                     </div>
                     <!-- Menu Normal -->
+                    {% endif %}
+                    {% endif %}
                     {% endfor %}
                     {% endif %}
+
+
+                    <!-- Kondisi SIDEBAR SISWA -->
                     {% elif status %}
                     {% if menu_materi_siswa %}
                     {% for item in menu_materi_siswa %}
+                    {% if item.status == 'belum' %}
+                    {% if menu_materi_sekarang %}
+                    {% if menu_materi_sekarang._id == item._id_menu %}
+                    <!-- Jika Link Aktif belum beres -->
+                    <div id="menu_materi"
+                        onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
+                        class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
+                        style="min-width:95%">
+                        <div class="colom" style="width: 75%;">
+                            <p class="text-danger fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
+                                    class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
+                        </div>
+                        <div class="colom d-flex justify-content-end align-items-center" style="width: 25%;">
+                            <p class="text-light bg-dark rounded p-2"><i class="ri-check-double-line"></i></p>
+                        </div>
+                    </div>
+                    <!-- Jika link Aktif Belum Beres -->
+                    {% else %}
                     <!-- Menu Normal -->
-                    <div onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
+                    <div id="menu_materi"
+                        onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
                         class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
                         style="min-width:95%">
                         <div class="colom" style="width: 75%;">
@@ -75,46 +171,44 @@
                         </div>
                     </div>
                     <!-- Menu Normal -->
-                    {% endfor %}
-
+                    {% endif %}
+                    {% endif %}
+                    {% elif item.status == 'selesai' %}
+                    {% if menu_materi_sekarang %}
+                    {% if menu_materi_sekarang._id == item._id_menu %}
                     <!-- Jika link Aktif sudah beres -->
-                    <div
-                        class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between">
-                        <div class="colom" style="width: 60%;">
+                    <div id="menu_materi"
+                        onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
+                        class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
+                        style="min-width:95%">
+                        <div class="colom" style="width: 75%;">
                             <p class="text-danger fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
-                                    class="ri-more-2-fill"></i> Self Learning Chapter 1</p>
+                                    class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
                         </div>
-                        <div class="colom d-flex justify-content-end align-items-center" style="width: 40%;">
+                        <div class="colom d-flex justify-content-end align-items-center" style="width: 25%;">
                             <p class="text-light bg-success rounded p-2"><i class="ri-check-double-line"></i></p>
                         </div>
-
                     </div>
                     <!-- Jika Link Aktif -->
-
-                    <!-- Jika Link Aktif belum beres -->
-                    <div
-                        class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between">
-                        <div class="colom" style="width: 60%;">
-                            <p class="text-danger fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
-                                    class="ri-more-2-fill"></i> Self Learning Chapter 1</p>
-                        </div>
-                        <div class="colom d-flex justify-content-end align-items-center" style="width: 40%;">
-                            <p class="text-light bg-dark rounded p-2"><i class="ri-check-double-line"></i></p>
-                        </div>
-                    </div>
-                    <!-- Jika link Aktif Belum Beres -->
-
+                    {% else %}
                     <!-- menu sudah selesai -->
-                    <div class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between">
-                        <div class="colom" style="width: 60%;">
+                    <div id="menu_materi"
+                        onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
+                        class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
+                        style="min-width:95%">
+                        <div class="colom" style="width: 75%;">
                             <p class="text-success fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
-                                    class="ri-more-2-fill"></i> Self Learning Chapter 1</p>
+                                    class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
                         </div>
-                        <div class="colom d-flex justify-content-end align-items-center" style="width: 40%;">
+                        <div class="colom d-flex justify-content-end align-items-center" style="width: 25%;">
                             <p class="text-light bg-success rounded p-2"><i class="ri-check-double-line"></i></p>
                         </div>
                     </div>
                     <!-- Menu sudah Selesai -->
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
                     {% endif %}
                     {% endif %}
 
@@ -187,11 +281,38 @@
                                         <iframe src="https://www.youtube.com/embed/{{items.link_video}}"
                                             title="YouTube video" allowfullscreen></iframe>
                                     </div>
+                                    {% if status_admin %}
+                                    <div class="modal fade" id="modalkontenpenjelasan" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <h4 class="text-center">Anda yakin ingin menghapus konten ini?</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="container d-flex justify-content-between">
+                                                        <div class="row col-6">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                        </div>
+                                                        <div class="row col-6">
+                                                            <a href="/hapus_konten_materi/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                                                class="btn btn-danger">Hapus</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div
                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
                                         <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
-                                        <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#modalkontenpenjelasan"
+                                            class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                                     </div>
+                                    {% endif %}
+
                                 </div>
 
                             </div>
@@ -204,11 +325,38 @@
                         style="width: 90%;">
                         <img class="rounded" src="../../static/image/Img_konten/{{items.gambar_konten}}" width="100%"
                             alt="">
+                        {% if status_admin %}
+                        <div class="modal fade" id="modalkontenpenjelasan" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-center">Anda yakin ingin menghapus konten ini?</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                            </div>
+                                            <div class="row col-6">
+                                                <a href="/hapus_konten_materi/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                                    class="btn btn-danger">Hapus</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
                             <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
-                            <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modalkontenpenjelasan"
+                                class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                         </div>
+                        {% endif %}
+
                     </div>
                     <!-- Konten Gambar -->
 
@@ -218,11 +366,39 @@
                         style="width: 90%;">
                         <h6 class="mb-3">{{items.judul_penjelasan}}</h6>
                         <p>{{items.deskripsi_penjelasan}}</p>
+                        {% if status_admin %}
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalkontenpenjelasan" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-center">Anda yakin ingin menghapus konten ini?</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                            </div>
+                                            <div class="row col-6">
+                                                <a href="/hapus_konten_materi/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                                    class="btn btn-danger">Hapus</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
                             <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
-                            <a class="ms-2 text-danger" href=""><i class="ri-delete-bin-6-line"></i></a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modalkontenpenjelasan"
+                                class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                         </div>
+                        {% endif %}
+
                     </div>
                     <!-- Konten Penjelasan -->
                     {% endif %}
@@ -233,7 +409,10 @@
 
                     {% if status %}
                     {% if menu_materi_siswa %}
-                    <form action="/update_status_materi/{{menu_materi_sekarang._id}}/{{user_info._id}}" method="post" class="box-penjelasan d-flex justify-content-center align-items-center mb-5 rounded"
+                    <form
+                        action="/update_status_materi/{{menu_materi_sekarang._id_kelas}}/{{menu_materi_sekarang._id}}/{{user_info._id}}"
+                        method="post"
+                        class="box-penjelasan d-flex justify-content-center align-items-center mb-5 rounded"
                         style="width: 90%;">
                         <button href="" class="btn btn-success">Selesai Materi</button>
                     </form>
@@ -309,8 +488,8 @@
                         <div class="form_input d-flex flex-column">
                             <label class="fw-bold mb-1" for="Gambar Kelas">Pilih Gambar</label>
                             <img class="p-2" id="gambar-preview" src="" alt="" width="120">
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="gambar_kelas" name="gambar_konten"
+                            <div id="form-gambar-tambah" class="input-group mb-3">
+                                <input type="file" class="form-control" id="gambar_konten" name="gambar_konten"
                                     onchange="previewImage(event)">
                             </div>
                         </div>
