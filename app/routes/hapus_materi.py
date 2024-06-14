@@ -18,8 +18,8 @@ def hapus_materi_(_id_kelas, _id_menu):
                 SECRET_KEY,
                 algorithms=['HS256']
             )
-            konten_materi = list(current_app.db.kontenmateri.find({'_id_menu': ObjectId(_id_menu)}))
 
+            konten_materi = list(current_app.db.kontenmateri.find({'_id_menu': ObjectId(_id_menu)}))
             for konten in konten_materi:
                 if konten['tipe'] == 'gambar':
                     gambar_name = konten['gambar_konten']
