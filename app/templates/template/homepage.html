@@ -1,35 +1,40 @@
 {% include 'template/header.html' %}
 
-    <!-- Hero Section -->
-    <section id="home" class="container-fluid mt-5 align-items-center">
-        <div class="row p-lg-5 pt-5 justify-content-center">
-            <div class="col-12 col-lg-7 col-xl-5 order-2 order-lg-1 p-lg-5">
-                <h3 class="fw-bold">Optimasi Skill dan Kompetensi,
-                    Lebih Siap Kerja dan Wirausaha</h3>
-                <p>
-                    BINA ASIA DIGITALINDO menyediakan platform komprehensif untuk meningkatkan kompetensi lulusan agar siap kerja dan siap berwirausaha melalui program pelatihan berbasis proyek (PBL), magang online bersertifikat, dan sertifikasi industri.
-                </p>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-7">
-                        <a style="width: 100%;" class="btn btn-warning p-2 pointer gelembung fw-bold mb-2">Daftar GRATIS
-                            Sekarang!</a>
-                    </div>
-                    <div class="col-12 col-lg-5">
-                        <a style="width: 100%;" href="#hubungi"
-                            class="btn btn-info p-2 pointer gelembung fw-bold mb-2">Menjadi
-                            Mitra</a>
-                    </div>
-                </div>
-
+    <!-- Carousel -->
+    <div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#jumbotronCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+    
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='image/banner1.png') }}" class="d-block w-100" alt="Slide1" />
             </div>
-            <div class="col-lg-2 order-1 text-center">
-                <img src="../../static/image/5.png" width="250" alt="">
+    
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='image/banner2.jpg') }}" class="d-block w-100" alt="Slide2" />
             </div>
-    </section>
-    <!-- Hero Section -->
+    
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='image/banner3.jpg') }}" class="d-block w-100" alt="Slide3" />
+            </div>
+        </div>
+    
+        <button class="carousel-control-prev" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Carousel -->
 
     <!-- Section Kartu -->
-    <section id="alasan" class="container-fluid justify-content-center align-items-center">
+    <section id="alasan" class="container-fluid mt-5 justify-content-center align-items-center">
         <div class="row p-1 p-xl-5 justify-content-evenly align-items-center">
             <div style="background-image: url('../../static/image/backgroundreason.jpg'); background-size:cover;"
                 class="col-12 col-lg-5 border shadow justify-content-center mb-3">
