@@ -1,133 +1,42 @@
 {% include 'template/header.html' %}
 
-<!-- Carousel -->
-<div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-bs-target="#jumbotronCarousel"
-      data-bs-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#jumbotronCarousel"
-      data-bs-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#jumbotronCarousel"
-      data-bs-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img
-        src="{{ url_for('static', filename='image/backgroundreason.jpg') }}"
-        class="d-block w-100"
-        alt="Slide 1"
-      />
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <div class="carousel-caption text-start text-dark">
-              <h3 class="slide-title fw-bold">Bina Asia DigitalIndo</h3>
-              <p class="slide-text">
-                Menyediakan kelas terbaik dan ilmu yang sedang marak di dunia
-                industri. Dengan profesional sebagai mentor, yang pastinya akan
-                memenuhi kebutuhan anda
-              </p>
-              <p>
-                <a
-                  class="btn btn-warning gelembung fw-bold"
-                  data-bs-toggle="modal"
-                  data-bs-target="#daftarmodal"
-                  >Daftar</a
-                >
-              </p>
-              <!-- mengarah ke daftar -->
-            </div>
-          </div>
-          <div class="col-md-6">
-            <img
-              src="{{ url_for('static', filename='image/cover.png') }}"
-              class="img-fluid"
-              alt=""
-            />
-          </div>
+<!-- Hero Section -->
+<section id="home" class="container-fluid mt-5 align-items-center">
+  <div class="row p-lg-5 pt-5 justify-content-center">
+    <div class="col-12 col-lg-7 col-xl-5 order-2 order-lg-1 p-lg-5">
+      <h3 class="fw-bold">
+        Optimasi Skill dan Kompetensi, Lebih Siap Kerja dan Wirausaha
+      </h3>
+      <p>
+        BINA ASIA DIGITALINDO menyediakan platform komprehensif untuk
+        meningkatkan kompetensi lulusan agar siap kerja dan siap berwirausaha
+        melalui program pelatihan berbasis proyek (PBL), magang online
+        bersertifikat, dan sertifikasi industri.
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+          <a
+            style="width: 100%"
+            class="btn btn-warning p-2 pointer gelembung fw-bold mb-2"
+            >Daftar GRATIS Sekarang!</a
+          >
+        </div>
+        <div class="col-12 col-lg-5">
+          <a
+            style="width: 100%"
+            href="#hubungi"
+            class="btn btn-info p-2 pointer gelembung fw-bold mb-2"
+            >Menjadi Mitra</a
+          >
         </div>
       </div>
     </div>
-
-    <div class="carousel-item">
-      <img
-        src="{{ url_for('static', filename='image/backgroundreason.jpg') }}"
-        class="d-block w-100"
-        alt="Slide 2"
-      />
-      <div class="carousel-caption text-start text-dark">
-        <h3 class="slide-title fw-bold">
-          Merancang Kurikulum Pembelajaran dan Pengembangan Media
-        </h3>
-        <p class="slide-text">
-          Kurikulum yang digunakan adalah kurikulum dengan standar internasional
-          yang juga di gunakan di beberapa negara maju seperti Amerika dan Cina
-        </p>
-        <p>
-          <a class="btn btn-warning gelembung fw-bold" href="/homepage"
-            >Daftar Sekarang</a
-          >
-        </p>
-        <!-- mengarah ke semua kelas -->
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <img
-        src="{{ url_for('static', filename='image/backgroundreason.jpg') }}"
-        class="d-block w-100"
-        alt="Slide 3"
-      />
-      <div class="carousel-caption text-start text-dark">
-        <h3 class="slide-title fw-bold">Ada yang ingin di tanyakan?</h3>
-        <p class="slide-text">
-          Kami selalu menanti untuk berhubungan dengan anda, hubungi kami kapan
-          saja
-        </p>
-        <p>
-          <a class="btn btn-warning gelembung fw-bold" href="/kontak"
-            >Kontak Kami</a
-          >
-        </p>
-        <!-- mengarah ke laman kontak -->
-      </div>
+    <div class="col-lg-2 order-1 text-center">
+      <img src="../../static/image/bootcamp_hero.png" width="350" alt="" />
     </div>
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#jumbotronCarousel"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#jumbotronCarousel"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<!-- Carousel -->
+</section>
+<!-- Hero Section -->
 
 <!-- Kelas Terunggul -->
 <div class="section kelas-unggulan py-5" style="background-color: #f9f9f9">
@@ -220,6 +129,8 @@
   </div>
 </div>
 <!-- Kelas Terunggul -->
+
+
 
 <!-- Section Kelas -->
 <section
