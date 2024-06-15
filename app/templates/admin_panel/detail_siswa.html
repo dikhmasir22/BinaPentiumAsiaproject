@@ -13,9 +13,9 @@
     </nav>
     <hr>
 
-    <div class="container-fluid bg-warning mb-5 rounded shadow">
+    <div class="container-fluid bg-warning mb-5 rounded">
         <div class="container d-lg-flex p-2 rounded">
-            <div class="box p-2 d-flex flex-column me-2">
+            <div class="box d-flex flex-column me-2">
                 {% if detail_Siswa.foto_profile %}
                 <img class="m-2 rounded" src="../../static/image/Imgprofile/{{detail_Siswa.foto_profile}}" width="200"
                     alt="">
@@ -25,7 +25,7 @@
                 <a href="" class="btn btn-danger">Hapus</a>
             </div>
             <div style="width: 100%;" class="info_siswa">
-                <div class="nama ms-4">
+                <div class="nama ms-4 mt-1">
                     <h4 class="fw-bold">{{ detail_Siswa.nama_lengkap }}</h4>
                     {% if detail_Siswa.deskripsi == '' %}
                     <p>
@@ -71,7 +71,8 @@
         </div>
     </div>
 
-    <div class="container-fluid bg-light mb-3 rounded shadow">
+    <div class="container-fluid bg-light mb-3 rounded">
+        {% if data_kelas %}
         <div class="row">
             <h6 class="p-2">Kelas yang diambil oleh {{detail_Siswa.nama_depan}}</h6>
         </div>
@@ -130,6 +131,13 @@
             </div>
 
         </div>
+
+        {% else %}
+        <div class="row p-4">
+            <h6 class="text-center"><== Belum Ada Kelas yang diambil oleh {{detail_Siswa.nama_depan}} ==></h6>
+        </div>
+        {% endif %}
+        
     </div>
 
 </section>

@@ -304,6 +304,8 @@
                                             title="YouTube video" allowfullscreen></iframe>
                                     </div>
                                     {% if status_admin %}
+
+                                    <!-- Modal Hapus Konten Video -->
                                     <div class="modal fade" id="modalkontenvideo-{{items._id}}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -331,11 +333,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Modal Hapus Konten Video -->
+                                    
                                     <div
                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
                                         <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
-                                        <a type="button" data-bs-toggle="modal" data-bs-target="#modalkontenvideo-{{items._id}}"
-                                            class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
+                                        <a type="button" data-bs-toggle="modal"
+                                            data-bs-target="#modalkontenvideo-{{items._id}}" class="ms-2 text-danger"><i
+                                                class="ri-delete-bin-6-line"></i></a>
                                     </div>
                                     {% endif %}
 
@@ -352,8 +357,10 @@
                         <img class="rounded" src="../../static/image/Img_konten/{{items.gambar_konten}}" width="100%"
                             alt="">
                         {% if status_admin %}
-                        <div class="modal fade" id="modalkontengambar-{{items._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+
+                        <!-- Modal Hapus Konten Gambar -->
+                        <div class="modal fade" id="modalkontengambar-{{items._id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-body">
@@ -377,6 +384,8 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal Hapus Konten Gambar -->
+
                         <div
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
                             <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
@@ -395,7 +404,8 @@
                         <h6 class="mb-3">{{items.judul_penjelasan}}</h6>
                         <p>{{items.deskripsi_penjelasan}}</p>
                         {% if status_admin %}
-                        <!-- Modal -->
+
+                        <!-- Modal Hapus Konten Penjelasan-->
                         <div class="modal fade" id="modalkontenpenjelasan-{{items._id}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -419,16 +429,18 @@
                                                     class="btn btn-danger">Hapus</a>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal Hapus Konten Penjelasan -->
+
                         <div
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
                             <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#modalkontenpenjelasan-{{items._id}}"
-                                class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
+                            <a type="button" data-bs-toggle="modal"
+                                data-bs-target="#modalkontenpenjelasan-{{items._id}}" class="ms-2 text-danger"><i
+                                    class="ri-delete-bin-6-line"></i></a>
                         </div>
                         {% endif %}
 
@@ -474,8 +486,6 @@
                     {% else %}
                     <div class="box-input d-flex flex-column justify-content-center align-content-center">
                         <h5>Klik Menu Materi yang ada untuk menambahkan Konten</h5>
-                        <h3>
-                            <<<<<< </h3>
                                 {% if menu_materi %}
                                 <h4 class="text-center">Materi yang ada</h4>
                                 <div class="box d-flex justify-content-center"></div>
