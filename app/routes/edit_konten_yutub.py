@@ -6,8 +6,8 @@ from bson import ObjectId
 edit_konten_yutub = Blueprint('edit_konten_yutub', __name__)
 
 
-@edit_konten_yutub.route('/edit_video/<_id_kelas>/<_id_menu>', methods=['POST'])
-def edit_konten_yutub_(_id_kelas, _id_menu):
+@edit_konten_yutub.route('/edit_video/<_id_kelas>/<_id_menu>/<_id_konten>', methods=['POST'])
+def edit_konten_yutub_(_id_kelas, _id_menu, _id_konten):
         
         TOKEN_KEY = current_app.config['TOKEN_KEY']
         SECRET_KEY = current_app.config['SECRET_KEY']
@@ -28,7 +28,7 @@ def edit_konten_yutub_(_id_kelas, _id_menu):
                 'tipe' : 'video'
             }
 
-            current_app.db.kontenmateri.insert_one(doc_konten)
+            current_app.db.kontenmateri.update_one({'_id' : ObjectId(_id_konten)}, {'$set' : doc_konten})
             msg = 'tambah_yutub'
             return redirect(url_for('detail_materi.det_materi', msg=msg, _id_kelas = _id_kelas, _id_menu = _id_menu))
 

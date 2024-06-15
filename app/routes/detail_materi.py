@@ -63,6 +63,17 @@ def det_materi(_id_kelas, _id_menu):
             if user_admin:
                 return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
             else:
+                for item in menu_materi:
+                        menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_menu' : item['_id'], '_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
+                        if not menu_materi_siswa:
+                            doc_menu_materi_siswa = {
+                                '_id_siswa' : user_info['_id'],
+                                '_id_kelas' : ObjectId(_id_kelas),
+                                '_id_menu' : item['_id'],
+                                'judul_materi' : item['judul_materi'],
+                                'status' : 'belum'
+                            }
+                            current_app.db.menumaterisiswa.insert_one(doc_menu_materi_siswa)
                 menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
                 return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
 

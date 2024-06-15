@@ -92,4 +92,7 @@ def create_app():
     from .routes.hapus_materi import hapus_materi
     app.register_blueprint(hapus_materi)
 
+    from .routes.edit_konten_yutub import edit_konten_yutub
+    app.register_blueprint(edit_konten_yutub)
+
     return app

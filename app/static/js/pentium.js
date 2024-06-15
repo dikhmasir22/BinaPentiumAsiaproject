@@ -95,3 +95,12 @@ function batalkan() {
         $('#bungkusan-link-yutub, #bungkusan-gambar, #bungkusan-penjelasan').addClass('d-none');
     }, 500);
 }
+
+function previewImage(event) {
+  let reader = new FileReader();
+  reader.onload = function () {
+      let img = document.getElementById('gambar-preview');
+      img.src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
+}

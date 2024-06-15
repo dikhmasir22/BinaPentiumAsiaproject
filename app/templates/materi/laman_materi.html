@@ -334,10 +334,50 @@
                                         </div>
                                     </div>
                                     <!-- Modal Hapus Konten Video -->
-                                    
+
+                                    <!-- Modal Edit yutub -->
+                                    <div class="modal fade" id="modaleditkontenyutub-{{items._id}}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <form
+                                                action="/edit_video/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                                method="post" class="modal-content">
+                                                <div class="modal-body">
+                                                    <h4 class="text-start mb-3">Edit Video</h4>
+                                                    <div>
+                                                        <div class="form_input mb-3" style="width: 100%;">
+                                                            <h6>Link Video Youtube</h6>
+                                                            <div class="input-group">
+                                                                <input type="text"
+                                                                    placeholder="Inputkan Link Video Youtube"
+                                                                    name="link_video" class="form-control"
+                                                                    id="nama_kelas" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="container d-flex justify-content-between">
+                                                        <div class="row col-6">
+                                                            <div type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                                Batal</div>
+                                                        </div>
+                                                        <div class="row col-6">
+                                                            <button type="submit" class="btn btn-warning">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- Modal Edit yutub -->
+
                                     <div
                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
-                                        <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                                        <a type="button" data-bs-toggle="modal"
+                                            data-bs-target="#modaleditkontenyutub-{{items._id}}" class="text-warning"><i
+                                                class="ri-pencil-line"></i></a>
                                         <a type="button" data-bs-toggle="modal"
                                             data-bs-target="#modalkontenvideo-{{items._id}}" class="ms-2 text-danger"><i
                                                 class="ri-delete-bin-6-line"></i></a>
@@ -386,9 +426,46 @@
                         </div>
                         <!-- Modal Hapus Konten Gambar -->
 
+                        <!-- Modal Edit gambar -->
+                        <div class="modal fade" id="modaleditkontengambar-{{items._id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <form action="/edit_konten_gambar/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                    method="post" class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-start mb-3">Edit Gambar</h4>
+                                        <div class="form_input d-flex flex-column">
+                                            <label class="fw-bold mb-1" for="Gambar Kelas">Pilih Gambar</label>
+                                            <img class="p-2" id="gambar-preview"
+                                                src="../../static/image/Img_konten/{{items.gambar_konten}}" alt=""
+                                                width="120">
+                                            <div id="form-gambar-tambah" class="input-group mb-3">
+                                                <input type="file" class="form-control" id="gambar_konten"
+                                                    name="gambar_konten" onchange="previewImage(event)" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Batal</div>
+                                            </div>
+                                            <div class="row col-6">
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Modal Edit gambar -->
+
                         <div
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
-                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a type="button" data-bs-toggle="modal"
+                                data-bs-target="#modaleditkontengambar-{{items._id}}" class="text-warning"><i
+                                    class="ri-pencil-line"></i></a>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#modalkontengambar-{{items._id}}"
                                 class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                         </div>
@@ -435,9 +512,56 @@
                         </div>
                         <!-- Modal Hapus Konten Penjelasan -->
 
+                        <!-- Modal Edit Penjelasan -->
+                        <div class="modal fade" id="modaleditkontenpenjelasan-{{items._id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <form
+                                    action="/edit_konten_penjelasan/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                    method="post" class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-start mb-3">Edit Penjelasan</h4>
+                                        <div>
+                                            <div class="form_input mb-3" style="width: 100%;">
+                                                <h6>Judul</h6>
+                                                <div class="input-group">
+                                                    <input type="text"
+                                                        placeholder="Berikan Judul, kosongkan jika tidak ada"
+                                                        name="judul_penjelasan" value="{{items.judul_penjelasan}}"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form_input">
+                                                <label class="fw-bold mb-1" for="Nama Kelas">Deskripsi</label>
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" name="deskripsi_penjelasan"
+                                                        placeholder="Leave a comment here">{{items.deskripsi_penjelasan}}</textarea>
+                                                    <label for="floatingTextarea">Penjelasan</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Batal</div>
+                                            </div>
+                                            <div class="row col-6">
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Modal Edit Penjelasan -->
+
                         <div
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark-subtle">
-                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a type="button" data-bs-toggle="modal"
+                                data-bs-target="#modaleditkontenpenjelasan-{{items._id}}" class="text-warning"><i
+                                    class="ri-pencil-line"></i></a>
                             <a type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalkontenpenjelasan-{{items._id}}" class="ms-2 text-danger"><i
                                     class="ri-delete-bin-6-line"></i></a>
@@ -486,13 +610,13 @@
                     {% else %}
                     <div class="box-input d-flex flex-column justify-content-center align-content-center">
                         <h5>Klik Menu Materi yang ada untuk menambahkan Konten</h5>
-                                {% if menu_materi %}
-                                <h4 class="text-center">Materi yang ada</h4>
-                                <div class="box d-flex justify-content-center"></div>
-                                {% for item in menu_materi%}
-                                <a class="btn btn-primary m-2"
-                                    href="/detailmateri/{{item._id_kelas}}/{{item._id}}">{{item.judul_materi}}</a>
-                                {% endfor %}
+                        {% if menu_materi %}
+                        <h4 class="text-center">Materi yang ada</h4>
+                        <div class="box d-flex justify-content-center"></div>
+                        {% for item in menu_materi%}
+                        <a class="btn btn-primary m-2"
+                            href="/detailmateri/{{item._id_kelas}}/{{item._id}}">{{item.judul_materi}}</a>
+                        {% endfor %}
                     </div>
                     {% endif %}
                 </div>
@@ -584,6 +708,8 @@
     </div>
     </div>
     </div>
+
+
 
 
     <script src="../../static/js/pentium.js"></script>
