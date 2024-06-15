@@ -2,7 +2,11 @@
 
 <section id="main" class="container-fluid p-2">
 
-    <h3>Tambah Kelas</h3>
+    {% if kelas %}
+     <h3>Edit Kelas</h3>
+     {% else %}
+     <h3>Tambah Kelas</h3>
+    {% endif %}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
