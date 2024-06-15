@@ -90,10 +90,10 @@
                 {% else %}
                 {% if kelas_diambil %}
                 {% if user_pernah_mulai %}
-                <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}"
+                <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}?msg=masuk_kelas"
                     class="btn btn-warning rounded p-2">Lanjutkan -></a>
                 {% else %}
-                <a href="/detailmateri/{{kelas._id}}/none" class="btn btn-info rounded p-2">Mulai Kelas -></a>
+                <a href="/detailmateri/{{kelas._id}}/none?msg=masuk_kelas" class="btn btn-info rounded p-2">Mulai Kelas -></a>
                 {% endif %}
                 {% else %}
                 <button data-bs-toggle="modal" data-bs-target="#ringkasan_pembelian" class="btn btn-info rounded p-2">+

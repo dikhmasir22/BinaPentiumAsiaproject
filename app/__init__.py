@@ -95,4 +95,10 @@ def create_app():
     from .routes.edit_konten_yutub import edit_konten_yutub
     app.register_blueprint(edit_konten_yutub)
 
+    from .routes.edit_konten_gambar import edit_konten_gambar
+    app.register_blueprint(edit_konten_gambar)
+
+    from .routes.edit_konten_penjelasan import edit_konten_penjelasan
+    app.register_blueprint(edit_konten_penjelasan)
+
     return app

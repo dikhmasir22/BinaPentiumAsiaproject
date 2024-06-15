@@ -11,7 +11,83 @@
     <link rel="stylesheet" href="../../static/css/pentium.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    {% if msg %}
+    {% if msg == 'edit_penjelasan' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Penjelasan Berhasil Di Edit!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
+    {% elif msg == 'edit_video' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Video Berhasil Di Edit!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
+    {% elif msg == 'edit_gambar' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Gambar Berhasil Di Edit!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
+    {% elif msg == 'masuk_kelas' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'info',
+                title: 'Selamat Datang {{user_info.nama_depan}}!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
+    {% endif %}
+    {% endif %}
 </head>
 
 <body class="bg-info bg-opacity-10 vh-100">
@@ -430,8 +506,8 @@
                         <div class="modal fade" id="modaleditkontengambar-{{items._id}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <form action="/edit_konten_gambar/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
-                                    method="post" class="modal-content">
+                                <form action="/edit_gambar/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                    method="post" enctype="multipart/form-data" class="modal-content">
                                     <div class="modal-body">
                                         <h4 class="text-start mb-3">Edit Gambar</h4>
                                         <div class="form_input d-flex flex-column">
@@ -516,8 +592,7 @@
                         <div class="modal fade" id="modaleditkontenpenjelasan-{{items._id}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <form
-                                    action="/edit_konten_penjelasan/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
+                                <form action="/edit_penjelasan/{{info_kelas._id}}/{{items._id_menu}}/{{items._id}}"
                                     method="post" class="modal-content">
                                     <div class="modal-body">
                                         <h4 class="text-start mb-3">Edit Penjelasan</h4>

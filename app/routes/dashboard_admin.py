@@ -14,6 +14,7 @@ def dashboard():
             SECRET_KEY,
             algorithms=['HS256']
         )
+        msg = request.args.get('msg')
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
         status = payload.get('id')
         user_admin = current_app.db.user.find_one({
@@ -21,9 +22,9 @@ def dashboard():
             'level': 'admin'})
         
         if user_admin:
-            return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status_admin = status)
+            return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status_admin = status, msg = msg)
         else:
-            return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status = status)
+            return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status = status, msg = msg)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))

@@ -42,12 +42,10 @@ def sign_in():
         else:
             password_receive = request.form['password']
             pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
-
             hasil = current_app.db.user.find_one({
                 'email' : email,
                 'password' : pw_hash
             })
-
             if hasil :
                 payload = ({
                     'id' : email,

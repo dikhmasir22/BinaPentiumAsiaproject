@@ -16,6 +16,7 @@ def det_materi(_id_kelas, _id_menu):
             algorithms=['HS256']
         )
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
+        msg = request.args.get('msg')
 
         if _id_kelas is None:
             _id_kelas = request.args.get('_id_kelas')
@@ -61,7 +62,7 @@ def det_materi(_id_kelas, _id_menu):
             if not konten_materi:
                 konten_materi = current_app.db.menumateri.find({'_id' : ObjectId(_id_menu)})
             if user_admin:
-                return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
+                return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg)
             else:
                 for item in menu_materi:
                         menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_menu' : item['_id'], '_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
@@ -75,7 +76,7 @@ def det_materi(_id_kelas, _id_menu):
                             }
                             current_app.db.menumaterisiswa.insert_one(doc_menu_materi_siswa)
                 menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
-                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang)
+                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg)
 
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
