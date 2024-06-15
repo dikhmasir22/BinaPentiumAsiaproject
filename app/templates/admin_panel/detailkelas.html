@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="row shadow rounded-bottom p-2">
+    <div class="row bg-light border-top rounded-bottom p-2">
         {% if kelas_diambil %}
         <div class="container d-flex justify-content-end">
         {% else %}
@@ -98,7 +98,7 @@
 
     <br>
 
-    <div class="container row p-3 border-1" style="background-color: whitesmoke; border-radius: 10px;">
+    <div class="row p-3 border-1" style="background-color: whitesmoke; border-radius: 10px;">
         <h5>Modul</h5>
         <div class="row materi">
             <div class="row">
@@ -144,8 +144,8 @@
                         <h6 class="text-secondary">Rp. {{kelas.harga_kelas}}</h6>
                     </div>
                     <hr class="hr-dashed">
-                    <div class="row">
-                        <form action="/ikuti_kelas/{{kelas._id}}/{{user_info._id}}" method="post">
+                    <div class="row text-center">
+                        <form class="m-2" action="/ikuti_kelas/{{kelas._id}}/{{user_info._id}}" method="post">
                             <button type="submit" class="btn btn-primary">Ikuti Kelas</button>
                         </form>
                         <p class="text-center text-muted mb-0 xsmall fs-kecil"> Dengan menekan "Ikuti Kelas" kamu telah

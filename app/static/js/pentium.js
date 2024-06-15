@@ -59,6 +59,7 @@ function link_youtube(){
     setTimeout(function() {
         $('#bungkusan-gambar, #bungkusan-penjelasan').addClass('d-none');
     }, 500);
+    $('#input-link-yutub').focus()
 }
 
 function gambar_tambah(){

@@ -14,7 +14,7 @@
     <hr>
 
     <div class="container-fluid bg-warning mb-5 rounded shadow">
-        <div class="container d-flex p-2 rounded">
+        <div class="container d-lg-flex p-2 rounded">
             <div class="box p-2 d-flex flex-column me-2">
                 {% if detail_Siswa.foto_profile %}
                 <img class="m-2 rounded" src="../../static/image/Imgprofile/{{detail_Siswa.foto_profile}}" width="200"
@@ -75,12 +75,12 @@
         <div class="row">
             <h6 class="p-2">Kelas yang diambil oleh {{detail_Siswa.nama_depan}}</h6>
         </div>
-        <div class="container d-flex p-2 rounded">
+        <div class="container">
             <div class="row p-2 justify-content-start">
                 {% for item in data_kelas %}
                 <div onclick="window.location.href='/detailkelas/{{item._id}}'"
-                    class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-3 pointer gelembung mt-3">
-                    <div class="card semuakelas-card">
+                    class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 pointer gelembung mt-3">
+                    <div class="card semuakelas-card" style="min-width: 100%;">
                         <div class="img-kontainer">
                             <img style="object-fit: cover;" src="../../static/image/Imgkelas/{{item.gambar_kelas}}" class="card-img-top" alt="...">
                         </div>

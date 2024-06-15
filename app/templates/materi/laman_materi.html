@@ -30,14 +30,11 @@
                     </div>
 
                     {% if status_admin %}
+                    {% if menu_materi %}
                     <div class="box d-flex justify-content-center" style="width: 100%;">
                         <button onclick="tampil_form()" class="btn btn-success"><i class="ri-git-repository-line"></i>
                             Tambah Materi</button>
                     </div>
-                    {% endif %}
-
-                    {% if status_admin %}
-                    {% if menu_materi %}
                     {% for item in menu_materi %}
                     {% if menu_materi_sekarang %}
                     {% if item._id == menu_materi_sekarang._id %}
@@ -243,7 +240,7 @@
                             <div class="form_input" style="width: 100%;">
                                 <div class="input-group">
                                     <input id="input-materi" type="text" placeholder="Masukkan Judul Materi"
-                                        name="judul_materi" class="form-control">
+                                        name="judul_materi" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -284,8 +281,17 @@
                     {% endif %}
 
                     {% if konten_materi %}
+                    {% if status_admin %}
+                    <div class="box-input d-flex justify-content-evenly">
+                        <button onclick="link_youtube()" class="btn btn-success me-3 m-3"><i
+                                class="ri-video-add-line"></i>Tambah Video</button>
+                        <a onclick="gambar_tambah()" href="#bungkusan-gambar" class="btn btn-success m-3"><i
+                                class="ri-image-add-line"></i>Tambah Gambar</a>
+                        <button onclick="penjelasan()" class="btn btn-success ms-3 m-3"><i
+                                class="ri-menu-add-line"></i>Tambah Penjelasan</button>
+                    </div>
+                    {% endif %}
                     {% for items in konten_materi %}
-
                     {% if items.tipe == 'video' %}
                     <!-- Konten Youtube -->
                     <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-5 mt-5 rounded"
@@ -460,8 +466,8 @@
                     <div class="box-input d-flex justify-content-evenly">
                         <button onclick="link_youtube()" class="btn btn-success me-3 m-3"><i
                                 class="ri-video-add-line"></i>Tambah Video</button>
-                        <button onclick="gambar_tambah()" class="btn btn-success m-3"><i
-                                class="ri-image-add-line"></i>Tambah Gambar</button>
+                        <a onclick="gambar_tambah()" href="#bungkusan-gambar" class="btn btn-success m-3"><i
+                                class="ri-image-add-line"></i>Tambah Gambar</a>
                         <button onclick="penjelasan()" class="btn btn-success ms-3 m-3"><i
                                 class="ri-menu-add-line"></i>Tambah Penjelasan</button>
                     </div>
@@ -495,7 +501,7 @@
                             <h6>Link Youtube</h6>
                             <div class="input-group">
                                 <input id="input-link-yutub" type="text" placeholder="Inputkan Link Video Youtube"
-                                    name="link_video" class="form-control" id="nama_kelas">
+                                    name="link_video" class="form-control" id="nama_kelas" required>
                             </div>
                         </div>
                         <div class="box d-flex justify-content-start mt-3" style="width: 100%;">
@@ -517,7 +523,7 @@
                             <img class="p-2" id="gambar-preview" src="" alt="" width="120">
                             <div id="form-gambar-tambah" class="input-group mb-3">
                                 <input type="file" class="form-control" id="gambar_konten" name="gambar_konten"
-                                    onchange="previewImage(event)">
+                                    onchange="previewImage(event)" required>
                             </div>
                         </div>
                         <div class="box d-flex justify-content-start mt-3" style="width: 100%;">

@@ -13,72 +13,72 @@
     <hr>
 
     <div class="row justify-content-start mb-5">
-        <div class="col-12 col-md-7 col-lg-7 col-xl-8 rounded shadow bg-light border border-info">
+        <div class="col-12 rounded bg-light">
             <div class="row">
-                <div class="col-12 col-md-7 col-lg-7 col-xl-4 d-flex justify-content-center">
-                    {% if user_info.foto_profile %}
-                    <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200"
-                        alt="">
-                    {% else %}
-                    <img class="p-2 m-2" src="../../static/image/profile.jpg" width="200" alt="">
-                    {% endif %}
-
-                </div>
-                <div class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex flex-column p-2 justify-content-between">
-                    <div class="box">
-                        <h4>{{user_info.nama_lengkap}}</h4>
-
-                        {% if user_info.deskripsi == '' %}
-                        <p style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu
-                            disini <i class="ri-arrow-down-fill"></i></p>
+                <div class="col-8 d-flex justify-content-between">
+                    <div class="col-12 col-md-7 col-lg-5 col-xl-4 d-flex justify-content-start">
+                        {% if user_info.foto_profile %}
+                        <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200"
+                            alt="">
                         {% else %}
-                        <p class="p-2">{{user_info.deskripsi}}</p>
+                        <img class="p-2 m-2" src="../../static/image/profile.jpg" width="200" alt="">
                         {% endif %}
-                    </div>
 
-                    <a href="/update_profile" class="btn btn-warning rounded align-self-end">Ubah Profile -></a>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-7 col-xl-8 d-flex flex-column p-2 ms-2 justify-content-between">
+                        <div class="box">
+                            <h4 class="p-2">{{user_info.nama_lengkap}}</h4>
+
+                            {% if user_info.deskripsi == '' %}
+                            <p class="p-2" style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu
+                                disini <i class="ri-arrow-down-fill"></i></p>
+                            {% else %}
+                            <p class="p-2">{{user_info.deskripsi}}</p>
+                            {% endif %}
+                        </div>
+
+                        <a href="/update_profile" class="btn btn-warning rounded align-self-start m-2">Ubah Profile -></a>
+                    </div>
                 </div>
+
+            </div>
+
+            <div style="width: 100%;" class="info_siswa p-3">
+
+                <h4 class="fw-bold">Informasi Dasar</h4>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">Nama Lengkap : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.nama_lengkap }}</h6>
+                </div>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">Email : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.email }}@gmail.com</h6>
+                </div>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">No. Telp : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.no_telepon }}</h6>
+                </div>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">No. KTP : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.no_ktp }}</h6>
+                </div>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">Jenis Kelamin : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.jenis_kelamin }}</h6>
+                </div>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">Tempat, Tanggal lahir : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.tempat_tanggal_lahir }}</h6>
+                </div>
+                <div class="baris d-flex justify-content-start align-items-center">
+                    <h6 class="fw-bold">Alamat : </h6>
+                    <h6 class="fw-normal ms-2">{{ user_info.alamat }}</h6>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <div class="row mb-2">
-        <div class="container d-flex shadow p-2 border border-info rounded">
-            <div style="width: 100%;" class="info_siswa p-3">
-                
-                    <h4 class="fw-bold">Informasi Dasar</h4>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">Nama Lengkap : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.nama_lengkap }}</h6>
-                    </div>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">Email : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.email }}@gmail.com</h6>
-                    </div>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">No. Telp : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.no_telepon }}</h6>
-                    </div>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">No. KTP : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.no_ktp }}</h6>
-                    </div>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">Jenis Kelamin : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.jenis_kelamin }}</h6>
-                    </div>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">Tempat, Tanggal lahir : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.tempat_tanggal_lahir }}</h6>
-                    </div>
-                    <div class="baris d-flex justify-content-start align-items-center">
-                        <h6 class="fw-bold">Alamat : </h6>
-                        <h6 class="fw-normal ms-2">{{ user_info.alamat }}</h6>
-                    </div>
-           
-            </div>
-        </div>
-    </div>
 
 
 </section>
