@@ -84,8 +84,36 @@
 
     <div class="row p-2 justify-content-start">
         {% for item in datakelas %}
-        <div onclick="window.location.href='/detailkelas/{{item._id}}'"
-            class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3 pointer gelembung mt-3">
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalkelas-{{item._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 class="text-center">Anda yakin ingin menghapus Kelas Ini?</h4>
+                        <h6 class="text-center fs-kecil text-warning">{{item.nama_kelas}}</h6>
+                        <p class="text-center text-danger fs-kecil">*Tindakan ini akan menghapus semua Materi yang ada
+                            serta semua
+                            konten Video, Gambar, atau Penjelasan dalam Materi</p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container d-flex justify-content-between">
+                            <div class="row col-6">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            </div>
+                            <div class="row col-6">
+                                <a href="/hapus_materi/{{item._id}}" class="btn btn-danger">Hapus</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3 pointer gelembung mt-3">
             <div class="card semuakelas-card">
                 <div class="img-kontainer">
                     <img style="background-size: cover;" src="../../static/image/Imgkelas/{{item.gambar_kelas}}"
@@ -128,7 +156,8 @@
                     {% if status_admin : %}
                     <div class="card-body d-flex justify-content-evenly align-items-center">
                         <a href="/editkelas/{{item._id}}" class="btn btn-warning fs-kecil m-1">Edit</a>
-                        <a href="/hapus_kelas/{{item._id}}" class="btn btn-danger fs-kecil m-1">Hapus</a>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#modalkelas-{{item._id}}"
+                            class="btn btn-danger fs-kecil m-1">Hapus</a>
                         <h6 class="fw-normal text-primary m-1">Rp.{{item.harga_kelas}}</h6>
                     </div>
 
@@ -139,7 +168,7 @@
                     {% endif %}
 
                 </ul>
-                <span class="badge badge-primary lihat-kelas">Lihat Kelas</span>
+                <span onclick="window.location.href='/detailkelas/{{item._id}}'" class="badge badge-primary lihat-kelas">Lihat Kelas</span>
             </div>
         </div>
         {% endfor %}

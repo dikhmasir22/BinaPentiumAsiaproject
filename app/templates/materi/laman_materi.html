@@ -43,7 +43,7 @@
                     {% if item._id == menu_materi_sekarang._id %}
                     <!-- Jika Link Aktif belum beres -->
                     <div class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
-                        style="min-width:95%">
+                        style="min-width:100%">
                         <!-- Modal -->
                         <div class="modal fade" id="modalmateriadmin-{{item._id}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -288,7 +288,7 @@
 
                     {% if items.tipe == 'video' %}
                     <!-- Konten Youtube -->
-                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-3 rounded"
+                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-5 mt-5 rounded"
                         style="width: 90%;">
                         <div class="container mt-5">
                             <div class="row justify-content-center">
@@ -341,7 +341,7 @@
                     <!-- Konten Youtube -->
                     {% elif items.tipe == 'gambar' %}
                     <!-- Konten Gambar -->
-                    <div class="box-video d-flex justify-content-center align-self-center mb-5 rounded position-relative"
+                    <div class="box-video d-flex justify-content-center align-self-center mb-5 mt-5 rounded position-relative"
                         style="width: 90%;">
                         <img class="rounded" src="../../static/image/Img_konten/{{items.gambar_konten}}" width="100%"
                             alt="">
@@ -384,7 +384,7 @@
 
                     {% elif items.tipe == 'penjelasan' %}
                     <!-- Konten Penjelasan -->
-                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center mb-5 rounded position-relative"
+                    <div class="box-penjelasan d-flex flex-column justify-content-start align-self-center rounded position-relative"
                         style="width: 90%;">
                         <h6 class="mb-3">{{items.judul_penjelasan}}</h6>
                         <p>{{items.deskripsi_penjelasan}}</p>

@@ -44,19 +44,8 @@
 
     <div class="row mb-2">
         <div class="container d-flex shadow p-2 border border-info rounded">
-            <div style="width: 100%;" class="info_siswa">
-                <div class="nama">
-                    <h4 class="fw-bold">{{ user_info.nama_lengkap }}</h4>
-                    {% if user_info.deskripsi == '' %}
-                    <p>
-                        <== User tidak memiliki Deskripsi==>
-                    </p>
-                    {% else %}
-                    <p>{{ user_info.deskripsi }}</p>
-                    {% endif %}
-
-                </div>
-                <div class="informasi shadow p-3 border m-2 rounded">
+            <div style="width: 100%;" class="info_siswa p-3">
+                
                     <h4 class="fw-bold">Informasi Dasar</h4>
                     <div class="baris d-flex justify-content-start align-items-center">
                         <h6 class="fw-bold">Nama Lengkap : </h6>
@@ -86,7 +75,7 @@
                         <h6 class="fw-bold">Alamat : </h6>
                         <h6 class="fw-normal ms-2">{{ user_info.alamat }}</h6>
                     </div>
-                </div>
+           
             </div>
         </div>
     </div>
