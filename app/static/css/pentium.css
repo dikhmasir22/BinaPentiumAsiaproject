@@ -367,3 +367,32 @@ justify-content: space-between;
 .lihat-kelas:hover {
     right: -5px;
 }
+
+/* laman materi */
+.circular-progress {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: conic-gradient(var(--progress-color) calc(var(--progress) * 1%), #ddd 0);
+    border-radius: 50%;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: white;
+    border-radius: 50%;
+}
+
+.circular-progress span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+}

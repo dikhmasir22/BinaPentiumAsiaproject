@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, current_app, Blueprint, jsonify
+from flask import Flask, request, render_template, current_app, Blueprint, jsonify, redirect, url_for
 import hashlib
 
 daftar_ = Blueprint('daftar', __name__)
@@ -32,6 +32,7 @@ def sign_up():
                 "foto_profile" : ""
             }
             current_app.db.user.insert_one(doc)
-            return jsonify({'result': 'success'})
+            msg = 'success_daftar'
+            return redirect(url_for('homepage.homepage', msg = msg))
         return 'password tidak sama'
     return 'user sudah ada'

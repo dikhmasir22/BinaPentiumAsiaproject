@@ -47,8 +47,9 @@ def det_materi(_id_kelas, _id_menu):
                                 'status' : 'belum'
                             }
                             current_app.db.menumaterisiswa.insert_one(doc_menu_materi_siswa)
+                    msg = 'masuk_kelas'
                     menu_materi_siswa = current_app.db.menumaterisiswa.find_one({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)})
-                    return redirect(url_for('detail_materi.det_materi', _id_kelas = _id_kelas, _id_menu = menu_materi_siswa['_id_menu']))
+                    return redirect(url_for('detail_materi.det_materi', _id_kelas = _id_kelas, _id_menu = menu_materi_siswa['_id_menu'], msg = msg))
             else:
                 if user_admin:
                     return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, kosong = 'kosong', info_kelas = info_kelas)
@@ -76,7 +77,12 @@ def det_materi(_id_kelas, _id_menu):
                             }
                             current_app.db.menumaterisiswa.insert_one(doc_menu_materi_siswa)
                 menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
-                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg)
+                total_materi = len(menu_materi_siswa)
+                materi_selesai = len([m for m in menu_materi_siswa if m['status'] == 'selesai'])
+                progress = (materi_selesai / total_materi) * 100 if total_materi > 0 else 0
+                progress = round(progress)
+                menu_materi_siswa_selesai = current_app.db.menumaterisiswa.find_one({'_id_siswa': user_info['_id'], '_id_menu' : ObjectId(_id_menu), 'status' : 'selesai'})
+                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg, menu_materi_siswa_selesai = menu_materi_siswa_selesai, progress = progress)
 
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'

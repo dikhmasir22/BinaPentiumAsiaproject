@@ -86,9 +86,31 @@
             });
         });
     </script>
+    {% elif msg == 'selesai_materi' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'info',
+                title: 'Selamat {{user_info.nama_depan}}, telah menyelesaikan materi "{{menu_materi_sekarang.judul_materi}}"!',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
     {% endif %}
     {% endif %}
 </head>
+
+<style>
+
+</style>
 
 <body class="bg-info bg-opacity-10 vh-100">
 
@@ -96,8 +118,22 @@
         <div class="row">
             <div class="col-3 d-flex flex-column rounded align-items-center">
                 <div class="box shadow bg-info border rounded m-3" style="width: 95%;">
-                    <a href="/detailkelas/{{info_kelas._id}}" class="ms-3 mt-4 btn btn-light fw-bold"><- Kembali</a>
-                            <h6 class="p-3">Materi Course {{info_kelas.nama_kelas}}</h6 class="p-3">
+
+                    {% if status_admin %}
+                    <div class="box d-flex justify-content-start align-items-center p-2">
+                        <a href="/detailkelas/{{info_kelas._id}}" class="btn btn-light fw-bold"><- Kembali</a>
+                    </div>
+                    {% else %}
+                    <div class="box d-flex justify-content-between align-items-center p-2">
+                        <a href="/detailkelas/{{info_kelas._id}}" class="btn btn-light fw-bold"><- Kembali</a>
+                                <div class="circular-progress me-4"
+                                    style="--progress: {{ progress }}; --progress-color: {{ 'green' if progress == 100 else '#007bff' }};">
+                                    <span>{{ progress }}%</span>
+                                </div>
+                    </div>
+                    {% endif %}
+
+                    <h6 class="p-3">Materi Course {{info_kelas.nama_kelas}}</h6 class="p-3">
                 </div>
                 <div class="box-materi d-flex flex-column align-items-center p-2 shadow bg-light rounded mt-2 mb-2"
                     style="overflow-x: auto; min-height:75vh; max-height:75vh; width: 95%;">
@@ -269,7 +305,7 @@
                     <div id="menu_materi"
                         onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
                         class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
-                        style="min-width:95%">
+                        style="min-width:100%">
                         <div class="colom" style="width: 75%;">
                             <p class="text-danger fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
                                     class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
@@ -284,7 +320,7 @@
                     <div id="menu_materi"
                         onclick="window.location.href='/detailmateri/{{item._id_kelas}}/{{item._id_menu}}'"
                         class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer"
-                        style="min-width:95%">
+                        style="min-width:100%">
                         <div class="colom" style="width: 75%;">
                             <p class="text-success fs-normal fw-normal"><i class="ri-git-repository-line"></i><i
                                     class="ri-more-2-fill"></i> {{ item.judul_materi }}</p>
@@ -653,6 +689,9 @@
 
                     {% if status %}
                     {% if menu_materi_siswa %}
+                    {% if menu_materi_siswa_selesai %}
+                    <hr>
+                    {% else %}
                     <form
                         action="/update_status_materi/{{menu_materi_sekarang._id_kelas}}/{{menu_materi_sekarang._id}}/{{user_info._id}}"
                         method="post"
@@ -660,6 +699,8 @@
                         style="width: 90%;">
                         <button href="" class="btn btn-success">Selesai Materi</button>
                     </form>
+                    {% endif %}
+
                     {% endif %}
 
                     {% endif %}
