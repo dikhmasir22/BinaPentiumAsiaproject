@@ -24,7 +24,9 @@ def dashboard():
         if user_admin:
             return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status_admin = status, msg = msg)
         else:
-            return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status = status, msg = msg)
+            kelas_diambil = list(current_app.db.kelassaya.find({'_id_siswa' : user_info['_id']}))
+            jumlah_kelas_diambil = len(kelas_diambil)
+            return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status = status, msg = msg, jumlah_kelas_diambil = jumlah_kelas_diambil)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))

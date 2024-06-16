@@ -36,15 +36,14 @@
     </nav>
     <hr>
     <!-- ----- -->
-
-    <div class="row">
         <div class="row justify-content-evenly mb-3">
             <div
                 class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
                 <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="120" alt="">
                 <div class="box d-flex flex-column">
-                    <h4>Selamat Datang, {{user_info.nama_lengkap}}</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita quae cupiditate ipsam?</p>
+                    <h4 class="text-primary">Selamat Datang, {{user_info.nama_lengkap}}</h4>
+                    <p>Kamu berhasil terdaftar di akun Bina Asia Digitalindo. Optimalkan skillmu dengan program intensif
+                        sesuai kebutuhanmu disini, yuk!</p>
                 </div>
             </div>
             <div class="row col-5 col-md-3 col-lg-3 col-xl-3 rounded  p-2 bg-light mt-2">
@@ -54,14 +53,16 @@
                     <h3>99</h3>
                 </div>
                 {% else %}
-                <h6>Jumlah Kelas yang diambil</h6>
+                <h4>Pencapaianku! <span class="text-warning"><i class="ri-notification-3-fill"></i></span></h4>
                 <div class="box d-flex flex-column text-center">
-                    <h3><i class="ri-book-read-fill"></i> 99</h3>
+                    <h3 class="text-primary"><i class="ri-book-read-fill"></i> {{jumlah_kelas_diambil}}</h3>
+                    <h6 class="text-primary">Kelas Diambil</h6>
                 </div>
                 {% endif %}
 
             </div>
         </div>
+
         {% if status_admin %}
         <div class="row justify-content-evenly mt-2">
             <div
@@ -82,41 +83,22 @@
         </div>
 
         {% else %}
-        <div class="row justify-content-evenly">
-            <div
-                class="col-12 col-md-7 col-lg-7 col-xl-6 d-flex justify-content-evenly mt-2 align-items-center rounded  bg-light">
-                <div class="box d-flex flex-column">
-                    <h4>Data Siswa</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur eos debitis ducimus
-                        explicabo
-                        laboriosam autem magnam repellat nemo qui odit!</p>
-                    <div class="row justify-content-center p-2">
-                        <div class="col-4">
-                            <a href="" class="btn btn-primary rounded p-2 m-2 ">Semua Siswa</a>
-                        </div>
+        <div class="row justify-content-evenly p-2">
+            <div class="col-6 bg-light p-2">
+                <h5>Program yang ditawarkan</h5>
+                <p>Bina Asia Digitalindo menyediakan banyak Kelas yang dapat diikuti, terdiri dari Kelas Pemrograman, Marketing, Business, dan kelas lainnya.</p>
+                <div class="row text-center">
+                    <div class="col-12 mb-3">
+                        <h6 class="text-primary fw-bold">Lihat Semua Kelas</h6>
+                        <a href="" class="btn btn-warning text-dark fw-bold">Semua Kelas</a>
                     </div>
-
                 </div>
             </div>
-            <div
-                class="col-12 col-md-7 col-lg-7 col-xl-5 d-flex justify-content-evenly mt-2 align-items-center rounded  bg-light">
-                <div class="box d-flex flex-column">
-                    <h4>Data Siswa</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur eos debitis ducimus
-                        explicabo
-                        laboriosam autem magnam repellat nemo qui odit!</p>
-                    <div class="row justify-content-center p-2">
-                        <div class="col-4">
-                            <a href="" class="btn btn-primary rounded p-2 m-2 ">Semua Siswa</a>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="col-5 bg-light p-2">
+                <h5>Kelas yang diikuti</h5>
             </div>
         </div>
         {% endif %}
-    </div>
-
 
 
 
