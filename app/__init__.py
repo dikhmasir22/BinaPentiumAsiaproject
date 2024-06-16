@@ -5,15 +5,21 @@ import hashlib
 import jwt
 from datetime import datetime, timedelta
 from bson import ObjectId
+from google_auth_oauthlib.flow import Flow
 from authlib.integrations.flask_client import OAuth
+import os
+import pathlib
 
 def create_app():
     app = Flask(__name__)
-
     app.config.from_object(Config)
 
+    # MONGODB
     client = MongoClient(app.config['MONGODB_URI'])
     app.db = client[app.config['DBNAME']]
+    # DATABASE
+
+    GOOGLE_CLIENT_ID = app.config['GOOGLE_CLIENT_ID']
 
     from .routes.dashboard_admin import dashboard_admin
     app.register_blueprint(dashboard_admin)
@@ -101,5 +107,8 @@ def create_app():
 
     from .routes.edit_konten_penjelasan import edit_konten_penjelasan
     app.register_blueprint(edit_konten_penjelasan)
+
+    from .routes.login_gugel import login_gugel
+    app.register_blueprint(login_gugel)
 
     return app

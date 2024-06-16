@@ -22,6 +22,16 @@
 {% endif %}
 {% endif %}
 
+{% if token %}
+<script>
+    $(document).ready(function () {
+        let token = '{{token}}'
+        $.cookie('BinaAsiaDigitalindo', token, { path: '/' })
+        window.location.replace('/dashboard?msg=success')
+    })
+</script>
+{% endif %}
+
 <!-- Carousel -->
 <div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">

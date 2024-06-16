@@ -15,8 +15,9 @@ def homepage():
             algorithms=['HS256']
         )
         msg = request.args.get('msg')
+        token = request.args.get('token')
         status = payload.get('id')
-        return render_template('template/homepage.html', status = status, msg = msg)
+        return render_template('template/homepage.html', status = status, msg = msg, token = token)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
         return render_template('template/homepage.html', msg=msg)

@@ -30,14 +30,16 @@
                             <h4 class="p-2">{{user_info.nama_lengkap}}</h4>
 
                             {% if user_info.deskripsi == '' %}
-                            <p class="p-2" style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu
+                            <p class="p-2" style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi
+                                tentang diri kamu
                                 disini <i class="ri-arrow-down-fill"></i></p>
                             {% else %}
                             <p class="p-2">{{user_info.deskripsi}}</p>
                             {% endif %}
                         </div>
 
-                        <a href="/update_profile" class="btn btn-warning rounded align-self-start m-2"><i class="ri-edit-fill"></i> Ubah Profile -></a>
+                        <a href="/update_profile" class="btn btn-warning rounded align-self-start m-2"><i
+                                class="ri-edit-fill"></i> Ubah Profile -></a>
                     </div>
                 </div>
 
@@ -45,7 +47,8 @@
 
             <div style="width: 100%;" class="info_siswa p-3 border-top">
 
-                <h4 class="fw-bold"><span class="text-primary"><i class="ri-id-card-line"></i></span> Informasi Dasar</h4>
+                <h4 class="fw-bold"><span class="text-primary"><i class="ri-id-card-line"></i></span> Informasi Dasar
+                </h4>
                 <hr class="text-secondary">
                 <div class="baris d-flex justify-content-start align-items-center">
                     <h6 class="fw-bold">Nama Lengkap : </h6>
@@ -53,7 +56,12 @@
                 </div>
                 <div class="baris d-flex justify-content-start align-items-center">
                     <h6 class="fw-bold">Email : </h6>
+                    {% if '@gmail.com' in user_info.email %}
+                    <h6 class="fw-normal ms-2">{{ user_info.email }}</h6>
+                    {% else %}
                     <h6 class="fw-normal ms-2">{{ user_info.email }}@gmail.com</h6>
+                    {% endif %}
+
                 </div>
                 <div class="baris d-flex justify-content-start align-items-center">
                     <h6 class="fw-bold">No. Telp : </h6>

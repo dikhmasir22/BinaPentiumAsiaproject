@@ -39,7 +39,12 @@
         <div class="row justify-content-evenly mb-3">
             <div
                 class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
-                <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="120" alt="">
+                {% if user_info.foto_profile %}
+                        <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="120"
+                            alt="">
+                        {% else %}
+                        <img class="p-2 m-2" src="../../static/image/profile.jpg" width="120" alt="">
+                        {% endif %}
                 <div class="box d-flex flex-column">
                     <h4 class="text-primary">Selamat Datang, {{user_info.nama_lengkap}}</h4>
                     <p>Kamu berhasil terdaftar di akun Bina Asia Digitalindo. Optimalkan skillmu dengan program intensif
