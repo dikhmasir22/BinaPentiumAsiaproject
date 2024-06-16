@@ -26,15 +26,19 @@
     {% if msg == 'edit' %}
     <script>
         $(document).ready(function () {
-            swal.fire({
-                title: "Profile Berhasil Di edit!!",
-                text: "",
-                icon: "success",
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Profile Berhasil Di Edit!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
             });
-
-            setTimeout(function () {
-                window.location.href = "/update_profile";
-            }, 2000);
         });
     </script>
     {% endif %}
@@ -72,7 +76,7 @@
                         <label class="fw-bold mb-1" for="Gambar Kelas">Foto Profile</label>
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" id="foto_profile" name="foto_profile">
-                            <button class="btn btn-outline-secondary" type="submit">Simpan</button>
+                            <button class="btn btn-primary text-light" type="submit">Simpan</button>
                         </div>
                     </div>
                     <div class="deskripsifoto pb-3">

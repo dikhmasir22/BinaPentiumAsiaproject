@@ -128,7 +128,7 @@
                         <a href="/detailkelas/{{info_kelas._id}}" class="btn btn-light fw-bold"><- Kembali</a>
                                 <div class="circular-progress me-4"
                                     style="--progress: {{ progress }}; --progress-color: {{ 'green' if progress == 100 else '#007bff' }};">
-                                    <span>{{ progress }}%</span>
+                                    <span>{{ progress }}<i class="ri-percent-line"></i></span>
                                 </div>
                     </div>
                     {% endif %}

@@ -73,7 +73,7 @@
                         <a class="nav-link" href="/kontak">Kontak</a>
                     </li>
                     {% if status or status_admin : %}
-                    <a class="btn btn-outline-danger ms-xl-2 me-xl-2 mb-2" onclick="sign_out()">Logout</a>
+                    <a class="btn btn-outline-danger ms-xl-2 me-xl-2 mb-2" onclick="sign_out()"><i class="ri-logout-circle-line"></i> Logout</a>
                     {% else %}
                     <a class="btn btn-outline-primary ms-xl-2 me-xl-2 mb-2" data-bs-toggle="modal"
                         data-bs-target="#masukmodal">Masuk</a>
@@ -89,15 +89,15 @@
 
     <section id="sidebar" class="bg-light shadow">
         <ul class="nav-list" id="sidebar-nav">
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/dashboard">Dashboard</a>
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/dashboard"><i class="ri-dashboard-line"></i> Dashboard</a>
             </li>
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile">Profile</a></li>
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/semuakelas">Semua
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile"><i class="ri-profile-line"></i> Profile</a></li>
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/semuakelas"><i class="ri-book-2-line"></i> Semua
                     Kelas</a></li>
             {% if status_admin: %}
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/siswa">Siswa</a></li>
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/siswa"><i class="ri-contacts-book-2-line"></i> Siswa</a></li>
             {% elif status %}
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/kelassaya">Kelas Saya</a></li>
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/kelassaya"><i class="ri-contacts-book-line"></i> Kelas Saya</a></li>
             {% endif %}
             
         </ul>

@@ -5,6 +5,7 @@ import hashlib
 import jwt
 from datetime import datetime, timedelta
 from bson import ObjectId
+from authlib.integrations.flask_client import OAuth
 
 def create_app():
     app = Flask(__name__)
