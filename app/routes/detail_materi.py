@@ -31,9 +31,10 @@ def det_materi(_id_kelas, _id_menu):
         if _id_menu == 'none':
             menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : detail_kelas['_id']}))
             if menu_materi:
+                daftar_materi = len(menu_materi)
                 if user_admin:
                     belum_klik_menu = 'belum'
-                    return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, info_kelas = info_kelas, belum_klik_menu= belum_klik_menu)
+                    return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, info_kelas = info_kelas, belum_klik_menu= belum_klik_menu, daftar_materi = daftar_materi)
                 else:
                     print('user masuk Kesini')
                     for item in menu_materi:
@@ -51,19 +52,21 @@ def det_materi(_id_kelas, _id_menu):
                     menu_materi_siswa = current_app.db.menumaterisiswa.find_one({'_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)})
                     return redirect(url_for('detail_materi.det_materi', _id_kelas = _id_kelas, _id_menu = menu_materi_siswa['_id_menu'], msg = msg))
             else:
+                daftar_materi = 0
                 if user_admin:
-                    return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, kosong = 'kosong', info_kelas = info_kelas)
+                    return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, kosong = 'kosong', info_kelas = info_kelas, daftar_materi = daftar_materi)
                 else:
-                    return render_template('materi/laman_materi.html', user_info=user_info, status = status, kosong = 'kosong', info_kelas = info_kelas)
+                    return render_template('materi/laman_materi.html', user_info=user_info, status = status, kosong = 'kosong', info_kelas = info_kelas, daftar_materi = daftar_materi)
         else:
             menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : detail_kelas['_id']}))
+            daftar_materi = len(menu_materi)
             menu_materi_sekarang = current_app.db.menumateri.find_one({'_id' : ObjectId(_id_menu)})
             konten_materi = list(current_app.db.kontenmateri.find({'_id_menu' : ObjectId(_id_menu)}))
 
             if not konten_materi:
                 konten_materi = current_app.db.menumateri.find({'_id' : ObjectId(_id_menu)})
             if user_admin:
-                return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg)
+                return render_template('materi/laman_materi.html', user_info=user_info, status_admin = status, menu_materi = menu_materi, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg, daftar_materi = daftar_materi)
             else:
                 for item in menu_materi:
                         menu_materi_siswa = list(current_app.db.menumaterisiswa.find({'_id_menu' : item['_id'], '_id_siswa' : user_info['_id'], '_id_kelas' : ObjectId(_id_kelas)}))
@@ -82,7 +85,7 @@ def det_materi(_id_kelas, _id_menu):
                 progress = (materi_selesai / total_materi) * 100 if total_materi > 0 else 0
                 progress = round(progress)
                 menu_materi_siswa_selesai = current_app.db.menumaterisiswa.find_one({'_id_siswa': user_info['_id'], '_id_menu' : ObjectId(_id_menu), 'status' : 'selesai'})
-                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg, menu_materi_siswa_selesai = menu_materi_siswa_selesai, progress = progress)
+                return render_template('materi/laman_materi.html', user_info=user_info, status = status, menu_materi_siswa = menu_materi_siswa, konten_materi = konten_materi, info_kelas = info_kelas, menu_materi_sekarang = menu_materi_sekarang, msg = msg, menu_materi_siswa_selesai = menu_materi_siswa_selesai, progress = progress, daftar_materi = daftar_materi)
 
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'

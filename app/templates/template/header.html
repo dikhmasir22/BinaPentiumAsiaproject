@@ -95,7 +95,7 @@
         <div class="modal-body text-center">
           <div class="container-fluid">
             <div class="row kotak-modal">
-              <div class="col-12 col-xl-4 col-lg-6 d-flex justify-content-center align-items-center">
+              <div class="col-12 col-xl-4 col-xxl-4 d-flex justify-content-center align-items-center">
                 <div class="kotak-daftar border p-4 rounded border-2 shadow">
                   <h3 class="text-center p-2">MASUK</h3>
                   <div class="text-center d-flex flex-column" action="/daftar" method="post">
@@ -109,17 +109,20 @@
                       <input id="input-password" type="password" class="form-control" placeholder="Password"
                         aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
-                    <button onclick="sign_in()" class="btn btn-primary text-center mb-2">
+                    <button onclick="sign_in()" class="btn btn-primary text-center mb-1">
                       Masuk
                     </button>
-                    <!-- google -->
-                    <button class="btn btn-light border border-secondary rounded btn-block mb-1" onclick="window.location.href='/login/google'">
-                      <img src="../../static/image/google.png" width="25" alt="">
-                      Login with Google
-                    </button>
-                    <!-- google -->
                     <a class="text-center" href="" data-bs-toggle="modal" data-bs-target="#daftarmodal">Belum Punya
                       Akun? Daftar</a>
+                      <h6>Atau</h6>
+                    <!-- google -->
+                    <button class="btn btn-light border border-secondary rounded btn-block mb-1"
+                      onclick="window.location.href='/login/google'">
+                      <img src="../../static/image/google.png" width="25" alt="">
+                      Masuk dengan Akun Google
+                    </button>
+                    <!-- google -->
+
                   </div>
                 </div>
               </div>
@@ -127,7 +130,7 @@
                     background-image: url('../../static/image/cover.png');
                     background-size: cover;
                     background-repeat: no-repeat;
-                  " class="col-8 d-none d-xl-block d-lg-block"></div>
+                  " class="col-8 d-none d-xl-block"></div>
             </div>
           </div>
         </div>

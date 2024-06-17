@@ -111,4 +111,7 @@ def create_app():
     from .routes.login_gugel import login_gugel
     app.register_blueprint(login_gugel)
 
+    from .routes.edit_materi import edit_materi
+    app.register_blueprint(edit_materi)
+
     return app

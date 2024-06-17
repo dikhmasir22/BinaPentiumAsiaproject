@@ -104,6 +104,24 @@
             });
         });
     </script>
+    {% elif msg == 'edit_materi' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Materi berhasil di edit!',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
     {% endif %}
     {% endif %}
 </head>
@@ -138,7 +156,7 @@
                 <div class="box-materi d-flex flex-column align-items-center p-2 shadow bg-light rounded mt-2 mb-2"
                     style="overflow-x: auto; min-height:75vh; max-height:75vh; width: 95%;">
                     <div class="box d-flex justify-content-start" style="width: 100%;">
-                        <h6 class="text-secondary">Daftar Pelajaran (99)</h6>
+                        <h6 class="text-secondary">Daftar Pelajaran ({{daftar_materi}})</h6>
                     </div>
 
                     {% if status_admin %}
@@ -153,6 +171,42 @@
                     <!-- Jika Link Aktif belum beres -->
                     <div class="box-materi-dalam bg-danger bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
                         style="min-width:100%">
+
+                        <!-- Modal Edit materi 1 -->
+                        <div class="modal fade" id="modaleditmateri1-{{item._id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <form action="/edit_materi/{{info_kelas._id}}/{{item._id}}" method="post"
+                                    class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-start mb-3">Edit Materi</h4>
+                                        <div>
+                                            <div class="form_input mb-3" style="width: 100%;">
+                                                <h6>Judul Materi</h6>
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="Inputkan Judul Materi"
+                                                        name="judul_materi" value="{{item.judul_materi}}"
+                                                        class="form-control" id="nama_kelas" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Batal</div>
+                                            </div>
+                                            <div class="row col-6">
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Modal Edit materi 1 -->
+
                         <!-- Modal -->
                         <div class="modal fade" id="modalmateriadmin-{{item._id}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -185,7 +239,8 @@
                         <!-- Pemantik Modal -->
                         <div
                             class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-dark-subtle">
-                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modaleditmateri1-{{item._id}}"
+                                class="text-warning"><i class="ri-pencil-line"></i></a>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#modalmateriadmin-{{item._id}}"
                                 class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                         </div>
@@ -205,6 +260,41 @@
                     <!-- Menu Normal -->
                     <div class="box-materi-dalam bg-info bg-opacity-10 rounded p-3 mt-3 d-flex justify-content-between pointer position-relative"
                         style="min-width:95%">
+
+                        <!-- Modal Edit materi 1 -->
+                        <div class="modal fade" id="modaleditmateriadmin2-{{item._id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <form action="/edit_materi/{{info_kelas._id}}/{{item._id}}" method="post"
+                                    class="modal-content">
+                                    <div class="modal-body">
+                                        <h4 class="text-start mb-3">Edit Materi</h4>
+                                        <div>
+                                            <div class="form_input mb-3" style="width: 100%;">
+                                                <h6>Judul Materi</h6>
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="Inputkan Judul Materi"
+                                                        name="judul_materi" value="{{item.judul_materi}}"
+                                                        class="form-control" id="judul_materi" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="container d-flex justify-content-between">
+                                            <div class="row col-6">
+                                                <div type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Batal</div>
+                                            </div>
+                                            <div class="row col-6">
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Modal Edit materi 1 -->
 
                         <!-- Modal -->
                         <div class="modal fade" id="modalmateriadmin2-{{item._id}}" tabindex="-1"
@@ -238,7 +328,8 @@
                         <!-- Pemantik Modal -->
                         <div
                             class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-dark-subtle">
-                            <a class="text-warning" href=""><i class="ri-pencil-line"></i></a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modaleditmateriadmin2-{{item._id}}"
+                                class="text-warning"><i class="ri-pencil-line"></i></a>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#modalmateriadmin2-{{item._id}}"
                                 class="ms-2 text-danger"><i class="ri-delete-bin-6-line"></i></a>
                         </div>

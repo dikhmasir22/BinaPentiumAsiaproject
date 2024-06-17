@@ -36,74 +36,136 @@
     </nav>
     <hr>
     <!-- ----- -->
-        <div class="row justify-content-evenly mb-3">
-            <div
-                class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
+    <div class="row justify-content-evenly mb-3">
+        <div
+            class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
+            <div class="box" style="width: 30%; height:100%">
                 {% if user_info.foto_profile %}
-                        <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="120"
-                            alt="">
-                        {% else %}
-                        <img class="p-2 m-2" src="../../static/image/profile.jpg" width="120" alt="">
-                        {% endif %}
-                <div class="box d-flex flex-column">
-                    <h4 class="text-primary">Selamat Datang, {{user_info.nama_lengkap}}</h4>
-                    <p>Kamu berhasil terdaftar di akun Bina Asia Digitalindo. Optimalkan skillmu dengan program intensif
-                        sesuai kebutuhanmu disini, yuk!</p>
-                </div>
-            </div>
-            <div class="row col-5 col-md-3 col-lg-3 col-xl-3 rounded  p-2 bg-light mt-2">
-                {% if status_admin %}
-                <h4>Jumlah Siswa</h4>
-                <div class="box d-flex flex-column text-center">
-                    <h3>99</h3>
-                </div>
+                <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="150" alt="">
                 {% else %}
-                <h4>Pencapaianku! <span class="text-warning"><i class="ri-notification-3-fill"></i></span></h4>
-                <div class="box d-flex flex-column text-center">
-                    <h3 class="text-primary"><i class="ri-book-read-fill"></i> {{jumlah_kelas_diambil}}</h3>
-                    <h6 class="text-primary">Kelas Diambil</h6>
-                </div>
+                <img class="p-2 m-2" src="../../static/image/profile.jpg" width="150" alt="">
                 {% endif %}
+            </div>
 
+            <div class="box p-2 d-flex flex-column" style="width: 70%; height:100%;">
+                <h4 class="text-primary">Selamat Datang, {{user_info.nama_lengkap}}</h4>
+                {% if status_admin %}
+                <p>Berikut adalah Laporan baru di Website Bina Asia Digitalindo.</p>
+                {% else %}
+                <p>Kamu berhasil terdaftar di akun Bina Asia Digitalindo. Optimalkan skillmu dengan program intensif
+                    sesuai kebutuhanmu disini, yuk!</p>
+                {% endif %}
             </div>
         </div>
+        <div class="col-5 col-md-3 col-lg-3 col-xl-3 rounded  p-2 bg-light mt-2">
+            {% if status_admin %}
+            <h4>Keterangan <span class="text-warning"><i class="ri-error-warning-line"></i></span></h4>
+            <div class="box d-flex flex-column text-center">
+                <h3 class="text-primary"><i class="ri-group-line"></i> {{jumlah_siswa}}</h3>
+                <h6 class="text-primary">Jumlah Siswa</h6>
+            </div>
+            {% else %}
+            <h4>Pencapaianku! <span class="text-warning"><i class="ri-notification-3-fill"></i></span></h4>
+            <div class="box d-flex flex-column text-center">
+                <h3 class="text-primary"><i class="ri-book-read-fill"></i> {{jumlah_kelas_diambil}}</h3>
+                <h6 class="text-primary">Kelas Diambil</h6>
+            </div>
+            {% endif %}
 
-        {% if status_admin %}
-        <div class="row justify-content-evenly mt-2">
-            <div
-                class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center rounded  bg-light">
-                <div class="box d-flex flex-column">
-                    <h4>Data Siswa</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur eos debitis ducimus
-                        explicabo
-                        laboriosam autem magnam repellat nemo qui odit!</p>
-                    <div class="row justify-content-center p-2">
-                        <div class="col-4">
-                            <a href="" class="btn btn-primary rounded p-2 m-2 ">Semua Siswa</a>
+        </div>
+    </div>
+
+    {% if status_admin %}
+    <div class="container p-4 mb-3">
+        <div class="row bg-light p-2">
+            <div class="row text-center">
+                <h6>Kelas yang diambil oleh Siswa</h6>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-12 col-lg-6 col-md-6 rounded p-2 bg-light mt-2">
+                    <div class="box d-flex flex-column" style="width: 100%;">
+                        <hr>
+                        <div class="box" style="width: 100%;">
+                            {% set index = namespace(value=1) %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">No.</th>
+                                        <th class="text-center" scope="col">Kelas</th>
+                                        <th class="text-center" scope="col">Kategori</th>
+                                        <th class="text-center" scope="col">Tingkat</th>
+                                        <th class="text-center" scope="col">diikuti</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+    
+                                    {% for kelas in data_kelas %}
+                                    <tr>
+                                        <th scope="col" class="text-center">{{ index.value }}.</th>
+                                        <td class="text-center">{{kelas.nama_kelas}}</td>
+                                        <td class="text-center">{{kelas.kategori_kelas}}</td>
+                                        {% if kelas.tingkatan_kelas %}
+                                        {% if kelas.tingkatan_kelas == 'Beginner' %}
+                                        <td class="text-success text-center">- {{kelas.tingkatan_kelas}} <i
+                                                class="ri-signal-wifi-1-fill"></i></td>
+                                        {% elif kelas.tingkatan_kelas == 'Intermediate' %}
+                                        <td class="text-warning text-center">- {{kelas.tingkatan_kelas}} <i
+                                                class="ri-signal-wifi-2-fill"></i></td>
+                                        {% elif kelas.tingkatan_kelas == 'Advanced' %}
+                                        <td class="text-danger text-center">- {{kelas.tingkatan_kelas}} <i
+                                                class="ri-signal-wifi-3-fill"></i>
+                                        </td>
+                                        {% else %}
+                                        <td class="text-center">
+                                            None <i class="ri-signal-wifi-off-fill"></i>
+                                        </td>
+                                        {% endif %}
+                                        {% else %}
+                                        <td class="text-center">
+                                            None <i class="ri-signal-wifi-off-fill"></i>
+                                        </td>
+                                        {% endif %}
+                                        <td class="text-center">{{kelas.jumlah_siswa}}</td>
+                                    </tr>
+                                    {% set index.value = index.value + 1 %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        {% else %}
-        <div class="row justify-content-evenly p-2">
-            <div class="col-6 bg-light p-2">
-                <h5>Program yang ditawarkan</h5>
-                <p>Bina Asia Digitalindo menyediakan banyak Kelas yang dapat diikuti, terdiri dari Kelas Pemrograman, Marketing, Business, dan kelas lainnya.</p>
-                <div class="row text-center">
-                    <div class="col-12 mb-3">
-                        <h6 class="text-primary fw-bold">Lihat Semua Kelas</h6>
-                        <a href="/semuakelas" class="btn btn-warning text-dark fw-bold">Semua Kelas</a>
+    
                     </div>
                 </div>
             </div>
-            <div class="col-5 bg-light p-2">
-                <h5>Kelas yang diikuti</h5>
+        </div>
+       
+    </div>
+    <div class="container p-4 mb-3">
+        <div class="row bg-light vh-100 p-2">
+            <div class="row text-center">
+                <h6>DIAGRAM OCTAGRAM</h6>
             </div>
         </div>
-        {% endif %}
+    </div>
+
+
+    {% else %}
+    <div class="row justify-content-evenly">
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6 rounded p-2 bg-light mt-2">
+            <h5>Program yang ditawarkan</h5>
+            <p>Bina Asia Digitalindo menyediakan banyak Kelas yang dapat diikuti, terdiri dari Kelas Pemrograman,
+                Marketing, Business, dan kelas lainnya.</p>
+            <div class="row text-center">
+                <div class="col-12 mb-3">
+                    <h6 class="text-primary fw-bold">Lihat Semua Kelas</h6>
+                    <a href="/semuakelas" class="btn btn-warning text-dark fw-bold">Semua Kelas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-5 col-lg-6 col-md-6 rounded  p-2 bg-light mt-2">
+            <h5>Kelas yang diikuti</h5>
+        </div>
+    </div>
+    {% endif %}
 
 
 
