@@ -8,6 +8,7 @@ def program():
     TOKEN_KEY = current_app.config['TOKEN_KEY']
     SECRET_KEY = current_app.config['SECRET_KEY']
     token_receive = request.cookies.get(TOKEN_KEY)
+    semua_kelas = list(current_app.db.semuakelas.find({}))
     try:
         payload = jwt.decode(
             token_receive,
@@ -15,11 +16,11 @@ def program():
             algorithms=['HS256']
         )
         status = payload.get('id')
-        return render_template('template/program.html', status = status)
+        return render_template('template/program.html', status = status, semua_kelas = semua_kelas)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
-        return render_template('template/program.html', msg=msg)
+        return render_template('template/program.html', semua_kelas = semua_kelas)
     except jwt.exceptions.DecodeError:
         msg = request.args.get('msg')
-        return render_template('template/program.html', msg=msg)
+        return render_template('template/program.html', semua_kelas = semua_kelas)
 
