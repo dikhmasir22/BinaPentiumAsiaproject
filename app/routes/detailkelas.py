@@ -9,6 +9,7 @@ def detailkelas(_id):
     TOKEN_KEY = current_app.config['TOKEN_KEY']
     SECRET_KEY = current_app.config['SECRET_KEY']
     token_receive = request.cookies.get(TOKEN_KEY)
+    kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
     try:
         payload = jwt.decode(
             token_receive,
@@ -38,8 +39,8 @@ def detailkelas(_id):
                 return render_template('admin_panel/detailkelas.html', status = status, user_info=user_info, kelas = kelas)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
-        return render_template('template/detailkelas.html', msg=msg)
+        return render_template('template/detail_kelas_guest.html', msg=msg, kelas = kelas)
     except jwt.exceptions.DecodeError:
         msg = request.args.get('msg')
-        return render_template('template/detailkelas.html', msg=msg)
+        return render_template('template/detail_kelas_guest.html', msg=msg, kelas = kelas)
 

@@ -1,0 +1,102 @@
+{% include 'template/header.html' %}
+
+<section id="detail" class="container-fluid p-2">
+
+    <div class="container-fluid d-flex justify-content-start align-items-center">
+        <div class="box">
+            <h3>Detail Kelas</h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detail Kelas - {{ kelas.nama_kelas }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row p-3 rounded-top bg-light ">
+        <div class="col-12 col-xl-5 col-lg-5 col-md-5 mb-3">
+            <img src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" alt="kelas" width="100%" height="100%">
+        </div>
+        <div class="col-12 col-xl-7 col-lg-7 col-md-7 d-flex flex-column justify-content-between">
+            <div class="juduldesk">
+                <div class="box mb-2 d-flex justify-content-start align-items-center">
+                    <h4>{{kelas.nama_kelas}}</h4>
+                </div>
+                <p>{{kelas.deskripsi_kelas}}</p>
+            </div>
+
+
+            <div class="row justify-content-start">
+                <div class="col-6 col-md-6 col-lg-6 col-xl-4 col-xxl-6 border-end border-2 border-dark-subtle">
+                    <p class="text-secondary">Ketegori Kelas</p>
+                    <h6>{{kelas.kategori_kelas}}</h6>
+                </div>
+                <div class="col-6 col-md-6 col-lg-6 col-xl-5 col-xxl-6">
+                    <p class="text-secondary">Tingkat</p>
+                    {% if kelas.tingkatan_kelas %}
+                    {% if kelas.tingkatan_kelas == 'Beginner' %}
+                    <p class="text-success">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-1-fill"></i></p>
+                    {% elif kelas.tingkatan_kelas == 'Intermediate' %}
+                    <p class="text-warning">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-2-fill"></i></p>
+                    {% elif kelas.tingkatan_kelas == 'Advanced' %}
+                    <p class="text-danger">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-3-fill"></i></p>
+                    {% else %}
+                    <p>
+                        None <i class="ri-signal-wifi-off-fill"></i>
+                    </p>
+                    {% endif %}
+                    {% else %}
+                    <p>
+                        None <i class="ri-signal-wifi-off-fill"></i>
+                    </p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bg-light border-top rounded-bottom p-2">
+        <div class="container d-flex justify-content-between">
+            <div class="harga">
+                <h5 class="text-info">Rp. {{kelas.harga_kelas}}</h5>
+            </div>
+            <div class="ikutkelas">
+                <button data-bs-toggle="modal" data-bs-target="#masukmodal" class="btn btn-info rounded p-2">+
+                    Ikuti Kelas</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row p-3 border-1" style="background-color: whitesmoke; border-radius: 10px;">
+        <h5>Modul</h5>
+        <div class="row materi">
+            <div class="row">
+                <div class="col d-flex justify-content-between">
+                    <p>PENGENALAN PEMBELAJARAN</p>
+                    <button class="btn">Mulai</button>
+                </div>
+                <hr style="color: black;">
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-between">
+                    <p>PENGENALAN PEMBELAJARAN</p>
+                    <button class="btn">Mulai</button>
+                </div>
+                <hr style="color: black;">
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-between">
+                    <p>PENGENALAN PEMBELAJARAN</p>
+                    <button class="btn">Mulai</button>
+                </div>
+                <hr style="color: black;">
+            </div>
+        </div>
+    </div>
+
+    {% include 'template/footer.html' %}
