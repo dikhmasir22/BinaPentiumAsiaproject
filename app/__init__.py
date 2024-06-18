@@ -114,4 +114,7 @@ def create_app():
     from .routes.edit_materi import edit_materi
     app.register_blueprint(edit_materi)
 
+    from .routes.pembayaran import pembayaran
+    app.register_blueprint(pembayaran)
+
     return app
