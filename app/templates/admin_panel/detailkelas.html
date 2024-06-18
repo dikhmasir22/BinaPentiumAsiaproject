@@ -1,203 +1,315 @@
 {% include 'headfoot/header_admin.html' %}
 
 <section id="main" class="container-fluid p-2">
+  <div class="container-fluid d-flex justify-content-start align-items-center">
+    <div class="box">
+      <h3>Detail Kelas</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item text-dark garis-none">
+            <a href="/dashboard">Home</a>
+          </li>
 
-    <div class="container-fluid d-flex justify-content-start align-items-center">
-        <div class="box">
-            <h3>Detail Kelas</h3>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
-
-                    {% if kelas_diambil %}
-                    <li class="breadcrumb-item text-dark garis-none"><a href="/kelassaya">Kelas Saya</a></li>
-                    {% else %}
-                    <li class="breadcrumb-item text-dark garis-none"><a href="/semuakelas">Semua Kelas</a></li>
-                    {% endif %}
-                    <li class="breadcrumb-item active" aria-current="page">Detail Kelas - {{ kelas.nama_kelas }}</li>
-                </ol>
-            </nav>
-        </div>
+          {% if kelas_diambil %}
+          <li class="breadcrumb-item text-dark garis-none">
+            <a href="/kelassaya">Kelas Saya</a>
+          </li>
+          {% else %}
+          <li class="breadcrumb-item text-dark garis-none">
+            <a href="/semuakelas">Semua Kelas</a>
+          </li>
+          {% endif %}
+          <li class="breadcrumb-item active" aria-current="page">
+            Detail Kelas - {{ kelas.nama_kelas }}
+          </li>
+        </ol>
+      </nav>
     </div>
+  </div>
 
-    <hr>
+  <hr />
 
-    <div class="row p-3 rounded-top bg-light ">
-        <div class="col-12 col-xl-5 col-lg-5 col-md-5 mb-3">
-            <img src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" alt="kelas" width="100%" height="100%">
-        </div>
-        <div class="col-12 col-xl-7 col-lg-7 col-md-7 d-flex flex-column justify-content-between">
-            <div class="juduldesk">
-
-                {% if status_admin %}
-                <div class="box mb-2 d-flex justify-content-between align-items-center">
-                    <h4>{{kelas.nama_kelas}}</h4>
-                    <div class="box">
-                        <a href="/editkelas/{{kelas._id}}" class="btn btn-warning text-dark fw-bold fs-6 gelembung"><i class="ri-pencil-line"></i></a>
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#modalkelas-{{kelas._id}}" class="btn btn-danger text-light fw-bold fs-6 gelembung"><i class="ri-delete-bin-6-line"></i></a>
-                    </div>
-                </div>
-                {% else %}
-                <div class="box mb-2 d-flex justify-content-start align-items-center">
-                    <h4>{{kelas.nama_kelas}}</h4>
-                </div>
-                {% endif %}
-                
-                
-                <p>{{kelas.deskripsi_kelas}}</p>
-            </div>
-
-
-            <div class="row justify-content-start">
-                <div class="col-6 col-md-6 col-lg-6 col-xl-4 col-xxl-6 border-end border-2 border-dark-subtle">
-                    <p class="text-secondary">Kategori Kelas</p>
-                    <h6>{{kelas.kategori_kelas}}</h6>
-                </div>
-                <div class="col-6 col-md-6 col-lg-6 col-xl-5 col-xxl-6">
-                    <p class="text-secondary">Tingkat</p>
-                    {% if kelas.tingkatan_kelas %}
-                    {% if kelas.tingkatan_kelas == 'Beginner' %}
-                    <p class="text-success">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-1-fill"></i></p>
-                    {% elif kelas.tingkatan_kelas == 'Intermediate' %}
-                    <p class="text-warning">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-2-fill"></i></p>
-                    {% elif kelas.tingkatan_kelas == 'Advanced' %}
-                    <p class="text-danger">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-3-fill"></i></p>
-                    {% else %}
-                    <p>
-                        None <i class="ri-signal-wifi-off-fill"></i>
-                    </p>
-                    {% endif %}
-                    {% else %}
-                    <p>
-                        None <i class="ri-signal-wifi-off-fill"></i>
-                    </p>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
+  <div class="row p-3 rounded-top bg-light">
+    <div class="col-12 col-xl-5 col-lg-5 col-md-5 mb-3">
+      <img
+        src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}"
+        alt="kelas"
+        width="100%"
+        height="100%"
+      />
     </div>
-    <div class="row bg-light border-top rounded-bottom p-2">
-        {% if kelas_diambil %}
-        <div class="container d-flex justify-content-end">
+    <div
+      class="col-12 col-xl-7 col-lg-7 col-md-7 d-flex flex-column justify-content-between"
+    >
+      <div class="juduldesk">
+        {% if status_admin %}
+        <div class="box mb-2 d-flex justify-content-between align-items-center">
+          <h4>{{kelas.nama_kelas}}</h4>
+          <div class="box">
+            <a
+              href="/editkelas/{{kelas._id}}"
+              class="btn btn-warning text-dark fw-bold fs-6 gelembung"
+              ><i class="ri-pencil-line"></i
+            ></a>
+            <a
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#modalkelas-{{kelas._id}}"
+              class="btn btn-danger text-light fw-bold fs-6 gelembung"
+              ><i class="ri-delete-bin-6-line"></i
+            ></a>
+          </div>
+        </div>
         {% else %}
-        <div class="container d-flex justify-content-between">
-        {% endif %}
-        
-            {% if not kelas_diambil %}
-            <div class="harga">
-                <h5 class="text-info">Rp. {{kelas.harga_kelas}}</h5>
-            </div>
-            {% endif %}
-
-
-            <div class="ikutkelas">
-                {% if status_admin %}
-                <a href="/detailmateri/{{kelas._id}}/none" class="btn btn-info rounded p-2">Edit Materi Kelas</a>
-                {% else %}
-                {% if kelas_diambil %}
-                {% if user_pernah_mulai %}
-                <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}?msg=masuk_kelas"
-                    class="btn btn-warning rounded p-2">Lanjutkan <i class="ri-skip-right-fill"></i></a>
-                {% else %}
-                <a href="/detailmateri/{{kelas._id}}/none?msg=masuk_kelas" class="btn btn-info rounded p-2">Mulai Kelas -></a>
-                {% endif %}
-                {% else %}
-                <button data-bs-toggle="modal" data-bs-target="#ringkasan_pembelian" class="btn btn-info rounded p-2">+
-                    Ikuti Kelas</button>
-                {% endif %}
-                {% endif %}
-            </div>
+        <div class="box mb-2 d-flex justify-content-start align-items-center">
+          <h4>{{kelas.nama_kelas}}</h4>
         </div>
+        {% endif %}
+
+        <p>{{kelas.deskripsi_kelas}}</p>
+      </div>
+
+      <div class="row justify-content-start">
+        <div
+          class="col-6 col-md-6 col-lg-6 col-xl-4 col-xxl-6 border-end border-2 border-dark-subtle"
+        >
+          <p class="text-secondary">Kategori Kelas</p>
+          <h6>{{kelas.kategori_kelas}}</h6>
+        </div>
+        <div class="col-6 col-md-6 col-lg-6 col-xl-5 col-xxl-6">
+          <p class="text-secondary">Tingkat</p>
+          {% if kelas.tingkatan_kelas %} {% if kelas.tingkatan_kelas ==
+          'Beginner' %}
+          <p class="text-success">
+            - {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-1-fill"></i>
+          </p>
+          {% elif kelas.tingkatan_kelas == 'Intermediate' %}
+          <p class="text-warning">
+            - {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-2-fill"></i>
+          </p>
+          {% elif kelas.tingkatan_kelas == 'Advanced' %}
+          <p class="text-danger">
+            - {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-3-fill"></i>
+          </p>
+          {% else %}
+          <p>None <i class="ri-signal-wifi-off-fill"></i></p>
+          {% endif %} {% else %}
+          <p>None <i class="ri-signal-wifi-off-fill"></i></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-light border-top rounded-bottom p-2">
+    {% if kelas_diambil %}
+    <div class="container d-flex justify-content-end">
+      {% else %}
+      <div class="container d-flex justify-content-between">
+        {% endif %} {% if not kelas_diambil %}
+        <div class="harga">
+          <h5 class="text-info">Rp. {{kelas.harga_kelas}}</h5>
+        </div>
+        {% endif %}
+
+        <div class="ikutkelas">
+          {% if status_admin %}
+          <a
+            href="/detailmateri/{{kelas._id}}/none"
+            class="btn btn-info rounded p-2"
+            >Edit Materi Kelas</a
+          >
+          {% else %} {% if kelas_diambil %} {% if user_pernah_mulai %}
+          <a
+            href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}?msg=masuk_kelas"
+            class="btn btn-warning rounded p-2"
+            >Lanjutkan <i class="ri-skip-right-fill"></i
+          ></a>
+          {% else %}
+          <a
+            href="/detailmateri/{{kelas._id}}/none?msg=masuk_kelas"
+            class="btn btn-info rounded p-2"
+            >Mulai Kelas -></a
+          >
+          {% endif %} {% else %}
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#ringkasan_pembelian"
+            class="btn btn-info rounded p-2"
+          >
+            + Ikuti Kelas
+          </button>
+          {% endif %} {% endif %}
+        </div>
+      </div>
     </div>
 
-    <br>
+    <br />
 
-    <div class="row p-3 border-1" style="background-color: whitesmoke; border-radius: 10px;">
-        <h5>Modul</h5>
-        <div class="row materi">
-            <div class="row">
-                <div class="col d-flex justify-content-between">
-                    <p>PENGENALAN PEMBELAJARAN</p>
-                    <button class="btn">Mulai</button>
-                </div>
-                <hr style="color: black;">
-            </div>
-            <div class="row">
-                <div class="col d-flex justify-content-between">
-                    <p>PENGENALAN PEMBELAJARAN</p>
-                    <button class="btn">Mulai</button>
-                </div>
-                <hr style="color: black;">
-            </div>
-            <div class="row">
-                <div class="col d-flex justify-content-between">
-                    <p>PENGENALAN PEMBELAJARAN</p>
-                    <button class="btn">Mulai</button>
-                </div>
-                <hr style="color: black;">
-            </div>
+    <div
+      class="row p-3 border-1"
+      style="background-color: whitesmoke; border-radius: 10px"
+    >
+      <h5>Modul</h5>
+      <div class="row materi">
+        <div class="row">
+          <div class="col d-flex justify-content-between">
+            <p>PENGENALAN PEMBELAJARAN</p>
+            <button class="btn">Mulai</button>
+          </div>
+          <hr style="color: black" />
         </div>
+        <div class="row">
+          <div class="col d-flex justify-content-between">
+            <p>PENGENALAN PEMBELAJARAN</p>
+            <button class="btn">Mulai</button>
+          </div>
+          <hr style="color: black" />
+        </div>
+        <div class="row">
+          <div class="col d-flex justify-content-between">
+            <p>PENGENALAN PEMBELAJARAN</p>
+            <button class="btn">Mulai</button>
+          </div>
+          <hr style="color: black" />
+        </div>
+      </div>
     </div>
 
     <!-- Modal Ringkasan Pembelian -->
-    <div class="modal fade" id="ringkasan_pembelian" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ringkasan Pembelian</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid d-flex justify-content-between">
-                        <div class="box d-flex">
-                            <img class="pe-2" src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" width="100"
-                                alt="">
-                            <h6>{{kelas.nama_kelas}}</h6>
-                        </div>
-                        <h6 class="text-secondary">Rp. {{kelas.harga_kelas}}</h6>
-                    </div>
-                    <hr class="hr-dashed">
-                    <div class="row text-center">
-                        <form class="m-2" action="/ikuti_kelas/{{kelas._id}}/{{user_info._id}}" method="post">
-                            <button type="submit" class="btn btn-primary">Ikuti Kelas</button>
-                        </form>
-                        <p class="text-center text-muted mb-0 xsmall fs-kecil"> Dengan menekan "Ikuti Kelas" kamu telah
-                            menyetujui <a target="_blank" href="/term_condition">syarat &amp; ketentuan</a>
-                            dan <a target="_blank" href="/privacy_policy">kebijakan privasi</a> Bina Asia Digitalindo
-                        </p>
-                    </div>
-                </div>
+    <div
+      class="modal fade"
+      id="ringkasan_pembelian"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Ringkasan Pembelian
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid d-flex justify-content-between">
+              <div class="box d-flex">
+                <img
+                  class="pe-2"
+                  src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}"
+                  width="100"
+                  alt=""
+                />
+                <h6>{{kelas.nama_kelas}}</h6>
+              </div>
+              <h6 class="text-secondary">Rp. {{kelas.harga_kelas}}</h6>
             </div>
+            <hr class="hr-dashed" />
+            <div class="row text-center">
+              <button
+                class="btn btn-primary"
+                onclick="transaksion()"
+                id="btn-transaksi"
+              >
+                Ikuti Kelas
+              </button>
+              <p class="text-center text-muted mb-0 xsmall fs-kecil">
+                Dengan menekan "Ikuti Kelas" kamu telah menyetujui
+                <a target="_blank" href="/term_condition"
+                  >syarat &amp; ketentuan</a
+                >
+                dan
+                <a target="_blank" href="/privacy_policy">kebijakan privasi</a>
+                Bina Asia Digitalindo
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <script>
+      function transaksion() {
+        var kelas_id = "{{ kelas._id }}";
+        var kelas_harga = "{{ kelas.harga_kelas }}";
+        var kelas_nama = "{{ kelas.nama_kelas }}";
+        var user_email = "{{ user_info.email }}";
+        var user_phone = "{{ user_info.no_telepon }}";
+
+        $.ajax({
+          url: "/transaksi",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+            user_id: "{{ user_info._id }}",
+            kelas_id: kelas_id,
+            kelas_harga: kelas_harga,
+            kelas_nama: kelas_nama,
+            email: user_email,
+            phone: user_phone,
+          }),
+          success: function (data) {
+            if (data.error) {
+              console.error(data.error);
+            } else {
+              window.location.href = data.redirect_url;
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error:", error);
+          },
+        });
+      }
+    </script>
 
     <!-- Modal -->
-    <div class="modal fade" id="modalkelas-{{kelas._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div
+      class="modal fade"
+      id="modalkelas-{{kelas._id}}"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-body">
-                <h4 class="text-center">Anda yakin ingin menghapus Kelas Ini?</h4>
-                <h6 class="text-center fs-kecil text-warning">{{kelas.nama_kelas}}</h6>
-                <p class="text-center text-danger fs-kecil">*Tindakan ini akan menghapus semua Materi yang ada
-                    serta semua
-                    konten Video, Gambar, atau Penjelasan dalam Materi</p>
+          <div class="modal-body">
+            <h4 class="text-center">Anda yakin ingin menghapus Kelas Ini?</h4>
+            <h6 class="text-center fs-kecil text-warning">
+              {{kelas.nama_kelas}}
+            </h6>
+            <p class="text-center text-danger fs-kecil">
+              *Tindakan ini akan menghapus semua Materi yang ada serta semua
+              konten Video, Gambar, atau Penjelasan dalam Materi
+            </p>
+          </div>
+          <div class="modal-footer">
+            <div class="container d-flex justify-content-between">
+              <div class="row col-6">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+              </div>
+              <div class="row col-6">
+                <a href="/hapus_kelas/{{kelas._id}}" class="btn btn-danger"
+                  >Hapus</a
+                >
+              </div>
             </div>
-            <div class="modal-footer">
-                <div class="container d-flex justify-content-between">
-                    <div class="row col-6">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    </div>
-                    <div class="row col-6">
-                        <a href="/hapus_kelas/{{kelas._id}}" class="btn btn-danger">Hapus</a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- Modal -->
+    <!-- Modal -->
 
     {% include 'headfoot/footer_admin.html' %}
+  </div>
+</section>
