@@ -97,6 +97,18 @@ body {
     object-fit: cover;
 }
 
+#topbut{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* =================== ROOT END ======================*/
 
