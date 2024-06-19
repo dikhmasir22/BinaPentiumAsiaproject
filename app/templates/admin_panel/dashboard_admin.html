@@ -41,9 +41,9 @@
             class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
             <div class="box" style="width: 30%; height:100%">
                 {% if user_info.foto_profile %}
-                <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="150" alt="">
+                <img class="p-2 m-2" src="{{ url_for('static', filename='image/Imgprofile/' ~ user_info.foto_profile) }}" width="150" alt="">
                 {% else %}
-                <img class="p-2 m-2" src="../../static/image/profile.jpg" width="150" alt="">
+                <img class="p-2 m-2" src="{{ url_for('static', filename='image/profile.jpg') }}" width="150" alt="">
                 {% endif %}
             </div>
 
