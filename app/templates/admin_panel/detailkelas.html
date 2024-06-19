@@ -240,24 +240,25 @@
         var kelas_nama = "{{ kelas.nama_kelas }}";
         var user_email = "{{ user_info.email }}";
         var user_phone = "{{ user_info.no_telepon }}";
+        var nama = "{{user_info.nama_lengkap}}"
 
         $.ajax({
           url: "/transaksi",
           method: "POST",
-          contentType: "application/json",
-          data: JSON.stringify({
+          data: {
             user_id: "{{ user_info._id }}",
+            nama : "{{user_info.nama_lengkap}}",
             kelas_id: kelas_id,
             kelas_harga: kelas_harga,
             kelas_nama: kelas_nama,
             email: user_email,
             phone: user_phone,
-          }),
+          },
           success: function (data) {
             if (data.error) {
               console.error(data.error);
             } else {
-              window.location.href = data.redirect_url;
+              window.location.replace(`/transaksi/${data['id']}`);
             }
           },
           error: function (xhr, status, error) {
