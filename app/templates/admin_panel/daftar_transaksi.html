@@ -1,0 +1,77 @@
+{% include 'headfoot/header_admin.html' %}
+
+<section id="main" class="container-fluid p-2">
+
+
+    <h3>Daftar Transaksi</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Daftar Transaksi</li>
+        </ol>
+    </nav>
+    <hr>
+
+    <div class="card card-clear no-gutters">
+        <div class="card-body bg-white shadow-sm table-responsive">
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th class="fit">No.</th>
+                        <th class="text-left">Tagihan</th>
+                        <th class="text-center">Jumlah</th>
+                        <th class="cell-state">Status</th>
+                        <th class="cell-state">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set index = namespace(value=1) %}
+                    {% for item in transaksi %}
+                    <tr>
+                        <td class="text-right">{{ index.value }}.</td>
+                        <td>
+                            <strong>
+                                [{{item.order_id}}]
+                            </strong>
+                            Pendaftaran Kelas : {{item.kelas_nama}}
+                        </td>
+                        <td class="fit text-right text-nowrap">
+                            Rp. {{item.kelas_harga}}
+                        </td>
+                        <td class="fit">
+                            {% if item.status == 'pending' %}
+                            <div class="alert alert-danger mb-0 px-2 py-1 font-weight-bold text-center text-nowrap">
+                                Belum Bayar</div>
+
+                            {% elif item.status == 'sudah bayar' %}
+                            <div class="alert alert-success mb-0 px-2 py-1 font-weight-bold text-center text-nowrap">
+                                Sudah Bayar</div>
+                            {% endif %}
+
+                        </td>
+                        <td class="fit text-center">
+                            {% if item.status == 'sudah bayar' %}
+                            <a class="btn btn-primary btn-block text-nowrap"
+                                href="/detailkelas/{{item._id_kelas}}">Mulai Kelas</a>
+                            {% else %}
+                            <a class="btn btn-primary btn-block text-nowrap"
+                                href="/transaksi/{{item.order_id}}">Bayar Sekarang</a>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                    {% set index.value = index.value + 1 %}
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+{% include 'headfoot/footer_admin.html' %}

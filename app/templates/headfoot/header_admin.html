@@ -37,7 +37,10 @@
                 document.querySelector('#sidebar-nav .nav-sidelink[href="/siswa"]').classList.add('aktif');
             } else if (lokasi.includes('/kelassaya')) {
                 document.querySelector('#sidebar-nav .nav-sidelink[href="/kelassaya"]').classList.add('aktif');
-            } else {
+            } else if (lokasi.includes('/daftar_transaksi')) {
+                document.querySelector('#sidebar-nav .nav-sidelink[href="/daftar_transaksi"]').classList.add('aktif');
+            }
+            else {
                 document.querySelector('#sidebar-nav .nav-sidelink[href="/"]').classList.add('aktif');
             }
         });
@@ -102,6 +105,7 @@
             <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/siswa"><i class="ri-contacts-book-2-line"></i> Siswa</a></li>
             {% elif status %}
             <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/kelassaya"><i class="ri-contacts-book-line"></i> Kelas Saya</a></li>
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/daftar_transaksi"><i class="ri-exchange-dollar-line"></i> Daftar Transaksi</a></li>
             {% endif %}
             
         </ul>
