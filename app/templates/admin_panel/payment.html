@@ -13,6 +13,24 @@
     $(document).ready(function(){
         window.snap.embed('{{data.transaction_token}}',{
             embedId : 'snap-container',
+            onSuccess: function(result) {
+                let _id_transaksi = '{{data._id}}'
+                let _id_kelas = '{{data._id_kelas}}'
+                let _id_siswa = '{{data._id_siswa}}'
+                $.ajax({
+                    url : '/transaksi_sukses',
+                    type: 'POST',
+                    data: {
+                        _id_transaksi : _id_transaksi,
+                        _id_kelas : _id_kelas,
+                        _id_siswa : _id_siswa
+                    },
+                    success : function (response) {
+                        window.location.replace('/kelassaya?msg=ikut_kelas')
+                    }
+                })
+            }
+            
         })
     })
 </script>

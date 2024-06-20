@@ -9,7 +9,7 @@ transaksi_ = Blueprint('transaksi', __name__)
 
 @transaksi_.route('/transaksi', methods=['POST'])
 def transaksi():
-    id_kelas = request.form.get('id_kelas')
+    id_kelas = request.form.get('kelas_id')
     nama_lengkap = request.form.get('nama')
     user_id = request.form.get('user_id')
     kelas_harga = request.form.get('kelas_harga')
@@ -43,8 +43,8 @@ def transaksi():
     transaction_token = transaction['token']
 
     data_transaksi = {
-        "id_kelas": ObjectId(id_kelas),
-        "user_id": ObjectId(user_id),
+        "_id_kelas": ObjectId(id_kelas),
+        "_id_siswa": ObjectId(user_id),
         "kelas_nama": kelas_nama,
         "kelas_harga": int(kelas_harga),
         "order_id": order_id,
@@ -55,8 +55,18 @@ def transaksi():
     current_app.db.transaksi.insert_one(data_transaksi)
 
     return jsonify({
-        'id' : order_id
+        'order_id' : order_id
     })
+
+@transaksi_.route('/transaksi_sukses', methods = ['POST'])
+def sukses_bayar():
+    _id_transaksi = request.form.get('_id_transaksi')
+    _id_kelas = request.form.get('_id_kelas')
+    _id_siswa = request.form.get('_id_siswa')
+    print(_id_kelas)
+
+    current_app.db.transaksi.update_one({'_id' : ObjectId(_id_transaksi)}, {'$set' : {'status' : 'sudah bayar'}})
+    return redirect(url_for('ikuti_kelas.ikuti_kelas', _id=str(_id_kelas), _idsiswa=str(_id_siswa)))
 
 @transaksi_.route('/transaksi/<id>')
 def payment(id):

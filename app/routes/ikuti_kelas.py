@@ -4,19 +4,24 @@ from bson import ObjectId
 
 ikuti_kelas_ = Blueprint('ikuti_kelas', __name__)
 
-@ikuti_kelas_.route('/ikuti_kelas/<_id>/<_idsiswa>',methods=['POST'])
+@ikuti_kelas_.route('/ikuti_kelas/<_id>/<_idsiswa>')
 def ikuti_kelas(_id,_idsiswa):
+    _id = ObjectId(_id)
+    _idsiswa = ObjectId(_idsiswa)
+    print(_id, _idsiswa)
     TOKEN_KEY = current_app.config['TOKEN_KEY']
     SECRET_KEY = current_app.config['SECRET_KEY']
     token_receive = request.cookies.get(TOKEN_KEY)
+    kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
+    print(kelas)
     try:
         payload = jwt.decode(
             token_receive,
             SECRET_KEY,
             algorithms=['HS256']
         )
-        kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
-
+        
+        
         kelas_sudah_diambil = current_app.db.kelassaya.find_one({
             '_id_kelas' : ObjectId(_id),
             '_id_siswa' : ObjectId(_idsiswa) 

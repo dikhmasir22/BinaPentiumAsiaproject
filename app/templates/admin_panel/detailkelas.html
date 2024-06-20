@@ -258,7 +258,7 @@
             if (data.error) {
               console.error(data.error);
             } else {
-              window.location.replace(`/transaksi/${data['id']}`);
+              window.location.replace(`/transaksi/${data['order_id']}`);
             }
           },
           error: function (xhr, status, error) {
