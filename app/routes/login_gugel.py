@@ -36,6 +36,12 @@ def login():
 @login_gugel.route('/callback')
 def callback():
 
+    semua_kelas = list(current_app.db.semuakelas.find({}))
+
+    if 'error' in request.args:
+      
+        return redirect(url_for('homepage.homepage'))
+
     flow.fetch_token(authorization_response=request.url)
     credentials = flow.credentials
     request_session = google_requests.Request()
@@ -45,11 +51,11 @@ def callback():
         audience=GOOGLE_CLIENT_ID
     )
 
-    email = id_info.get('email').lower().split('@')[0]
+    email = id_info.get('email')
     user = current_app.db.user.find_one({'email': email})
 
     if user is None:
-        # Pengguna baru, simpan ke database
+        
         namalengkap = id_info.get('name', '')
         namadepan = namalengkap.split(' ')[0]
 
@@ -76,4 +82,4 @@ def callback():
     SECRET_KEY = current_app.config['SECRET_KEY']
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
-    return render_template('template/homepage.html', token = token)
+    return render_template('template/homepage.html', token = token, semua_kelas = semua_kelas)

@@ -8,8 +8,6 @@ login_ = Blueprint('login', __name__)
 @login_.route("/login", methods=["POST"])
 def sign_in():
     email = request.form['email']
-    email = email.lower()
-    email = email.split('@')[0]
     user_sudah_login = current_app.db.user.find_one({'email' : email})
     if user_sudah_login :
         user_admin = current_app.db.user.find_one({'email' : 'admin'})

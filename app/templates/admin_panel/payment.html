@@ -1,36 +1,46 @@
+{% include 'headfoot/header_admin.html' %}
+
+<section id="main" class="container-fluid p-2">
 
 
-<div class="w100 p-4">
-    <div id="snap-container" class="d-flex justify-content-center"></div>
-</div>
+    <h3>Pembayaran</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Pembayaran</li>
+        </ol>
+    </nav>
+    <hr>
 
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<script type="text/javascript"
-		src="https://app.sandbox.midtrans.com/snap/snap.js"
-    data-client-key="SB-Mid-client-EUKPwnA2TMKkqkoq"></script>
+    <div class="w-100 p-4">
+        <div id="snap-container" class="d-flex justify-content-center"></div>
+    </div>
+</section>
 
 <script>
-    $(document).ready(function(){
-        window.snap.embed('{{data.transaction_token}}',{
-            embedId : 'snap-container',
-            onSuccess: function(result) {
+    $(document).ready(function () {
+        window.snap.embed('{{data.transaction_token}}', {
+            embedId: 'snap-container',
+            onSuccess: function (result) {
                 let _id_transaksi = '{{data._id}}'
                 let _id_kelas = '{{data._id_kelas}}'
                 let _id_siswa = '{{data._id_siswa}}'
                 $.ajax({
-                    url : '/transaksi_sukses',
+                    url: '/transaksi_sukses',
                     type: 'POST',
                     data: {
-                        _id_transaksi : _id_transaksi,
-                        _id_kelas : _id_kelas,
-                        _id_siswa : _id_siswa
+                        _id_transaksi: _id_transaksi,
+                        _id_kelas: _id_kelas,
+                        _id_siswa: _id_siswa
                     },
-                    success : function (response) {
+                    success: function (response) {
                         window.location.replace('/kelassaya?msg=ikut_kelas')
                     }
                 })
             }
-            
+
         })
     })
 </script>
+
+{% include 'headfoot/footer_admin.html' %}

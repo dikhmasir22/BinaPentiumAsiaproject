@@ -14,6 +14,7 @@ def siswa():
             SECRET_KEY,
             algorithms=['HS256']
         )
+        msg = request.args.get('msg')
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
         Siswa = list(current_app.db.user.find({}))
         status = payload.get('id')
@@ -22,7 +23,7 @@ def siswa():
             'level': 'admin'})
         
         if user_admin:
-            return render_template('admin_panel/Siswa.html', user_info=user_info, status_admin = status, Siswa = Siswa)
+            return render_template('admin_panel/Siswa.html', user_info=user_info, status_admin = status, Siswa = Siswa, msg = msg)
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))

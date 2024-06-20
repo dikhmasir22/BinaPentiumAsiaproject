@@ -18,9 +18,8 @@ def update_profile():
             user_info = current_app.db.user.find_one({'email': payload.get('id')})
 
             email = request.form['email']
-            email = email.lower()
-            email = email.split('@')[0]
             namalengkap = request.form['nama_lengkap']
+            namadepan = namalengkap.split(' ')[0]
             no_telepon = request.form['no_telepon']
             no_ktp = request.form['no_ktp']
             jenis_kelamin = request.form['jenis_kelamin']
@@ -36,11 +35,13 @@ def update_profile():
             save_to = f'app/static/image/Imgprofile/{gambar_name}'
             gambar.save(save_to)
 
+            password = user_info.get('password', '')
+
             doc = {
                 "email": email,                             
-                "password": user_info['password'],                          
+                "password": password,                          
                 "nama_lengkap": namalengkap,
-                "nama_depan": user_info['nama_depan'],
+                "nama_depan": namadepan,
                 "deskripsi" : deskripsi,
                 "no_telepon": no_telepon,
                 "no_ktp": no_ktp,

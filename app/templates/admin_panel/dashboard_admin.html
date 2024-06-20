@@ -41,7 +41,9 @@
             class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
             <div class="box" style="width: 30%; height:100%">
                 {% if user_info.foto_profile %}
-                <img class="p-2 m-2" src="{{ url_for('static', filename='image/Imgprofile/' ~ user_info.foto_profile) }}" width="150" alt="">
+                <img class="p-2 m-2"
+                    src="{{ url_for('static', filename='image/Imgprofile/' ~ user_info.foto_profile) }}" width="150"
+                    alt="">
                 {% else %}
                 <img class="p-2 m-2" src="{{ url_for('static', filename='image/profile.jpg') }}" width="150" alt="">
                 {% endif %}
@@ -98,7 +100,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-    
+
                                     {% for kelas in data_kelas %}
                                     <tr>
                                         <th scope="col" class="text-center">{{ index.value }}.</th>
@@ -132,17 +134,58 @@
                                 </tbody>
                             </table>
                         </div>
-    
+
                     </div>
                 </div>
             </div>
         </div>
-       
+
     </div>
     <div class="container p-4 mb-3">
-        <div class="row bg-light vh-100 p-2">
-            <div class="row text-center">
-                <h6>DIAGRAM KELAS DIAMBIL</h6>
+        <div class="row bg-light p-2">
+            <div class="row text-center mb-3">
+                <h6 class="text-primary">DIAGRAM KELAS DIAMBIL</h6>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-7 col-lg-7 col-md-7">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <script>
+                        var dataKelas = {{ data_kelas | tojson }};
+                        var labels = dataKelas.map(kelas => kelas.nama_kelas);
+                        var data = dataKelas.map(kelas => kelas.jumlah_siswa);
+                        function getRandomColor() {
+                            var letters = '0123456789ABCDEF';
+                            var color = '#';
+                            for (var i = 0; i < 6; i++) {
+                                color += letters[Math.floor(Math.random() * 16)];
+                            }
+                            return color;
+                        }
+                        var backgroundColors = dataKelas.map(() => getRandomColor());
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Jumlah Siswa',
+                                    data: data,
+                                    backgroundColor: backgroundColors,
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
             </div>
         </div>
     </div>

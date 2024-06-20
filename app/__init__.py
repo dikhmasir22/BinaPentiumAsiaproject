@@ -116,4 +116,9 @@ def create_app():
 
     from .routes.transaksi import transaksi_
     app.register_blueprint(transaksi_)
+
+    from .routes.hapus_siswa import hapus_siswa
+    app.register_blueprint(hapus_siswa)
+
+
     return app

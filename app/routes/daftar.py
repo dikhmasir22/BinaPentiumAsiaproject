@@ -7,8 +7,6 @@ def sign_up():
     namalengkap = request.form['nama']
     namadepan = namalengkap.split(' ')[0]
     email = request.form['email']
-    email = email.lower()
-    email = email.split('@')[0]
     password_receive = request.form['password']
     password2 = request.form['password2']
     user_sudah_login = current_app.db.user.find_one({'email' : email})
