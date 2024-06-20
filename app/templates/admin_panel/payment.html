@@ -1,0 +1,18 @@
+
+
+<div class="w100 p-4">
+    <div id="snap-container" class="d-flex justify-content-center"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript"
+		src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-EUKPwnA2TMKkqkoq"></script>
+
+<script>
+    $(document).ready(function(){
+        window.snap.embed('{{data.transaction_token}}',{
+            embedId : 'snap-container',
+        })
+    })
+</script>
