@@ -28,12 +28,13 @@ def update_profile():
             deskripsi = request.form['deskripsi']
 
             gambar = request.files['foto_profile']
-            extension = gambar.filename.split('.')[-1]
-            today = datetime.now()
-            mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
-            gambar_name = f'gambar-{mytime}.{extension}'
-            save_to = f'app/static/image/Imgprofile/{gambar_name}'
-            gambar.save(save_to)
+            if gambar:
+                extension = gambar.filename.split('.')[-1]
+                today = datetime.now()
+                mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
+                gambar_name = f'gambar-{mytime}.{extension}'
+                save_to = f'app/static/image/Imgprofile/{gambar_name}'
+                gambar.save(save_to)
 
             password = user_info.get('password', '')
 
@@ -88,7 +89,7 @@ def update_profile():
             if user_admin:
                 return render_template('admin_panel/update_profile.html', user_info=user_info, status_admin = status, msg = msg)
             elif super_admin:
-                return render_template('admin_panel/update_profile.html', user_info = user_info, status_superadmin = status)
+                return render_template('admin_panel/update_profile.html', user_info = user_info, status_superadmin = status, msg = msg)
             else:
                 return render_template('admin_panel/update_profile.html', user_info=user_info, status = status, msg = msg)
         except jwt.ExpiredSignatureError:
