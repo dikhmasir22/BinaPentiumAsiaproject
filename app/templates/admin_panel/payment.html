@@ -37,7 +37,18 @@
                         window.location.replace('/kelassaya?msg=ikut_kelas')
                     }
                 })
-            }
+            },
+
+            onPending: function (result) {
+                // Handler jika pembayaran masih dalam proses
+                console.log("Pembayaran sedang diproses...")
+            },
+            onClose: function () {
+                // Handler jika pengguna menutup atau membatalkan pembayaran
+                window.location.replace('/daftar_transaksi')
+                // Tambahkan logika atau tindakan sesuai kebutuhan, misalnya:
+                // window.location.replace('/pembayaran-dibatalkan')
+            },
 
         })
     })

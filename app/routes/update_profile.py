@@ -81,9 +81,14 @@ def update_profile():
             user_admin = current_app.db.user.find_one({
                 'email': payload.get('id'),
                 'level': 'admin'})
+            super_admin = current_app.db.user.find_one({
+            'email': payload.get('id'),
+            'level': 'superadmin'})
         
             if user_admin:
                 return render_template('admin_panel/update_profile.html', user_info=user_info, status_admin = status, msg = msg)
+            elif super_admin:
+                return render_template('admin_panel/update_profile.html', user_info = user_info, status_superadmin = status)
             else:
                 return render_template('admin_panel/update_profile.html', user_info=user_info, status = status, msg = msg)
         except jwt.ExpiredSignatureError:

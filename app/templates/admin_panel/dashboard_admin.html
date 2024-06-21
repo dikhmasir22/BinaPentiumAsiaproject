@@ -23,6 +23,10 @@
 {% endif %}
 
 <section id="main" class="container-fluid p-2">
+
+    {% if status_superadmin %}
+    <h3>Dashboard Super Admin</h3>
+    {% else %}
     <!-- Judul -->
     {% if status_admin %}
     <h3>Dashboard Admin</h3>
@@ -206,8 +210,17 @@
         </div>
         <div class="col-12 col-xl-5 col-lg-6 col-md-6 rounded  p-2 bg-light mt-2">
             <h5>Kelas yang diikuti</h5>
+            <p>Ayo Lanjutkan Pembelajaranmu pada kelas yang telah diikuti sebelumnya</p>
+            <div class="row text-center">
+                <div class="col-12 mb-3">
+                    <h6 class="text-primary fw-bold">Lihat Kelas</h6>
+                    <a href="/kelassaya" class="btn btn-warning text-dark fw-bold">Kelas Saya</a>
+                </div>
+            </div>
         </div>
     </div>
+    {% endif %}
+
     {% endif %}
 
 

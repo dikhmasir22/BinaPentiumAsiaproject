@@ -20,8 +20,8 @@
                         <th class="fit">No.</th>
                         <th class="text-left">Tagihan</th>
                         <th class="text-center">Jumlah</th>
-                        <th class="cell-state">Status</th>
-                        <th class="cell-state">Aksi</th>
+                        <th class="cell-state text-center">Status</th>
+                        <th class="cell-state text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,9 +30,17 @@
                     <tr>
                         <td class="text-right">{{ index.value }}.</td>
                         <td>
+                            {% if item.status == 'sudah bayar' %}
+                            <strong class="text-success">
+                                [{{item.order_id}}]
+                            </strong>
+                            {% else %}
                             <strong>
                                 [{{item.order_id}}]
                             </strong>
+                            {% endif %}
+
+
                             Pendaftaran Kelas : {{item.kelas_nama}}
                         </td>
                         <td class="fit text-right text-nowrap">
@@ -54,8 +62,8 @@
                             <a class="btn btn-primary btn-block text-nowrap"
                                 href="/detailkelas/{{item._id_kelas}}">Mulai Kelas</a>
                             {% else %}
-                            <a class="btn btn-primary btn-block text-nowrap"
-                                href="/transaksi/{{item.order_id}}">Bayar Sekarang</a>
+                            <a class="btn btn-primary btn-block text-nowrap" href="/transaksi/{{item.order_id}}">Bayar
+                                Sekarang</a>
                             {% endif %}
 
                         </td>

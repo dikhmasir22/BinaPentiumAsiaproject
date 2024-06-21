@@ -23,6 +23,9 @@ def dashboard():
         user_admin = current_app.db.user.find_one({
             'email': payload.get('id'),
             'level': 'admin'})
+        super_admin = current_app.db.user.find_one({
+            'email': payload.get('id'),
+            'level': 'superadmin'})
 
         if user_admin:
             semua_kelas = list(current_app.db.semuakelas.find({}))
@@ -43,6 +46,8 @@ def dashboard():
                 })
             
             return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status_admin=status, msg=msg, jumlah_siswa=jumlah_siswa, data_kelas = data_kelas)
+        elif super_admin:
+            return render_template('admin_panel/dashboard_admin.html', user_info = user_info, status_superadmin = status)
         else:
             kelas_diambil = list(current_app.db.kelassaya.find(
                 {'_id_siswa': user_info['_id']}))
