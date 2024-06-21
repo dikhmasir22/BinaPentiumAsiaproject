@@ -47,7 +47,8 @@ def dashboard():
             
             return render_template('admin_panel/dashboard_admin.html', user_info=user_info, status_admin=status, msg=msg, jumlah_siswa=jumlah_siswa, data_kelas = data_kelas)
         elif super_admin:
-            return render_template('admin_panel/dashboard_admin.html', user_info = user_info, status_superadmin = status)
+            carousel_image = list(current_app.db.carousel.find({}))
+            return render_template('admin_panel/dashboard_admin.html', user_info = user_info, status_superadmin = status, carousel = carousel_image)
         else:
             kelas_diambil = list(current_app.db.kelassaya.find(
                 {'_id_siswa': user_info['_id']}))

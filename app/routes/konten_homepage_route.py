@@ -135,29 +135,8 @@ def edit_carousel(_id_carousel):
 
 # Carousel Image Routes
 
-@konten_homepage.route('/media_sosial', methods = ['GET', 'POST'])
+@konten_homepage.route('/media_sosial', methods = ['GET'])
 def media_sosial():
-    if request.method == 'POST':
-        facebook = request.form['facebook_link']
-        instagram = request.form['instagram_link']
-        youtube = request.form['youtube_link']
-        linkedin = request.form['linkedin_link']
-        twitter = request.form['twitter_link']
-        tiktok = request.form['tiktok_link']
-        whatsapp = request.form['no_whatsapp']
-
-        doc_medsos = {
-            'facebook' : facebook,
-            'instagram' : instagram,
-            'youtube' : youtube,
-            'linkedin' : linkedin,
-            'twitter' : twitter,
-            'tiktok' : tiktok,
-            'whatsapp' : whatsapp,
-        }
-
-        current_app.db.medsos.update_one(doc_medsos)
-    else :
         TOKEN_KEY = current_app.config['TOKEN_KEY']
         SECRET_KEY = current_app.config['SECRET_KEY']
         token_receive = request.cookies.get(TOKEN_KEY)
@@ -167,6 +146,7 @@ def media_sosial():
                 SECRET_KEY,
                 algorithms=['HS256']
             )
+            msg = request.args.get('msg')
             user_info = current_app.db.user.find_one({'email': payload.get('id')})
             medsos = current_app.db.medsos.find_one({})
             super_admin = current_app.db.user.find_one({
@@ -174,13 +154,37 @@ def media_sosial():
                 'level': 'superadmin'})
             status = payload.get('id')
             if super_admin:
-                return render_template('admin_panel/media_sosial.html', user_info = user_info, status_superadmin = status, medsos = medsos)
+                return render_template('admin_panel/media_sosial.html', user_info = user_info, status_superadmin = status, medsos = medsos, msg = msg)
         except jwt.ExpiredSignatureError:
             msg = request.args.get('msg')
             return render_template('template/materi.html', msg=msg)
         except jwt.exceptions.DecodeError:
             msg = request.args.get('msg')
             return render_template('template/materi.html', msg=msg)
+        
+@konten_homepage.route('/media_sosial/edit', methods = ['POST'])
+def edit_medsos():
+    facebook = request.form['facebook_link']
+    instagram = request.form['instagram_link']
+    youtube = request.form['youtube_link']
+    linkedin = request.form['linkedin_link']
+    twitter = request.form['twitter_link']
+    tiktok = request.form['tiktok_link']
+    whatsapp = request.form['no_whatsapp']
+
+    doc_medsos = {
+        'facebook' : facebook,
+        'instagram' : instagram,
+        'youtube' : youtube,
+        'linkedin' : linkedin,
+        'twitter' : twitter,
+        'tiktok' : tiktok,
+        'whatsapp' : whatsapp,
+    }
+
+    current_app.db.medsos.update_one({}, {'$set' : doc_medsos})
+    msg = 'editmedsos'
+    return redirect(url_for('homepagekonten.media_sosial', msg = msg))
     
 @konten_homepage.route('/pesan')
 def pesan():
@@ -194,16 +198,30 @@ def pesan():
             algorithms=['HS256']
         )
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
+        pesan = list(current_app.db.pesan.find({}))
         super_admin = current_app.db.user.find_one({
             'email': payload.get('id'),
             'level': 'superadmin'})
         status = payload.get('id')
         if super_admin:
-            return render_template('admin_panel/pesan.html', user_info = user_info, status_superadmin = status)
+            return render_template('admin_panel/pesan.html', user_info = user_info, status_superadmin = status, pesan = pesan)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
         return render_template('template/materi.html', msg=msg)
     except jwt.exceptions.DecodeError:
         msg = request.args.get('msg')
         return render_template('template/materi.html', msg=msg)
+    
+@konten_homepage.route('/pesan/simpan', methods = ['POST'])
+def pesan_simpan():
+    email = request.form['email_hubungi']
+    pesan = request.form['isi_hubungi']
 
+    doc_pesan = {
+        'email_pengirim' : email,
+        'isi_pesan' : pesan
+    }
+
+    current_app.db.pesan.insert_one(doc_pesan)
+    msg = 'pesan_kirim'
+    return redirect(url_for('kontak.kontak', msg=msg))

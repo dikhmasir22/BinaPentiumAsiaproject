@@ -20,8 +20,34 @@ function sign_in () {
       if (response['result'] === 'success') {
         $.cookie('BinaAsiaDigitalindo', response['token'], { path: '/' })
         window.location.replace('/dashboard?msg=' + response['result'])
-      } else if(response['result'] === 'emailnone') {
-        alert(response['msg'])
+      } else if (response['result'] === 'emailnone') {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'warning',
+          title: 'Tidak ada User dengan Email Ini!',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: toast => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+      } else if(response['result']=== 'salah') {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'warning',
+          title: 'Password Salah!',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: toast => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
       }
     }
   })

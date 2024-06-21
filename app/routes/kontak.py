@@ -8,6 +8,8 @@ def kontak():
     TOKEN_KEY = current_app.config['TOKEN_KEY']
     SECRET_KEY = current_app.config['SECRET_KEY']
     token_receive = request.cookies.get(TOKEN_KEY)
+    medsos = current_app.db.medsos.find_one({})
+    msg = request.args.get('msg')
     try:
         payload = jwt.decode(
             token_receive,
@@ -15,11 +17,11 @@ def kontak():
             algorithms=['HS256']
         )
         status = payload.get('id')
-        return render_template('template/kontak.html', status = status)
+        return render_template('template/kontak.html', status = status, medsos = medsos, msg = msg)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
-        return render_template('template/kontak.html', msg=msg)
+        return render_template('template/kontak.html', msg=msg,  medsos = medsos)
     except jwt.exceptions.DecodeError:
         msg = request.args.get('msg')
-        return render_template('template/kontak.html', msg=msg)
+        return render_template('template/kontak.html', msg=msg,  medsos = medsos)
 

@@ -1,20 +1,23 @@
 {% include 'headfoot/header_admin.html' %}
 
 {% if msg %}
-{% if msg == 'hapus_siswa' %}
+{% if msg == 'editmedsos' %}
 <script>
     $(document).ready(function () {
-        swal.fire({
-            title: "Siswa Berhasil Di Hapus!",
-            text: "",
-            icon: "success",
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: 'Link Berhasil Di Edit!',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: toast => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
         });
-
-        setTimeout(function () {
-            window.location.href = "/siswa";
-        }, 2000);
     });
-
 </script>
 {% endif %}
 
@@ -32,7 +35,7 @@
     </nav>
     <hr>
 
-    <form class="row">
+    <form class="row" action="/media_sosial/edit" method="post">
         <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
             <!-- Facebook -->
             <div class="form_input">

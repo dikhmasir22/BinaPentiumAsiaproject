@@ -150,29 +150,19 @@
       style="background-color: whitesmoke; border-radius: 10px"
     >
       <h5>Modul</h5>
+      {% if menu_materi %}
       <div class="row materi">
+        {% for item in menu_materi %}
         <div class="row">
           <div class="col d-flex justify-content-between">
-            <p>PENGENALAN PEMBELAJARAN</p>
-            <button class="btn">Mulai</button>
+            <p>{{item.judul_materi}}</p>
           </div>
           <hr style="color: black" />
         </div>
-        <div class="row">
-          <div class="col d-flex justify-content-between">
-            <p>PENGENALAN PEMBELAJARAN</p>
-            <button class="btn">Mulai</button>
-          </div>
-          <hr style="color: black" />
-        </div>
-        <div class="row">
-          <div class="col d-flex justify-content-between">
-            <p>PENGENALAN PEMBELAJARAN</p>
-            <button class="btn">Mulai</button>
-          </div>
-          <hr style="color: black" />
-        </div>
+        {% endfor %}
       </div>
+      {% endif %}
+      
     </div>
 
     <!-- Modal Ringkasan Pembelian -->

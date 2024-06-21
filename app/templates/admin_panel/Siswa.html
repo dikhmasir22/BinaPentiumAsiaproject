@@ -34,7 +34,7 @@
 
     <div class="row p-2 justify-content-start">
         {% for item in Siswa : %}
-        {% if item.nama_lengkap == 'Admin' %}
+        {% if item.level == 'admin' or item.level == 'superadmin' %}
         <div class="d-none">
         {% else %}
         <div onclick="window.location.href='/detail_siswa/{{ item._id }}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mb-3">
