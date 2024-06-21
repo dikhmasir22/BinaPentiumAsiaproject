@@ -32,6 +32,107 @@
     </nav>
     <hr>
 
+    <form class="row">
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+            <!-- Facebook -->
+            <div class="form_input">
+                <img src="{{ url_for('static', filename='image/social-media/facebook.png') }}" alt="Facebook" width="65"
+                    height="65">
+                <label class="fw-bold mb-1" for="Facebook">Facebook</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan Link Facebook" value="{{medsos.facebook}}" name="facebook_link"
+                        class="form-control" id="nama_kelas">
+                </div>
+            </div>
+            <!-- Facebook -->
+        </div>
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6 ">
+            <!-- Instagram -->
+            <div class="form_input">
+                <img src="{{ url_for('static', filename='image/social-media/instagram.png') }}" alt="Instagram" width="65"
+                    height="65">
+                <label class="fw-bold mb-1" for="Instagram">Instagram</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan Link Instagram" value="{{medsos.instagram}}" name="instagram_link"
+                        class="form-control" id="nama_kelas">
+                </div>
+            </div>
+            <!-- Instagram -->
+        </div>
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+            <!-- Youtube -->
+            <div class="form_input">
+                <img src="{{ url_for('static', filename='image/social-media/youtube.png') }}" alt="Youtube" width="65"
+                    height="65">
+                <label class="fw-bold mb-1" for="Youtube">Youtube</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan link Channel Youtube" value="{{medsos.youtube}}" name="youtube_link"
+                        class="form-control" id="nama_kelas">
+                </div>
+            </div>
+            <!-- Youtube -->
+        </div>
+
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+            <!-- Linkedin -->
+            <div class="form_input">
+                <img src="{{ url_for('static', filename='image/social-media/linkedin.png') }}" alt="Linkedin" width="65"
+                    height="65">
+                <label class="fw-bold mb-1" for="Linkedin">Linkedin</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan link Linkedin" value="{{medsos.linkedin}}" name="linkedin_link"
+                        class="form-control" id="nama_kelas">
+                </div>
+            </div>
+            <!-- Linkedin -->
+        </div>
+
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+            <!-- Twitter -->
+            <div class="form_input">
+                <img src="{{ url_for('static', filename='image/social-media/twitter.png') }}" alt="Twitter" width="65"
+                    height="65">
+                <label class="fw-bold mb-1" for="Twitter">Twitter</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan link Twitter" value="{{medsos.twitter}}" name="twitter_link"
+                        class="form-control" id="nama_kelas">
+                </div>
+            </div>
+            <!-- Twitter -->
+        </div>
+
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+            <!-- Tiktok -->
+            <div class="form_input">
+                <img src="{{ url_for('static', filename='image/social-media/tiktok.png') }}" alt="Tiktok" width="65"
+                    height="65">
+                <label class="fw-bold mb-1" for="Tiktok">Tiktok</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Masukkan link Tiktok" value="{{medsos.tiktok}}" name="tiktok_link"
+                        class="form-control" id="nama_kelas">
+                </div>
+            </div>
+            <!-- Tiktok -->
+        </div>
+        
+        <div class="col-12 col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+            <!-- Whatsapp -->
+            <div class="form_input mt-3">
+                <span class="bg-success p-2 rounded-circle"><i class="ri-whatsapp-line text-light"></i></span>
+                <label class="fw-bold mb-1" for="Whatsapp">Whatsapp</label>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" placeholder="Masukkan Nomor Whatsapp" value="{{medsos.whatsapp}}" name="no_whatsapp"
+                        class="form-control" id="nama_kelas">
+                </div>
+                <label for="">Contoh, 628782123423</label>
+            </div>
+            <!-- Whatsapp -->
+        </div>
+        <div class="box">
+            <button type="submit" ></button>
+        </div>
+    </form>
+
 
 </section>
 

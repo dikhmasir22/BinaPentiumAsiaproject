@@ -53,9 +53,22 @@ def sign_in():
                 token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
                 return jsonify(
-                {
+                    {
                     "result": "success",
                     "token": token,
+                    }
+                )
+            else:
+                return jsonify(
+                    {
+                    "result": "success",
+                    "token": token,
+                    }
+                )
+    else :
+        return jsonify(
+            {
+                "result": "emailnone",
+                "token": token,
                 }
-            )
-   
+        )

@@ -20,7 +20,7 @@ function sign_in () {
       if (response['result'] === 'success') {
         $.cookie('BinaAsiaDigitalindo', response['token'], { path: '/' })
         window.location.replace('/dashboard?msg=' + response['result'])
-      } else {
+      } else if(response['result'] === 'emailnone') {
         alert(response['msg'])
       }
     }

@@ -135,30 +135,52 @@ def edit_carousel(_id_carousel):
 
 # Carousel Image Routes
 
-@konten_homepage.route('/media_sosial')
+@konten_homepage.route('/media_sosial', methods = ['GET', 'POST'])
 def media_sosial():
-    TOKEN_KEY = current_app.config['TOKEN_KEY']
-    SECRET_KEY = current_app.config['SECRET_KEY']
-    token_receive = request.cookies.get(TOKEN_KEY)
-    try:
-        payload = jwt.decode(
-            token_receive,
-            SECRET_KEY,
-            algorithms=['HS256']
-        )
-        user_info = current_app.db.user.find_one({'email': payload.get('id')})
-        super_admin = current_app.db.user.find_one({
-            'email': payload.get('id'),
-            'level': 'superadmin'})
-        status = payload.get('id')
-        if super_admin:
-            return render_template('admin_panel/media_sosial.html', user_info = user_info, status_superadmin = status)
-    except jwt.ExpiredSignatureError:
-        msg = request.args.get('msg')
-        return render_template('template/materi.html', msg=msg)
-    except jwt.exceptions.DecodeError:
-        msg = request.args.get('msg')
-        return render_template('template/materi.html', msg=msg)
+    if request.method == 'POST':
+        facebook = request.form['facebook_link']
+        instagram = request.form['instagram_link']
+        youtube = request.form['youtube_link']
+        linkedin = request.form['linkedin_link']
+        twitter = request.form['twitter_link']
+        tiktok = request.form['tiktok_link']
+        whatsapp = request.form['no_whatsapp']
+
+        doc_medsos = {
+            'facebook' : facebook,
+            'instagram' : instagram,
+            'youtube' : youtube,
+            'linkedin' : linkedin,
+            'twitter' : twitter,
+            'tiktok' : tiktok,
+            'whatsapp' : whatsapp,
+        }
+
+        current_app.db.medsos.update_one(doc_medsos)
+    else :
+        TOKEN_KEY = current_app.config['TOKEN_KEY']
+        SECRET_KEY = current_app.config['SECRET_KEY']
+        token_receive = request.cookies.get(TOKEN_KEY)
+        try:
+            payload = jwt.decode(
+                token_receive,
+                SECRET_KEY,
+                algorithms=['HS256']
+            )
+            user_info = current_app.db.user.find_one({'email': payload.get('id')})
+            medsos = current_app.db.medsos.find_one({})
+            super_admin = current_app.db.user.find_one({
+                'email': payload.get('id'),
+                'level': 'superadmin'})
+            status = payload.get('id')
+            if super_admin:
+                return render_template('admin_panel/media_sosial.html', user_info = user_info, status_superadmin = status, medsos = medsos)
+        except jwt.ExpiredSignatureError:
+            msg = request.args.get('msg')
+            return render_template('template/materi.html', msg=msg)
+        except jwt.exceptions.DecodeError:
+            msg = request.args.get('msg')
+            return render_template('template/materi.html', msg=msg)
     
 @konten_homepage.route('/pesan')
 def pesan():
