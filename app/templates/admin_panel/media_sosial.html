@@ -1,0 +1,38 @@
+{% include 'headfoot/header_admin.html' %}
+
+{% if msg %}
+{% if msg == 'hapus_siswa' %}
+<script>
+    $(document).ready(function () {
+        swal.fire({
+            title: "Siswa Berhasil Di Hapus!",
+            text: "",
+            icon: "success",
+        });
+
+        setTimeout(function () {
+            window.location.href = "/siswa";
+        }, 2000);
+    });
+
+</script>
+{% endif %}
+
+{% endif %}
+
+<section id="main" class="container-fluid p-2">
+
+
+    <h3>Media Sosial</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Media Sosial</li>
+        </ol>
+    </nav>
+    <hr>
+
+
+</section>
+
+{% include 'headfoot/footer_admin.html' %}

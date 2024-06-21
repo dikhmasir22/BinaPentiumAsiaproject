@@ -56,8 +56,8 @@ def create_app():
     from .routes.detailkelas import detailkelas_
     app.register_blueprint(detailkelas_)
 
-    from .routes.materi import materi_
-    app.register_blueprint(materi_)
+    from .routes.konten_homepage_route import konten_homepage
+    app.register_blueprint(konten_homepage)
     
     from .routes.kelassaya import kelassaya_
     app.register_blueprint(kelassaya_)

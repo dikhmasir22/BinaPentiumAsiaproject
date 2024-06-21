@@ -1,0 +1,28 @@
+{% include 'headfoot/header_admin.html' %}
+
+<section id="main" class="container-fluid p-2">
+
+   <h3>Tambah Carousel</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-dark garis-none"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item text-dark garis-none"><a href="/carousel">Carousel</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tambah Carousel</li>
+        </ol>
+    </nav>
+    <hr>
+
+    <form class="row" action="/tambah_carousel" method="POST" enctype="multipart/form-data">
+        <h6 class="p-2">Tambah Carousel</h6>
+        <div class="form_input">
+            <label class="fw-bold mb-1" for="Gambar Kelas">Gambar Carousel Baru</label>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="gambar_carousel" name="gambar_carousel">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Simpan</button>
+    </form>
+
+</section>
+
+{% include 'headfoot/footer_admin.html' %}

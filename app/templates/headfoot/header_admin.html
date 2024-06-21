@@ -38,6 +38,12 @@
                 document.querySelector('#sidebar-nav .nav-sidelink[href="/siswa"]').classList.add('aktif');
             } else if (lokasi.includes('/kelassaya')) {
                 document.querySelector('#sidebar-nav .nav-sidelink[href="/kelassaya"]').classList.add('aktif');
+            } else if (lokasi.includes('/carousel')) {
+                document.querySelector('#sidebar-nav .nav-sidelink[href="/carousel"]').classList.add('aktif');
+            } else if (lokasi.includes('/media_sosial')) {
+                document.querySelector('#sidebar-nav .nav-sidelink[href="/media_sosial"]').classList.add('aktif');
+            } else if (lokasi.includes('/pesan')) {
+                document.querySelector('#sidebar-nav .nav-sidelink[href="/pesan"]').classList.add('aktif');
             } else if (lokasi.includes('/daftar_transaksi')) {
                 document.querySelector('#sidebar-nav .nav-sidelink[href="/daftar_transaksi"]').classList.add('aktif');
             }
@@ -104,11 +110,11 @@
             <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile"><i
                         class="ri-profile-line"></i> Profile</a></li>
             {% if status_superadmin %}
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile"><i
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/carousel"><i
                 class="ri-profile-line"></i> Carousel Image</a></li>
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile"><i
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/media_sosial"><i
                 class="ri-profile-line"></i> Media Sosial</a></li>
-            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/profile"><i
+            <li class="nav-item l-none"><a class="btn nav-sidelink gelembung text-dark" href="/pesan"><i
                 class="ri-profile-line"></i> Pesan</a></li>
             {% endif %}
             {% if status_admin or status %}
