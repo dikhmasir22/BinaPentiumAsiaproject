@@ -231,6 +231,18 @@ body {
     object-fit: cover;
 }
 
+/* hero section pada laman program */
+@media (max-width: 576px) {
+    #home h3 {
+      font-size: 1.3rem; 
+    }
+    #home p {
+      font-size: 1rem; 
+    }
+    #home .btn {
+      width: 80%; 
+    }
+  }
 /* === Program === */
 
 /* === Materi === */
@@ -291,7 +303,6 @@ justify-content: space-between;
 }
 
     /* kelas terunggul */
-
     .kelas-unggulan .card {
         border: 1px solid #ddd;
         border-radius: 10px;
