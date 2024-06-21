@@ -15,40 +15,31 @@
     <div class="row justify-content-start mb-5">
         <div class="col-12 rounded bg-light">
             <div class="row">
-
-                <div class="col-8 d-flex justify-content-between">
-                    <div class="col-12 col-md-7 col-lg-5 col-xl-4 d-flex justify-content-start">
+                <div class="col-12 col-md-8 profile-container">
+                    <div class="col-12 col-md-7 col-lg-5 col-xl-4 profile-image">
                         {% if user_info.foto_profile %}
-                        <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200"
-                            alt="">
+                        <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200" alt="">
                         {% else %}
                         <img class="p-2 m-2" src="../../static/image/profile.jpg" width="200" alt="">
                         {% endif %}
-
                     </div>
-
-                    <!-- belum responsive -->
-                    <div class="col-12 col-md-12 col-lg-7 col-xl-8 d-flex flex-column p-2 ms-2 justify-content-between">
-                        <div class="box">
+                    <div class="col-12 col-md-5 profile-description">
+                        <div class="box profile-box">
                             <h4 class="p-2">{{user_info.nama_lengkap}}</h4>
-
                             {% if user_info.deskripsi == '' %}
-                            <p class="p-2" style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi
-                                tentang diri kamu
+                            <p class="p-2" style="font-size: 12px;">Kamu belum punya Deskripsi, Ayo isi deskripsi tentang diri kamu
                                 disini <i class="ri-arrow-down-fill"></i></p>
                             {% else %}
                             <p class="p-2">{{user_info.deskripsi}}</p>
                             {% endif %}
                         </div>
-
-                        <a href="/update_profile" class="btn btn-warning rounded align-self-start m-2"><i
-                                class="ri-edit-fill"></i> Ubah Profile -></a>
+                        <a href="/update_profile" class="btn btn-warning rounded align-self-start m-2"><i class="ri-edit-fill"></i> Ubah
+                            Profile -></a>
                     </div>
                 </div>
-
             </div>
 
-            <div style="width: 100%;" class="info_siswa p-3 border-top">
+            <div style="width: 100%;" class="info_siswa py-2 border-top">
 
                 <h4 class="fw-bold"><span class="text-primary"><i class="ri-id-card-line"></i></span> Informasi Dasar
                 </h4>
