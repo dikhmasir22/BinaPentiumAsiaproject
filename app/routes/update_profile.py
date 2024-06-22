@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, current_app, redirect, url_for, re
 import jwt
 from datetime import datetime
 from bson import ObjectId
+import os
 
 update_profile_ = Blueprint('update_profile', __name__)
 
@@ -26,6 +27,13 @@ def update_profile():
             alamat = request.form['alamat']
             tempat_tanggal_lahir = request.form['tempat_tanggal_lahir']
             deskripsi = request.form['deskripsi']
+
+            profile = current_app.db.user.find_one({'_id' : user_info['_id']})
+            gambar_name = profile.get('foto_profile')
+            if gambar_name:
+                lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgprofile', gambar_name)
+                if os.path.exists(lokasi_gambar):
+                    os.remove(lokasi_gambar)
 
             gambar = request.files['foto_profile']
             if gambar:
@@ -98,4 +106,29 @@ def update_profile():
         except jwt.exceptions.DecodeError:
             msg = 'Your Token Has Expired'
             return redirect(url_for('homepage.homepage', msg=msg))
+
+@update_profile_.route('/hapus_poto_profile')
+def hapus_poto():
+    TOKEN_KEY = current_app.config['TOKEN_KEY']
+    SECRET_KEY = current_app.config['SECRET_KEY']
+    token_receive = request.cookies.get(TOKEN_KEY)
+    try:
+        payload = jwt.decode(token_receive,SECRET_KEY,algorithms=['HS256'])
+        user_info = current_app.db.user.find_one({'email': payload.get('id')})
+        profile = current_app.db.user.find_one({'_id' : user_info['_id']})
+        gambar_name = profile.get('foto_profile')
+        if gambar_name:
+            lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgprofile', gambar_name)
+            if os.path.exists(lokasi_gambar):
+                os.remove(lokasi_gambar)
+        
+        current_app.db.user.update_one({'_id' : user_info['_id']}, {'$set' : {'foto_profile' : ''}})
+        msg = 'poto_profile_hapus'
+        return redirect(url_for('update_profile.update_profile', msg =msg))
+    except jwt.ExpiredSignatureError:
+        msg = 'Your Token Has Expired'
+        return redirect(url_for('homepage.homepage', msg=msg))
+    except jwt.exceptions.DecodeError:
+        msg = 'Your Token Has Expired'
+        return redirect(url_for('homepage.homepage', msg=msg))
 
