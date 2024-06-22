@@ -2,6 +2,28 @@
 
 <section id="main" class="container-fluid p-2">
 
+    {% if msg %}
+    {% if msg == 'hapus_transaksi' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'riwayat transaksi berhasil dihapus!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
+    {% endif %}
+
+    {% endif %}
 
     <h3>Daftar Transaksi</h3>
     <nav aria-label="breadcrumb">
@@ -59,8 +81,8 @@
                         </td>
                         <td class="fit text-center">
                             {% if item.status == 'sudah bayar' %}
-                            <a class="btn btn-primary btn-block text-nowrap"
-                                href="/detailkelas/{{item._id_kelas}}">Mulai Kelas</a>
+                            <a class="btn btn-danger btn-block text-nowrap" data-bs-toggle="modal"
+                                data-bs-target="#modalhapustransaksi-{{item._id}}">Hapus</a>
                             {% else %}
                             <a class="btn btn-primary btn-block text-nowrap" href="/transaksi/{{item.order_id}}">Bayar
                                 Sekarang</a>
@@ -69,6 +91,31 @@
                         </td>
                     </tr>
                     {% set index.value = index.value + 1 %}
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalhapustransaksi-{{item._id}}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h4 class="text-center">Anda yakin ingin menghapus riwayat transaksi Ini?</h4>
+                                    <h6 class="text-center fs-kecil text-warning">{{item.order_id}}</h6>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="container d-flex justify-content-between">
+                                        <div class="row col-6">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Batal</button>
+                                        </div>
+                                        <div class="row col-6">
+                                            <a href="/hapus_transaksi/{{item._id}}" class="btn btn-danger">Hapus</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
                     {% endfor %}
 
 

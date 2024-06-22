@@ -69,10 +69,11 @@ def riwayat_transaksi():
             SECRET_KEY,
             algorithms=['HS256']
         )
+        msg = request.args.get('msg')
         user_info = current_app.db.user.find_one({'email': payload.get('id')})
         status = payload.get('id')
         data_transaksi = list(current_app.db.transaksi.find({'_id_siswa' : user_info['_id']}))
-        return render_template('admin_panel/daftar_transaksi.html', status = status, transaksi = data_transaksi, user_info = user_info)
+        return render_template('admin_panel/daftar_transaksi.html', status = status, transaksi = data_transaksi, user_info = user_info, msg = msg)
 
     except jwt.ExpiredSignatureError:
         msg = 'Your Token Has Expired'
@@ -113,3 +114,9 @@ def payment(id):
     except jwt.exceptions.DecodeError:
         msg = 'Your Token Has Expired'
         return redirect(url_for('homepage.homepage', msg=msg))
+
+@transaksi_.route('/hapus_transaksi/<_id_transaksi>')
+def hapus_transaksi(_id_transaksi):
+    current_app.db.transaksi.delete_one({'_id' : ObjectId(_id_transaksi)})
+    msg = 'hapus_transaksi'
+    return redirect(url_for('transaksi.riwayat_transaksi', msg = msg))
