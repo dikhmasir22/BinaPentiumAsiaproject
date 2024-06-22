@@ -2,11 +2,13 @@ from flask import Flask, request, render_template, current_app, Blueprint, jsoni
 import hashlib
 import jwt
 from datetime import datetime, timedelta
+import re
 from app import Config
 
 login_ = Blueprint('login', __name__)
+
 @login_.route("/login", methods=["POST"])
-def sign_in():
+def sign_in(): 
     email = request.form['email']
     user_sudah_login = current_app.db.user.find_one({'email' : email})
     if user_sudah_login :

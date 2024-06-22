@@ -1,19 +1,12 @@
 {% include 'template/header.html' %}
 
 <!-- Hero Section -->
-<section
-  id="home"
-  class="container-fluid mt-5 d-flex align-items-center justify-content-center"
->
+<section id="home" class="container-fluid mt-5 d-flex align-items-center justify-content-center">
   <div class="row p-lg-5 pt-5 justify-content-center">
-    <div
-      class="col-12 col-lg-5 d-flex justify-content-center order-1 order-lg-1 text-center"
-    >
+    <div class="col-12 col-lg-5 d-flex justify-content-center order-1 order-lg-1 text-center">
       <img src="../../static/image/bootcamp_hero.png" width="350" alt="" />
     </div>
-    <div
-      class="col-12 col-lg-7 order-2 order-lg-2 p-lg-5 text-center text-lg-start"
-    >
+    <div class="col-12 col-lg-7 order-2 order-lg-2 p-lg-5 text-center text-lg-start">
       <h3 class="fw-bold">
         Optimasi Skill dan Kompetensi, Lebih Siap Kerja dan Wirausaha
       </h3>
@@ -25,19 +18,10 @@
       </p>
       <div class="row justify-content-center">
         <div class="col-12 col-lg-6 mb-2">
-          <a
-            style="width: 100%"
-            class="btn btn-warning p-2 pointer gelembung fw-bold"
-            >Daftar GRATIS Sekarang!</a
-          >
+          <a style="width: 100%" class="btn btn-warning p-2 pointer gelembung fw-bold">Daftar GRATIS Sekarang!</a>
         </div>
         <div class="col-12 col-lg-6 mb-2">
-          <a
-            style="width: 100%"
-            href="#hubungi"
-            class="btn btn-info p-2 pointer gelembung fw-bold"
-            >Menjadi Mitra</a
-          >
+          <a style="width: 100%" href="#hubungi" class="btn btn-info p-2 pointer gelembung fw-bold">Menjadi Mitra</a>
         </div>
       </div>
     </div>
@@ -47,63 +31,67 @@
 
 <!-- gelombang -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 310">
-  <path
-    fill="#e5fafe"
-    fill-opacity="1"
-    d="M0,0L40,42.7C80,85,160,171,240,218.7C320,267,400,277,480,266.7C560,256,640,224,720,202.7C800,181,880,171,960,154.7C1040,139,1120,117,1200,122.7C1280,128,1360,160,1400,176L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-  ></path>
+  <path fill="#e5fafe" fill-opacity="1"
+    d="M0,0L40,42.7C80,85,160,171,240,218.7C320,267,400,277,480,266.7C560,256,640,224,720,202.7C800,181,880,171,960,154.7C1040,139,1120,117,1200,122.7C1280,128,1360,160,1400,176L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+  </path>
 </svg>
 
 <!-- Kelas Terunggul -->
 <div class="section kelas-unggulan py-3" style="background-color: #e5fafe">
   <div class="text-center py-3 px-4">
-      <h3 class="fw-bold mt-3 text-dark">Program Terunggul Kami</h3>
+    <h3 class="fw-bold mt-3 text-dark">Program Terunggul Kami</h3>
   </div>
 
   <!-- kelas web fullstack -->
   <div class="container col-xl-10 col-xxl-8 px-4 py-3">
-      <div class="row align-items-center g-lg-5">
-          <div class="col-lg-7 order-lg-2">
-              <div class="card border-0 shadow-sm h-100">
-                  <img src="{{ url_for('static', filename='image/banner3.jpg') }}" class="card-img-top img-fluid rounded" alt="Pemrograman Web Fullstack" />
-              </div>
-          </div>
-          <div class="col-md-10 mx-auto col-lg-5 order-lg-1">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body">
-                      <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
-                          <i class="bi bi-code-slash me-2"></i>Pemrograman Web Fullstack
-                      </h5>
-                      <p class="text-secondary">
-                          Pelatihan unggulan mengajarkan keterampilan pemrograman web dari front-end hingga back-end, dipimpin oleh instruktur berpengalaman. Peserta mendapatkan pengetahuan mendalam, praktik langsung, proyek nyata, bimbingan karir, dan jaringan profesional.
-                      </p>
-                  </div>
-              </div>
-          </div>
+    <div class="row align-items-center g-lg-5">
+      <div class="col-lg-7 order-lg-2">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{{ url_for('static', filename='image/banner3.jpg') }}" class="card-img-top img-fluid rounded"
+            alt="Pemrograman Web Fullstack" />
+        </div>
       </div>
+      <div class="col-md-10 mx-auto col-lg-5 order-lg-1">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
+              <i class="bi bi-code-slash me-2"></i>Pemrograman Web Fullstack
+            </h5>
+            <p class="text-secondary">
+              Pelatihan unggulan mengajarkan keterampilan pemrograman web dari front-end hingga back-end, dipimpin oleh
+              instruktur berpengalaman. Peserta mendapatkan pengetahuan mendalam, praktik langsung, proyek nyata,
+              bimbingan karir, dan jaringan profesional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- pelatihan siap kerja -->
   <div class="container col-xl-10 mb-5 col-xxl-8 px-4 py-2">
-      <div class="row align-items-center g-lg-5">
-          <div class="col-lg-7">
-              <div class="card border-0 shadow-sm h-100">
-                  <img src="{{ url_for('static', filename='image/banner1.png') }}" class="card-img-top img-fluid rounded" alt="Pelatihan Siap Kerja" />
-              </div>
-          </div>
-          <div class="col-md-10 mx-auto col-lg-5">
-              <div class="card border-0 shadow-sm h-100">
-                  <div class="card-body">
-                      <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
-                          <i class="bi bi-briefcase me-2"></i>Pelatihan Siap Kerja
-                      </h5>
-                      <p class="text-secondary">
-                          Pelatihan unggulan meningkatkan karir dengan mengajarkan keterampilan pemrograman web dari front-end hingga back-end, dipimpin oleh instruktur berpengalaman. Peserta mendapatkan pengetahuan mendalam, praktik langsung, proyek nyata, bimbingan karir, dan jaringan profesional.
-                      </p>
-                  </div>
-              </div>
-          </div>
+    <div class="row align-items-center g-lg-5">
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{{ url_for('static', filename='image/banner1.png') }}" class="card-img-top img-fluid rounded"
+            alt="Pelatihan Siap Kerja" />
+        </div>
       </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="slide-title fw-bold text-body-emphasis lh-1 mb-3 text-primary">
+              <i class="bi bi-briefcase me-2"></i>Pelatihan Siap Kerja
+            </h5>
+            <p class="text-secondary">
+              Pelatihan unggulan meningkatkan karir dengan mengajarkan keterampilan pemrograman web dari front-end
+              hingga back-end, dipimpin oleh instruktur berpengalaman. Peserta mendapatkan pengetahuan mendalam, praktik
+              langsung, proyek nyata, bimbingan karir, dan jaringan profesional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -111,11 +99,9 @@
 
 <!-- gelombang -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-  <path
-    fill="#e5fafe"
-    fill-opacity="1"
-    d="M0,0L40,42.7C80,85,160,171,240,218.7C320,267,400,277,480,266.7C560,256,640,224,720,202.7C800,181,880,171,960,154.7C1040,139,1120,117,1200,122.7C1280,128,1360,160,1400,176L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-  ></path>
+  <path fill="#e5fafe" fill-opacity="1"
+    d="M0,0L40,42.7C80,85,160,171,240,218.7C320,267,400,277,480,266.7C560,256,640,224,720,202.7C800,181,880,171,960,154.7C1040,139,1120,117,1200,122.7C1280,128,1360,160,1400,176L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+  </path>
 </svg>
 
 <!-- Siapa yang bisa ikut -->
@@ -125,14 +111,10 @@
     <div class="row justify-content-center">
       <div class="col-12 col-md-4 mb-4">
         <div class="card card-flat border-0">
-          <img
-            alt="Siswa (SMK)"
-            class="card-img-top mx-auto"
+          <img alt="Siswa (SMK)" class="card-img-top mx-auto"
             data-src="/img/internship/icon-tengah-siswa-v2.png?v=1.0?v=2"
-            src="{{ url_for('static', filename='image/smk.jpg') }}"
-            lazy="loaded"
-            style="width: 80%; max-width: 200px;"
-          />
+            src="{{ url_for('static', filename='image/smk.jpg') }}" lazy="loaded"
+            style="width: 80%; max-width: 200px;" />
           <div class="card-body">
             <p class="font-weight-bold">Siswa (SMK)</p>
             <p class="fw-normal text-secondary">
@@ -145,14 +127,10 @@
       </div>
       <div class="col-12 col-md-4 mb-4">
         <div class="card card-flat border-0">
-          <img
-            alt="Mahasiswa"
-            class="card-img-top mx-auto"
+          <img alt="Mahasiswa" class="card-img-top mx-auto"
             data-src="/img/internship/icon-tengah-mahasiswa-v2.png?v=1.0?v=2"
-            src="{{ url_for('static', filename='image/mahasiswa.jpg') }}"
-            lazy="loaded"
-            style="width: 80%; max-width: 200px;"
-          />
+            src="{{ url_for('static', filename='image/mahasiswa.jpg') }}" lazy="loaded"
+            style="width: 80%; max-width: 200px;" />
           <div class="card-body">
             <p class="font-weight-bold">Mahasiswa</p>
             <p class="fw-normal text-secondary">
@@ -165,14 +143,10 @@
       </div>
       <div class="col-12 col-md-4 mb-4">
         <div class="card card-flat border-0">
-          <img
-            alt="Guru/Dosen"
-            class="card-img-top mx-auto"
+          <img alt="Guru/Dosen" class="card-img-top mx-auto"
             data-src="/img/internship/icon-tengah-guru-v2.png?v=1.0?v=2"
-            src="{{ url_for('static', filename='image/dosen.png') }}"
-            lazy="loaded"
-            style="width: 80%; max-width: 200px;"
-          />
+            src="{{ url_for('static', filename='image/dosen.png') }}" lazy="loaded"
+            style="width: 80%; max-width: 200px;" />
           <div class="card-body">
             <p class="font-weight-bold">Guru/Dosen</p>
             <p class="fw-normal text-secondary">
@@ -190,14 +164,10 @@
 
 <!-- Section Kelas -->
 <h2 class="text-center">Sekilas Kelas Kami</h2>
-<section
-id="programonline"
-class="container shadow mt-5 py-3 mb-5 rounded"
-style="
+<section id="programonline" class="container shadow mt-5 py-3 mb-5 rounded" style="
     background-image: url('../static/image/backgroundprogram.jpg');
     background-size: cover;
-    "
->
+    ">
   <div class="row">
     <h4 class="fw-bold fs-6 fs-lg-2 ps-lg-5 text-light">
       <img src="../../static/image/bukumagic.png" width="50" alt="" />
@@ -206,18 +176,12 @@ style="
   </div>
   <div class="row justify-content-center align-items-center">
     {% for item in semua_kelas[:4] %}
-    <div
-      onclick="window.location.href='/detailkelas/{{item._id}}'"
-      class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3"
-    >
+    <div onclick="window.location.href='/detailkelas/{{item._id}}'"
+      class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
       <div class="card uniform-card">
         <div class="img-kontainer" style="min-height: 25vh; max-height: 25vh">
-          <img
-            style="object-fit: cover"
-            src="../../static/image/Imgkelas/{{item.gambar_kelas}}"
-            class="card-img-top"
-            alt="..."
-          />
+          <img style="object-fit: cover" src="../../static/image/Imgkelas/{{item.gambar_kelas}}" class="card-img-top"
+            alt="..." />
         </div>
         <div class="card-body">
           <h6 class="card-title">{{item.nama_kelas}}</h6>
@@ -243,28 +207,21 @@ style="
 <!-- Hubungi Kami -->
 <section id="hubungi" class="container-fluid py-4 mt-5 mb-5">
   <div class="container">
-  <div class="row justify-content-center text-center">
-    <h4 class="mb-3">Punya Pertanyaan atau Butuh Bantuan?</h4>
-    <div
-      class="row col-7 col-md-4 col-lg-3 col-xl-2 justify-content-center text-center"
-    >
-      <button
-        class="d-flex justify-content-evenly align-items-center btn btn-success border border-light border-1 ps-3 pe-3"
-      >
-        <i class="ri-whatsapp-line text-light fs-3"></i>
-        <span class="fw-bold" style="font-size: 14px">Hubungi Kami</span>
-      </button>
+    <div class="row justify-content-center text-center">
+      <h4 class="mb-3">Punya Pertanyaan atau Butuh Bantuan?</h4>
+      <div class="row col-7 col-md-4 col-lg-3 col-xl-2 justify-content-center text-center">
+        <a target="_blank" href="https://wa.me/{{medsos.whatsapp}}?"
+          class="d-flex justify-content-evenly align-items-center btn btn-success border border-light border-1 ps-3 pe-3">
+          <i class="ri-whatsapp-line text-light fs-3"></i>
+          <span class="fw-bold" style="font-size: 14px">Hubungi Kami</span>
+        </a>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </section>
 <!-- Hubungi Kami -->
 
-<a
-  href="#home"
-  class="rounded-circle gelembung fs-4 btn btn-primary"
-  id="topbut"
-  ><i class="ri-arrow-up-circle-line"></i
-></a>
+<a href="#home" class="rounded-circle gelembung fs-4 btn btn-primary" id="topbut"><i
+    class="ri-arrow-up-circle-line"></i></a>
 
 {% include 'template/footer.html' %}

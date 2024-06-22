@@ -18,6 +18,15 @@ PENTIUM GOLD PROJECT
     font-family: "Roboto Condensed", sans-serif;
 }
 
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+    /* Lebih tinggi dari modal */
+}
+
 body {
     overflow-x: hidden;
     background-color: #ededed;
@@ -88,16 +97,16 @@ body {
     transform: scale(1);
 }
 
-.gambar-fit{
+.gambar-fit {
     max-width: 100%;
-    min-height: 220px; 
-    max-height:220px;
-    width: 100%; 
-    height: 100%; 
+    min-height: 220px;
+    max-height: 220px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-#topbut{
+#topbut {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -234,15 +243,17 @@ body {
 /* hero section pada laman program */
 @media (max-width: 576px) {
     #home h3 {
-      font-size: 1.3rem; 
+        font-size: 1.3rem;
     }
+
     #home p {
-      font-size: 1rem; 
+        font-size: 1rem;
     }
+
     #home .btn {
-      width: 80%; 
+        width: 80%;
     }
-  }
+}
 
 /* Section siapa saja yang bisa gabung */
 .internship-card {
@@ -252,9 +263,10 @@ body {
 }
 
 .internship-card .card-body {
-    flex: 1; 
+    flex: 1;
 }
-  /* Section siapa saja yang bisa gabung */
+
+/* Section siapa saja yang bisa gabung */
 
 /* === Program === */
 
@@ -312,50 +324,50 @@ html {
 
 .btn-navigation {
     margin-top: 20px;
-display: flex;
-justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
-    /* kelas terunggul */
-    .kelas-unggulan .card {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        transition: transform 0.3s ease-in-out;
-        padding: 20px;
-        margin-bottom: 20px;
-      }
-      
-      .kelas-unggulan .card:hover {
-        transform: translateY(-5px);
-      }
-      
-      .kelas-unggulan .slide-title {
-        font-size: 1.5rem;
-        color: #007bff;
-      }
-      
-      .kelas-unggulan .text-secondary {
-        color: #6c757d !important;
-      }
+/* kelas terunggul */
+.kelas-unggulan .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
-      @media (max-width: 767.98px) {
-        .kelas-unggulan .card {
-          margin-bottom: 20px;
-        }
-      }
-      
-      @media (min-width: 768px) and (max-width: 991.98px) {
-        .kelas-unggulan .row > div {
-          padding: 10px;
-        }
-      }
-      
-      @media (min-width: 992px) {
-        .kelas-unggulan .row > div {
-          padding: 20px;
-        }
-      }     
-      
+.kelas-unggulan .card:hover {
+    transform: translateY(-5px);
+}
+
+.kelas-unggulan .slide-title {
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.kelas-unggulan .text-secondary {
+    color: #6c757d !important;
+}
+
+@media (max-width: 767.98px) {
+    .kelas-unggulan .card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .kelas-unggulan .row>div {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .kelas-unggulan .row>div {
+        padding: 20px;
+    }
+}
+
 
 
 /* === Semua Kelas === */
@@ -438,14 +450,14 @@ justify-content: space-between;
 .profile-container {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 .profile-image {
     width: 200px;
     flex: 0 0 auto;
-    margin-right: 15px; 
-    margin-bottom: 15px; 
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 .profile-description {
@@ -458,17 +470,17 @@ justify-content: space-between;
 }
 
 .profile-description p {
-    margin: 0; 
+    margin: 0;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     .profile-container {
         flex-direction: column;
-        align-items: center; 
+        align-items: center;
     }
 
     .profile-image {
-        margin: 0 0 15px 0; 
+        margin: 0 0 15px 0;
     }
 }
 

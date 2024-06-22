@@ -16,6 +16,23 @@
     });
 
 </script>
+
+{% elif msg == 'tambah_admin' %}
+<script>
+    $(document).ready(function () {
+        swal.fire({
+            title: "Berhasil Tambah Admin!",
+            text: "",
+            icon: "success",
+        });
+
+        setTimeout(function () {
+            window.location.href = "/admin";
+        }, 2000);
+    });
+
+</script>
+
 {% endif %}
 
 {% endif %}
@@ -102,29 +119,29 @@
                             <div class="form_input mb-3" style="width: 100%;">
                                 <h6>Nama Admin</h6>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Berikan Judul, kosongkan jika tidak ada"
-                                        name="nama_admin" value="" class="form-control">
+                                    <input type="text" placeholder="Nama Lengkap Admin" name="nama_admin" value=""
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="form_input mb-3" style="width: 100%;">
                                 <h6>Email</h6>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Berikan Judul, kosongkan jika tidak ada"
-                                        name="email_admin" value="" class="form-control">
+                                    <input type="text" placeholder="ex, email@gmail.com" name="email_admin" value=""
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="form_input mb-3" style="width: 100%;">
                                 <h6>Password</h6>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Berikan Judul, kosongkan jika tidak ada"
-                                        name="password_admin" value="" class="form-control">
+                                    <input type="password" placeholder="Password" name="password_admin" value=""
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="form_input mb-3" style="width: 100%;">
                                 <h6>Ulangi Password</h6>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Berikan Judul, kosongkan jika tidak ada"
-                                        name="ulang_password_admin" value="" class="form-control">
+                                    <input type="password" placeholder="Ulangi Password" name="ulang_password_admin"
+                                        value="" class="form-control">
                                 </div>
                             </div>
                         </div>

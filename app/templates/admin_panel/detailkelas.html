@@ -31,33 +31,18 @@
 
   <div class="row p-3 rounded-top bg-light">
     <div class="col-12 col-xl-5 col-lg-5 col-md-5 mb-3">
-      <img
-        src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}"
-        alt="kelas"
-        width="100%"
-        height="100%"
-      />
+      <img src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" alt="kelas" width="100%" height="100%" />
     </div>
-    <div
-      class="col-12 col-xl-7 col-lg-7 col-md-7 d-flex flex-column justify-content-between"
-    >
+    <div class="col-12 col-xl-7 col-lg-7 col-md-7 d-flex flex-column justify-content-between">
       <div class="juduldesk">
         {% if status_admin %}
         <div class="box mb-2 d-flex justify-content-between align-items-center">
           <h4>{{kelas.nama_kelas}}</h4>
           <div class="box">
-            <a
-              href="/editkelas/{{kelas._id}}"
-              class="btn btn-warning text-dark fw-bold fs-6 gelembung"
-              ><i class="ri-pencil-line"></i
-            ></a>
-            <a
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#modalkelas-{{kelas._id}}"
-              class="btn btn-danger text-light fw-bold fs-6 gelembung"
-              ><i class="ri-delete-bin-6-line"></i
-            ></a>
+            <a href="/editkelas/{{kelas._id}}" class="btn btn-warning text-dark fw-bold fs-6 gelembung"><i
+                class="ri-pencil-line"></i></a>
+            <a type="button" data-bs-toggle="modal" data-bs-target="#modalkelas-{{kelas._id}}"
+              class="btn btn-danger text-light fw-bold fs-6 gelembung"><i class="ri-delete-bin-6-line"></i></a>
           </div>
         </div>
         {% else %}
@@ -70,9 +55,7 @@
       </div>
 
       <div class="row justify-content-start">
-        <div
-          class="col-6 col-md-6 col-lg-6 col-xl-4 col-xxl-6 border-end border-2 border-dark-subtle"
-        >
+        <div class="col-6 col-md-6 col-lg-6 col-xl-4 col-xxl-6 border-end border-2 border-dark-subtle">
           <p class="text-secondary">Kategori Kelas</p>
           <h6>{{kelas.kategori_kelas}}</h6>
         </div>
@@ -113,29 +96,14 @@
 
         <div class="ikutkelas">
           {% if status_admin %}
-          <a
-            href="/detailmateri/{{kelas._id}}/none"
-            class="btn btn-info rounded p-2"
-            >Edit Materi Kelas</a
-          >
+          <a href="/detailmateri/{{kelas._id}}/none" class="btn btn-info rounded p-2">Edit Materi Kelas</a>
           {% else %} {% if kelas_diambil %} {% if user_pernah_mulai %}
-          <a
-            href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}?msg=masuk_kelas"
-            class="btn btn-warning rounded p-2"
-            >Lanjutkan <i class="ri-skip-right-fill"></i
-          ></a>
+          <a href="/detailmateri/{{kelas._id}}/{{user_pernah_mulai._id_menu}}?msg=masuk_kelas"
+            class="btn btn-warning rounded p-2">Lanjutkan <i class="ri-skip-right-fill"></i></a>
           {% else %}
-          <a
-            href="/detailmateri/{{kelas._id}}/none?msg=masuk_kelas"
-            class="btn btn-info rounded p-2"
-            >Mulai Kelas -></a
-          >
+          <a href="/detailmateri/{{kelas._id}}/none?msg=masuk_kelas" class="btn btn-info rounded p-2">Mulai Kelas -></a>
           {% endif %} {% else %}
-          <button
-            data-bs-toggle="modal"
-            data-bs-target="#ringkasan_pembelian"
-            class="btn btn-info rounded p-2"
-          >
+          <button data-bs-toggle="modal" data-bs-target="#ringkasan_pembelian" class="btn btn-info rounded p-2">
             + Ikuti Kelas
           </button>
           {% endif %} {% endif %}
@@ -145,10 +113,7 @@
 
     <br />
 
-    <div
-      class="row p-3 border-1"
-      style="background-color: whitesmoke; border-radius: 10px"
-    >
+    <div class="row p-3 border-1" style="background-color: whitesmoke; border-radius: 10px">
       <h5>Modul</h5>
       {% if menu_materi %}
       <div class="row materi">
@@ -162,57 +127,41 @@
         {% endfor %}
       </div>
       {% endif %}
-      
-    </div>
 
+    </div>
+    <div id="loading" style="display: none;">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <!-- Modal Ringkasan Pembelian -->
-    <div
-      class="modal fade"
-      id="ringkasan_pembelian"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="ringkasan_pembelian" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
               Ringkasan Pembelian
             </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          
           <div class="modal-body">
             <div class="container-fluid d-flex justify-content-between">
               <div class="box d-flex">
-                <img
-                  class="pe-2"
-                  src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}"
-                  width="100"
-                  alt=""
-                />
+                <img class="pe-2" src="../../static/image/Imgkelas/{{kelas.gambar_kelas}}" width="100" alt="" />
                 <h6>{{kelas.nama_kelas}}</h6>
               </div>
               <h6 class="text-secondary">Rp. {{kelas.harga_kelas}}</h6>
             </div>
             <hr class="hr-dashed" />
             <div class="row text-center">
-              <button
-                class="btn btn-primary"
-                onclick="transaksion()"
-                id="btn-transaksi"
-              >
+              <button class="btn btn-primary" onclick="transaksion()" id="btn-transaksi">
                 Ikuti Kelas
               </button>
               <p class="text-center text-muted mb-0 xsmall fs-kecil">
                 Dengan menekan "Ikuti Kelas" kamu telah menyetujui
-                <a target="_blank" href="/term_condition"
-                  >syarat &amp; ketentuan</a
-                >
+                <a target="_blank" href="/term_condition">syarat &amp; ketentuan</a>
                 dan
                 <a target="_blank" href="/privacy_policy">kebijakan privasi</a>
                 Bina Asia Digitalindo
@@ -225,6 +174,19 @@
 
     <script>
       function transaksion() {
+
+        // Tampilkan animasi pemuatan
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('ringkasan_pembelian').style.display = 'none';
+
+        // Simulasikan transaksi dengan timeout
+        setTimeout(() => {
+          // Logika transaksi disini
+
+          // Sembunyikan animasi pemuatan setelah transaksi selesai
+          document.getElementById('loading').style.display = 'none';
+        }, 3000); // Simulasi waktu transaksi 3 detik
+
         var kelas_id = "{{ kelas._id }}";
         var kelas_harga = "{{ kelas.harga_kelas }}";
         var kelas_nama = "{{ kelas.nama_kelas }}";
@@ -237,7 +199,7 @@
           method: "POST",
           data: {
             user_id: "{{ user_info._id }}",
-            nama : "{{user_info.nama_lengkap}}",
+            nama: "{{user_info.nama_lengkap}}",
             kelas_id: kelas_id,
             kelas_harga: kelas_harga,
             kelas_nama: kelas_nama,
@@ -259,13 +221,8 @@
     </script>
 
     <!-- Modal -->
-    <div
-      class="modal fade"
-      id="modalkelas-{{kelas._id}}"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="modalkelas-{{kelas._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -281,18 +238,12 @@
           <div class="modal-footer">
             <div class="container d-flex justify-content-between">
               <div class="row col-6">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                   Batal
                 </button>
               </div>
               <div class="row col-6">
-                <a href="/hapus_kelas/{{kelas._id}}" class="btn btn-danger"
-                  >Hapus</a
-                >
+                <a href="/hapus_kelas/{{kelas._id}}" class="btn btn-danger">Hapus</a>
               </div>
             </div>
           </div>

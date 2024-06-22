@@ -37,6 +37,7 @@ def login():
 def callback():
 
     semua_kelas = list(current_app.db.semuakelas.find({}))
+    medsos = current_app.db.medsos.find_one({})
 
     if 'error' in request.args:
       
@@ -82,4 +83,4 @@ def callback():
     SECRET_KEY = current_app.config['SECRET_KEY']
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
-    return render_template('template/homepage.html', token = token, semua_kelas = semua_kelas)
+    return render_template('template/homepage.html', token = token, semua_kelas = semua_kelas, medsos = medsos)
