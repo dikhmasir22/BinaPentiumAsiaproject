@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, current_app, redirect, url_for, request,jsonify
 import jwt
+import requests
 from datetime import datetime
 from bson import ObjectId
 import midtransclient
@@ -119,4 +120,20 @@ def payment(id):
 def hapus_transaksi(_id_transaksi):
     current_app.db.transaksi.delete_one({'_id' : ObjectId(_id_transaksi)})
     msg = 'hapus_transaksi'
+    return redirect(url_for('transaksi.riwayat_transaksi', msg = msg))
+
+@transaksi_.route('/cancel_transaksi/<_id_transaksi>')
+def cancel_transaksi(_id_transaksi):
+    transaksi = current_app.db.transaksi.find_one({'_id' : ObjectId(_id_transaksi)})
+    order_id = transaksi['order_id']
+    url = f"https://api.sandbox.midtrans.com/v2/{order_id}/cancel"
+    headers = {
+    "accept": "application/json",
+    "authorization": "Basic U0ItTWlkLXNlcnZlci1GTU1rTFdNNnJqMlJHQzJYaUhNZXZYZkg6"
+    }
+
+    requests.post(url, headers=headers)
+
+    current_app.db.transaksi.update_one({'_id': ObjectId(_id_transaksi)}, {'$set' : {'status' : 'cancel'}})
+    msg = 'canceltransaksi'
     return redirect(url_for('transaksi.riwayat_transaksi', msg = msg))

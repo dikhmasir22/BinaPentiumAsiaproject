@@ -21,6 +21,25 @@
             });
         });
     </script>
+
+    {% elif msg == 'canceltransaksi' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Pembelian kelas dibatalkan!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
     {% endif %}
 
     {% endif %}
@@ -33,10 +52,28 @@
         </ol>
     </nav>
     <hr>
+    <script>
+        function aktifloading() {
+            document.getElementById('loading').style.display = 'block';
+    
+            // Simulasikan transaksi dengan timeout
+            setTimeout(() => {
+              // Logika transaksi disini
+    
+              // Sembunyikan animasi pemuatan setelah transaksi selesai
+              document.getElementById('loading').style.display = 'none';
+            }, 3000); // Simulasi waktu transaksi 3 detik
+        }
+    </script>
 
     <div class="card card-clear no-gutters">
         <div class="card-body bg-white shadow-sm table-responsive">
             <table class="table mb-0">
+                <div id="loading" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
                 <thead>
                     <tr>
                         <th class="fit">No.</th>
@@ -76,16 +113,25 @@
                             {% elif item.status == 'sudah bayar' %}
                             <div class="alert alert-success mb-0 px-2 py-1 font-weight-bold text-center text-nowrap">
                                 Sudah Bayar</div>
+                            
+                            {% elif item.status == 'cancel' %}
+                            <div class="alert alert-warning mb-0 px-2 py-1 font-weight-bold text-center text-nowrap">
+                                Dibatalkan</div>
                             {% endif %}
 
                         </td>
                         <td class="fit text-center">
-                            {% if item.status == 'sudah bayar' %}
+                            {% if item.status == 'sudah bayar' or item.status == 'cancel' %}
                             <a class="btn btn-danger btn-block text-nowrap" data-bs-toggle="modal"
                                 data-bs-target="#modalhapustransaksi-{{item._id}}">Hapus</a>
                             {% else %}
-                            <a class="btn btn-primary btn-block text-nowrap" href="/transaksi/{{item.order_id}}">Bayar
-                                Sekarang</a>
+                            <div class="box d-flex">
+                                <a class="btn btn-primary btn-block text-nowrap me-2"
+                                    href="/transaksi/{{item.order_id}}">Bayar</a>
+                                <a class="btn btn-primary btn-block text-nowrap"
+                                    href="/cancel_transaksi/{{item._id}}" onclick="aktifloading()">Cancel</a>
+                            </div>
+
                             {% endif %}
 
                         </td>

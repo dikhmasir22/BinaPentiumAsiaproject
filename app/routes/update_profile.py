@@ -28,15 +28,17 @@ def update_profile():
             tempat_tanggal_lahir = request.form['tempat_tanggal_lahir']
             deskripsi = request.form['deskripsi']
 
-            profile = current_app.db.user.find_one({'_id' : user_info['_id']})
-            gambar_name = profile.get('foto_profile')
-            if gambar_name:
-                lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgprofile', gambar_name)
-                if os.path.exists(lokasi_gambar):
-                    os.remove(lokasi_gambar)
+            
 
             gambar = request.files['foto_profile']
             if gambar:
+                profile = current_app.db.user.find_one({'_id' : user_info['_id']})
+                gambar_name = profile.get('foto_profile')
+                if gambar_name:
+                    lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgprofile', gambar_name)
+                    if os.path.exists(lokasi_gambar):
+                        os.remove(lokasi_gambar)
+                        
                 extension = gambar.filename.split('.')[-1]
                 today = datetime.now()
                 mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
