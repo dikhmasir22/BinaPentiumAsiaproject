@@ -11,6 +11,7 @@ def detailkelas(_id):
     token_receive = request.cookies.get(TOKEN_KEY)
     kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
     menu_materi = list(current_app.db.menumateri.find({'_id_kelas' : kelas['_id']}))
+    medsos = current_app.db.medsos.find_one({})
     try:
         payload = jwt.decode(
             token_receive,
@@ -40,8 +41,8 @@ def detailkelas(_id):
                 return render_template('admin_panel/detailkelas.html', status = status, user_info=user_info, kelas = kelas, menu_materi = menu_materi)
     except jwt.ExpiredSignatureError:
         msg = request.args.get('msg')
-        return render_template('template/detail_kelas_guest.html', msg=msg, kelas = kelas, menu_materi = menu_materi)
+        return render_template('template/detail_kelas_guest.html', msg=msg, kelas = kelas, menu_materi = menu_materi, medsos = medsos)
     except jwt.exceptions.DecodeError:
         msg = request.args.get('msg')
-        return render_template('template/detail_kelas_guest.html', msg=msg, kelas = kelas, menu_materi = menu_materi)
+        return render_template('template/detail_kelas_guest.html', msg=msg, kelas = kelas, menu_materi = menu_materi, medsos = medsos)
 
