@@ -47,15 +47,15 @@
 
       // Ambil tinggi maksimum dari semua card
       var maxHeight = 0;
-      $('.card').each(function () {
+      $('.semuakelas').each(function () {
         var thisHeight = $(this).outerHeight();
         if (thisHeight > maxHeight) {
           maxHeight = thisHeight;
         }
       });
 
-      // Setel tinggi semua card menjadi tinggi maksimum
-      $('.card').css('min-height', maxHeight + 'px');
+      // Setel tinggi semua semuakelas menjadi tinggi maksimum
+      $('.semuakelas').css('min-height', maxHeight + 'px');
     });
 
   </script>
