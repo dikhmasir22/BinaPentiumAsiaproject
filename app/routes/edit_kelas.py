@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, current_app, request, redirect, ur
 import jwt
 from datetime import datetime, timedelta
 from bson import ObjectId
+import os
 
 edit_kelas_ = Blueprint('edit_kelas', __name__)
 
@@ -21,6 +22,13 @@ def editkelas(_id):
             harga_kelas = request.form['harga_kelas']
             deskripsi_kelas = request.form['deskripsi_kelas']
             tingkatan_kelas = request.form['tingkatan_kelas']
+
+            kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
+            gambar_name = kelas.get('gambar_kelas')
+            if gambar_name:
+                lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgkelas', gambar_name)
+                if os.path.exists(lokasi_gambar):
+                    os.remove(lokasi_gambar)
 
             gambar = request.files['gambar_kelas']
             extension = gambar.filename.split('.')[-1]

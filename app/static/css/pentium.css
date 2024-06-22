@@ -27,6 +27,55 @@ PENTIUM GOLD PROJECT
     /* Lebih tinggi dari modal */
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.profile-image {
+    width: 100%;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    /* Ensure the overlay does not block clicks */
+}
+
+.image-container:hover::before {
+    opacity: 1;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .delete-icon {
+    display: block;
+    opacity: 1;
+}
+
 body {
     overflow-x: hidden;
     background-color: #ededed;

@@ -41,6 +41,25 @@
             });
         });
     </script>
+
+    {% elif msg == 'poto_profile_hapus' %}
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Poto Profile Berhasil Di Hapus!',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: toast => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        });
+    </script>
     {% endif %}
 
     <h3>Profile</h3>
@@ -65,11 +84,20 @@
             <div id="poto_profile" class="row rounded bg-light shadow">
                 <div class="col-3 p-2">
                     {% if user_info.foto_profile %}
-                    <img class="p-2 m-2" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200"
-                        alt="">
+                    <div class="image-container">
+                        <img class="p-2 m-2 profile-image "
+                            src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200" alt="">
+                        <div class="delete-icon text-danger" onclick="window.location.href='/hapus_poto_profile'">🗑️
+                        </div>
+                    </div>
                     {% else %}
-                    <img class="p-2 m-2" src="../../static/image/profile.jpg" width="200" alt="">
+                    <div class="image-container">
+                        <img class="p-2 m-2 profile-image" src="../../static/image/profile.jpg" width="200" alt="">
+                        <div class="delete-icon text-danger" onclick="window.location.href='/hapus_poto_profile'">🗑️
+                        </div>
+                    </div>
                     {% endif %}
+
                 </div>
                 <div class="col-6 p-2">
                     <div class="form_input">
