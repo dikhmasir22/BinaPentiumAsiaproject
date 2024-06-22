@@ -7,6 +7,24 @@ function sign_in () {
   let email = $('#input-email').val()
   let password = $('#input-password').val()
 
+  if(!is_password(password)){
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'warning',
+      title: 'Untuk Password, silakan ketik 8-20 huruf, Angka, atau huruf spesial(!@#$%^&*)',
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: toast => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    $('#input-password').focus()
+    return
+  }
+
   //  kondisi
 
   $.ajax({
@@ -146,4 +164,9 @@ function previewImage (event) {
     img.src = reader.result
   }
   reader.readAsDataURL(event.target.files[0])
+}
+
+function is_password (asValue) {
+  let regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/
+  return regExp.test(asValue)
 }

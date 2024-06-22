@@ -122,5 +122,8 @@ def create_app():
     from .routes.hapus_siswa import hapus_siswa
     app.register_blueprint(hapus_siswa)
 
+    from .routes.admin_place import admin_place
+    app.register_blueprint(admin_place)
+
 
     return app
