@@ -124,7 +124,7 @@
     {% if semua_kelas%} {% for item in semua_kelas[:8] %}
     <div onclick="window.location.href='/detailkelas/{{item._id}}'"
       class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mt-3">
-      <div class="card uniform-card">
+      <div class="card semuakelas uniform-card">
         <div class="img-kontainer" style="min-height: 25vh; max-height: 25vh">
           <img style="object-fit: cover" src="../../static/image/Imgkelas/{{item.gambar_kelas}}" class="card-img-top"
             alt="..." />
