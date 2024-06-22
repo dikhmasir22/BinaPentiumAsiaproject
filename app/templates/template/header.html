@@ -43,7 +43,21 @@
           .querySelector('.navbar-nav .nav-link[href="/"]')
           .classList.add("active");
       }
+
+
+      // Ambil tinggi maksimum dari semua card
+      var maxHeight = 0;
+      $('.card').each(function () {
+        var thisHeight = $(this).outerHeight();
+        if (thisHeight > maxHeight) {
+          maxHeight = thisHeight;
+        }
+      });
+
+      // Setel tinggi semua card menjadi tinggi maksimum
+      $('.card').css('min-height', maxHeight + 'px');
     });
+
   </script>
 </head>
 
@@ -114,7 +128,7 @@
                     </button>
                     <a class="text-center" href="" data-bs-toggle="modal" data-bs-target="#daftarmodal">Belum Punya
                       Akun? Daftar</a>
-                      <h6>Atau</h6>
+                    <h6>Atau</h6>
                     <!-- google -->
                     <button class="btn btn-light border border-secondary rounded btn-block mb-1"
                       onclick="window.location.href='/login/google'">
@@ -156,22 +170,22 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Nama</span>
                       <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap"
-                        aria-label="Username" aria-describedby="basic-addon1" required/>
+                        aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Email</span>
                       <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Username"
-                        aria-describedby="basic-addon1" required/>
+                        aria-describedby="basic-addon1" required />
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Password</span>
                       <input type="password" class="form-control" placeholder="Password" name="password"
-                        aria-label="Username" aria-describedby="basic-addon1" required/>
+                        aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Password</span>
                       <input type="password" class="form-control" name="password2" placeholder="Ulangi Password"
-                        aria-label="Username" aria-describedby="basic-addon1" required/>
+                        aria-label="Username" aria-describedby="basic-addon1" required />
                     </div>
                     <button class="btn btn-primary text-center">
                       Daftar
