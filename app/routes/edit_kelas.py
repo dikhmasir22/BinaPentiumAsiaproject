@@ -23,20 +23,21 @@ def editkelas(_id):
             deskripsi_kelas = request.form['deskripsi_kelas']
             tingkatan_kelas = request.form['tingkatan_kelas']
 
-            kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
-            gambar_name = kelas.get('gambar_kelas')
-            if gambar_name:
-                lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgkelas', gambar_name)
-                if os.path.exists(lokasi_gambar):
-                    os.remove(lokasi_gambar)
-
             gambar = request.files['gambar_kelas']
-            extension = gambar.filename.split('.')[-1]
-            today = datetime.now()
-            mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
-            gambar_name = f'gambar-{mytime}.{extension}'
-            save_to = f'app/static/image/Imgkelas/{gambar_name}'
-            gambar.save(save_to)
+            if gambar :
+                kelas = current_app.db.semuakelas.find_one({'_id' : ObjectId(_id)})
+                gambar_name = kelas.get('gambar_kelas')
+                if gambar_name:
+                    lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgkelas', gambar_name)
+                    if os.path.exists(lokasi_gambar):
+                        os.remove(lokasi_gambar)
+
+                extension = gambar.filename.split('.')[-1]
+                today = datetime.now()
+                mytime = today.strftime('%Y-%M-%d-%H-%m-%S')
+                gambar_name = f'gambar-{mytime}.{extension}'
+                save_to = f'app/static/image/Imgkelas/{gambar_name}'
+                gambar.save(save_to)
 
             doc_kelas = {
                 'nama_kelas': Nama_kelas,

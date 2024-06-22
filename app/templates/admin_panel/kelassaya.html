@@ -16,6 +16,22 @@
 </script>
 {% endif %}
 
+<script>
+    $(document).ready(function () {
+        // Ambil tinggi maksimum dari semua card
+        var maxHeight = 0;
+        $('.card').each(function () {
+            var thisHeight = $(this).outerHeight();
+            if (thisHeight > maxHeight) {
+                maxHeight = thisHeight;
+            }
+        });
+
+        // Setel tinggi semua card menjadi tinggi maksimum
+        $('.card').css('min-height', maxHeight + 'px');
+    });
+</script>
+
 <section id="main" class="container-fluid p-2">
 
     <div class="container-fluid d-flex justify-content-start align-items-center">
