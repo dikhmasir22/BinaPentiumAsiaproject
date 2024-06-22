@@ -66,3 +66,18 @@ def tambah_admin():
             current_app.db.user.insert_one(doc)
             msg = 'tambah_admin'
             return redirect(url_for('adminplace.admin', msg = msg))
+
+@admin_place.route('/hapus_admin/<_id_admin>')
+def hapus_admin(_id_admin):
+    admin = current_app.db.user.find_one({'_id' : ObjectId(_id_admin)})
+    gambar_name = admin.get('foto_profile')
+
+    if gambar_name:
+
+        lokasi_gambar = os.path.join(current_app.root_path, 'static', 'image', 'Imgprofile', gambar_name)
+        if os.path.exists(lokasi_gambar):
+            os.remove(lokasi_gambar)
+
+    current_app.db.user.delete_one({'_id' : ObjectId(_id_admin)})
+    msg = 'hapus_admin'
+    return redirect(url_for('adminplace.admin', msg = msg))
