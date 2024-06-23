@@ -19,7 +19,21 @@
 {% endif %}
 
 {% endif %}
+<script>
+    $(document).ready(function () {
+        // Ambil tinggi maksimum dari semua card
+        var maxHeight = 0;
+        $('.semuakelas-card').each(function () {
+            var thisHeight = $(this).outerHeight();
+            if (thisHeight > maxHeight) {
+                maxHeight = thisHeight;
+            }
+        });
 
+        // Setel tinggi semua semuakelas-card menjadi tinggi maksimum
+        $('.semuakelas-card').css('min-height', maxHeight + 'px');
+    });
+</script>
 <section id="main" class="container-fluid p-2">
 
 
@@ -39,7 +53,7 @@
         {% else %}
         <div onclick="window.location.href='/detail_siswa/{{ item._id }}'" class="col-12 col-md-5 col-lg-5 col-xl-3 pointer gelembung mb-3">
         {% endif %}
-            <div class="card" style="width:100%;">
+            <div class="card semuakelas-card" style="width:100%;">
                 {% if item.foto_profile %}
                 <img src="../../static/image/Imgprofile/{{ item.foto_profile}}" class="card-img-top gambar-fit" alt="...">
                 {% else %}
