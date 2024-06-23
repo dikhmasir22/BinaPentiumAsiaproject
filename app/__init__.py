@@ -8,7 +8,6 @@ from bson import ObjectId
 from google_auth_oauthlib.flow import Flow
 from authlib.integrations.flask_client import OAuth
 import os
-from flask_mail import Mail
 from itsdangerous import URLSafeTimedSerializer
 import pathlib
 
