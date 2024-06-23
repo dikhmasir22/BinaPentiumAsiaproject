@@ -40,15 +40,12 @@
         <div class="row justify-content-evenly bg-light rounded p-2">
             {% set index = namespace(value=1) %}
             {% for item in carousel %}
-            <div
-                class="col-3 d-flex justify-content-start align-items-center position-relative bg-primary m-2 p-2 rounded">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-start align-items-center position-relative bg-primary m-2 p-2 rounded">
                 <h5 class="me-4 text-light">{{index.value}}.</h5>
-                <img src="../../static/image/Imgcarousel/{{item.gambar_carousel}}" width="200"
-                    style="object-fit: cover;" alt="">
+                <img src="../../static/image/Imgcarousel/{{item.gambar_carousel}}" class="img-fluid" alt="">
             </div>
             {% set index.value = index.value + 1 %}
             {% endfor %}
-
         </div>
     </div>
     {% else %}
@@ -66,15 +63,12 @@
     <hr>
     <!-- ----- -->
     <div class="row justify-content-evenly mb-3">
-        <div
-            class="col-12 col-md-7 col-lg-7 col-xl-8 d-flex justify-content-evenly align-items-center mt-2 rounded  bg-light">
+        <div class="col-12 col-md-8 col-lg-7 d-flex flex-column flex-md-row justify-content-evenly align-items-center mt-2 rounded bg-light p-2">
             <div class="box" style="width: 30%; height:100%">
                 {% if user_info.foto_profile %}
-                <img class="p-2 m-2"
-                    src="{{ url_for('static', filename='image/Imgprofile/' ~ user_info.foto_profile) }}" width="150"
-                    alt="">
+                <img class="p-2 m-2 img-fluid" src="{{ url_for('static', filename='image/Imgprofile/' ~ user_info.foto_profile) }}" alt="">
                 {% else %}
-                <img class="p-2 m-2" src="{{ url_for('static', filename='image/profile.jpg') }}" width="150" alt="">
+                <img class="p-2 m-2 img-fluid" src="{{ url_for('static', filename='image/profile.jpg') }}" alt="">
                 {% endif %}
             </div>
 
@@ -88,7 +82,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-5 col-md-3 col-lg-3 col-xl-3 rounded  p-2 bg-light mt-2">
+        <div class="col-12 col-md-4 col-lg-3 rounded p-2 bg-light mt-2">
             {% if status_admin %}
             <h4>Keterangan <span class="text-warning"><i class="ri-error-warning-line"></i></span></h4>
             <div class="box d-flex flex-column text-center">
@@ -102,7 +96,6 @@
                 <h6 class="text-primary">Kelas Diambil</h6>
             </div>
             {% endif %}
-
         </div>
     </div>
 
@@ -113,12 +106,12 @@
                 <h5 class="fw-bold">Kelas yang diambil oleh Siswa</h5>
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 col-xl-12 col-lg-6 col-md-6 rounded p-2 bg-light mt-2">
-                    <div class="box d-flex flex-column" style="width: 100%;">
+                <div class="col-12">
+                    <div class="box d-flex flex-column">
                         <hr>
-                        <div class="box" style="width: 100%;">
+                        <div class="table-responsive">
                             {% set index = namespace(value=1) %}
-                            <table class="table" style="overflow-y: auto;">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">No.</th>
@@ -129,7 +122,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     {% for kelas in data_kelas %}
                                     <tr>
                                         <th scope="col" class="text-center">{{ index.value }}.</th>
@@ -137,24 +129,16 @@
                                         <td class="text-center">{{kelas.kategori_kelas}}</td>
                                         {% if kelas.tingkatan_kelas %}
                                         {% if kelas.tingkatan_kelas == 'Beginner' %}
-                                        <td class="text-success text-center">- {{kelas.tingkatan_kelas}} <i
-                                                class="ri-signal-wifi-1-fill"></i></td>
+                                        <td class="text-success text-center">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-1-fill"></i></td>
                                         {% elif kelas.tingkatan_kelas == 'Intermediate' %}
-                                        <td class="text-warning text-center">- {{kelas.tingkatan_kelas}} <i
-                                                class="ri-signal-wifi-2-fill"></i></td>
+                                        <td class="text-warning text-center">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-2-fill"></i></td>
                                         {% elif kelas.tingkatan_kelas == 'Advanced' %}
-                                        <td class="text-danger text-center">- {{kelas.tingkatan_kelas}} <i
-                                                class="ri-signal-wifi-3-fill"></i>
-                                        </td>
+                                        <td class="text-danger text-center">- {{kelas.tingkatan_kelas}} <i class="ri-signal-wifi-3-fill"></i></td>
                                         {% else %}
-                                        <td class="text-center">
-                                            None <i class="ri-signal-wifi-off-fill"></i>
-                                        </td>
+                                        <td class="text-center">None <i class="ri-signal-wifi-off-fill"></i></td>
                                         {% endif %}
                                         {% else %}
-                                        <td class="text-center">
-                                            None <i class="ri-signal-wifi-off-fill"></i>
-                                        </td>
+                                        <td class="text-center">None <i class="ri-signal-wifi-off-fill"></i></td>
                                         {% endif %}
                                         <td class="text-center">{{kelas.jumlah_siswa}}</td>
                                     </tr>
@@ -163,20 +147,19 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
     <div class="container p-4 mb-3">
         <div class="row bg-light p-2">
             <div class="row text-center mb-3">
                 <h6 class="text-primary">DIAGRAM KELAS DIAMBIL</h6>
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 col-xl-7 col-lg-7 col-md-7">
+                <div class="col-12 col-xl-7">
                     <canvas id="myChart" width="400" height="400"></canvas>
                     <script>
                         var dataKelas = {{ data_kelas | tojson }};
@@ -219,13 +202,11 @@
         </div>
     </div>
 
-
     {% else %}
     <div class="row justify-content-evenly">
-        <div class="col-12 col-xl-6 col-lg-6 col-md-6 rounded p-2 bg-light mt-2">
+        <div class="col-12 col-md-6 col-lg-5 rounded p-2 bg-light mt-2">
             <h5>Program yang ditawarkan</h5>
-            <p>Bina Asia Digitalindo menyediakan banyak Kelas yang dapat diikuti, terdiri dari Kelas Pemrograman,
-                Marketing, Business, dan kelas lainnya.</p>
+            <p>Bina Asia Digitalindo menyediakan banyak Kelas yang dapat diikuti, terdiri dari Kelas Pemrograman, Marketing, Business, dan kelas lainnya.</p>
             <div class="row text-center">
                 <div class="col-12 mb-3">
                     <h6 class="text-primary fw-bold">Lihat Semua Kelas</h6>
@@ -233,7 +214,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-xl-5 col-lg-6 col-md-6 rounded  p-2 bg-light mt-2">
+        <div class="col-12 col-md-6 col-lg-5 rounded p-2 bg-light mt-2">
             <h5>Kelas yang diikuti</h5>
             <p>Ayo Lanjutkan Pembelajaranmu pada kelas yang telah diikuti sebelumnya</p>
             <div class="row text-center">
@@ -245,11 +226,7 @@
         </div>
     </div>
     {% endif %}
-
     {% endif %}
-
-
-
 </section>
 
 {% include 'headfoot/footer_admin.html' %}

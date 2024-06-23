@@ -1,26 +1,23 @@
 {% include 'headfoot/header_admin.html' %}
 
 <section id="main" class="container-fluid p-2">
-
     <script>
         $(document).ready(function () {
-            $('#biodata').hide()
-            $('#btnpoto_profile').addClass('active')
-
-        })
+            $('#biodata').hide();
+            $('#btnpoto_profile').addClass('active');
+        });
         function foto_profilee() {
-            $('#biodata').hide()
-            $('#poto_profile').show()
-            $('#btnpoto_profile').addClass('active')
-            $('#btnbiodata').removeClass('active')
+            $('#biodata').hide();
+            $('#poto_profile').show();
+            $('#btnpoto_profile').addClass('active');
+            $('#btnbiodata').removeClass('active');
         }
         function biodata() {
-            $('#poto_profile').hide()
-            $('#biodata').show()
-            $('#btnbiodata').addClass('active')
-            $('#btnpoto_profile').removeClass('active')
+            $('#poto_profile').hide();
+            $('#biodata').show();
+            $('#btnbiodata').addClass('active');
+            $('#btnpoto_profile').removeClass('active');
         }
-
     </script>
 
     {% if msg == 'edit' %}
@@ -35,13 +32,12 @@
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: toast => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
                 }
             });
         });
     </script>
-
     {% elif msg == 'poto_profile_hapus' %}
     <script>
         $(document).ready(function () {
@@ -54,8 +50,8 @@
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: toast => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
                 }
             });
         });
@@ -71,35 +67,29 @@
     </nav>
     <hr>
 
-
     <div class="container d-flex flex-column justify-content-start">
-        <div class="container-fluid d-flex justify-content-start">
-            <button id="btnpoto_profile" onclick="foto_profilee()" class="btn btn-light border gelembung">Foto
-                Profile</button>
-            <button id="btnbiodata" onclick="biodata()" class="btn btn-light border gelembung">Biodata</button>
+        <div class="container-fluid d-flex justify-content-start mb-3">
+            <button id="btnpoto_profile" onclick="foto_profilee()" class="btn btn-light border gelembung">Foto Profile</button>
+            <button id="btnbiodata" onclick="biodata()" class="btn btn-light border gelembung ms-2">Biodata</button>
         </div>
 
         <!-- Foto Profile Form -->
         <form action="/update_profile" method="post" enctype="multipart/form-data">
-            <div id="poto_profile" class="row rounded bg-light shadow">
-                <div class="col-3 p-2">
+            <div id="poto_profile" class="row rounded bg-light shadow p-3 mb-3">
+                <div class="col-12 col-md-3 p-2 text-center">
                     {% if user_info.foto_profile %}
-                    <div class="image-container">
-                        <img class="p-2 m-2 profile-image "
-                            src="../../static/image/Imgprofile/{{user_info.foto_profile}}" width="200" alt="">
-                        <div class="delete-icon text-danger" onclick="window.location.href='/hapus_poto_profile'">🗑️
-                        </div>
+                    <div class="image-container position-relative">
+                        <img class="p-2 m-2 profile-image img-fluid" src="../../static/image/Imgprofile/{{user_info.foto_profile}}" alt="">
+                        <div class="delete-icon text-danger position-absolute" style="top: 0; right: 0;" onclick="window.location.href='/hapus_poto_profile'">🗑️</div>
                     </div>
                     {% else %}
-                    <div class="image-container">
-                        <img class="p-2 m-2 profile-image" src="../../static/image/profile.jpg" width="200" alt="">
-                        <div class="delete-icon text-danger" onclick="window.location.href='/hapus_poto_profile'">🗑️
-                        </div>
+                    <div class="image-container position-relative">
+                        <img class="p-2 m-2 profile-image img-fluid" src="../../static/image/profile.jpg" alt="">
+                        <div class="delete-icon text-danger position-absolute" style="top: 0; right: 0;" onclick="window.location.href='/hapus_poto_profile'">🗑️</div>
                     </div>
                     {% endif %}
-
                 </div>
-                <div class="col-6 p-2">
+                <div class="col-12 col-md-9 p-2">
                     <div class="form_input">
                         <label class="fw-bold mb-1" for="Gambar Kelas">Foto Profile</label>
                         <div class="input-group mb-3">
@@ -110,18 +100,10 @@
                     <div class="deskripsifoto pb-3">
                         <div class="alert alert-info mt-3 mb-0 small">
                             <ul class="mb-0" style="padding-inline-start: 15px;">
-                                <li>
-                                    Foto ukuran 300 x 300 px atau 300 x 400 px, tipe JPG/JPEG/PNG, max 1MB
-                                </li>
-                                <li>
-                                    Foto resmi menggunakan seragam sekolah / jas almamater
-                                </li>
-                                <li>
-                                    Menggunakan backdrop sesuai dengan ketentuan sekolah / kampus
-                                </li>
-                                <li>
-                                    Khusus peserta <strong>prakerja</strong> gunakan foto resmi dan backdrop bebas
-                                </li>
+                                <li>Foto ukuran 300 x 300 px atau 300 x 400 px, tipe JPG/JPEG/PNG, max 1MB</li>
+                                <li>Foto resmi menggunakan seragam sekolah / jas almamater</li>
+                                <li>Menggunakan backdrop sesuai dengan ketentuan sekolah / kampus</li>
+                                <li>Khusus peserta <strong>prakerja</strong> gunakan foto resmi dan backdrop bebas</li>
                             </ul>
                         </div>
                     </div>
@@ -129,11 +111,9 @@
             </div>
             <!-- Foto Profile Form -->
 
-
-
             <!-- Form Biodata -->
-            <div id="biodata" class="row rounded bg-light shadow p-4">
-                <div class="row justify-content-between">
+            <div id="biodata" class="row rounded bg-light shadow p-3 mb-3">
+                <div class="row justify-content-between mb-3">
                     <div class="col-9">
                         <h5 class="mb-3">Informasi Dasar</h5>
                     </div>
@@ -141,44 +121,39 @@
                         <button type="submit" class="btn btn-success align-self-end">Simpan Data</button>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-12 col-lg-8 mb-3">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 mb-3">
                             <div class="form_input">
                                 <label class="fw-bold mb-1" for="Nama Kelas">Nama Lengkap</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" placeholder="Isikan Nama Lengkap"
-                                        value="{{user_info.nama_lengkap}}" name="nama_lengkap" class="form-control"
-                                        id="nama_lengkap">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Isikan Nama Lengkap" value="{{user_info.nama_lengkap}}" name="nama_lengkap" class="form-control" id="nama_lengkap">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 mb-3">
                             <div class="form_input">
                                 <label class="fw-bold mb-1" for="Nama Kelas">Email</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" placeholder="Isikan Email" value="{{user_info.email}}"
-                                        name="email" class="form-control" id="email">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Isikan Email" value="{{user_info.email}}" name="email" class="form-control" id="email">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 mb-3">
                             <div class="form_input">
                                 <label class="fw-bold mb-1" for="Nama Kelas">No. Telp.</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" placeholder="Isikan No Telepon" value="{{user_info.no_telepon}}"
-                                        name="no_telepon" class="form-control" id="no_telepon">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Isikan No Telepon" value="{{user_info.no_telepon}}" name="no_telepon" class="form-control" id="no_telepon">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 mb-3">
                             <div class="form_input">
                                 <label class="fw-bold mb-1" for="Nama Kelas">No. KTP</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" placeholder="Isikan No KTP" value="{{user_info.no_ktp}}"
-                                        name="no_ktp" class="form-control" id="no_ktp">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Isikan No KTP" value="{{user_info.no_ktp}}" name="no_ktp" class="form-control" id="no_ktp">
                                 </div>
                             </div>
                         </div>
@@ -187,18 +162,17 @@
                         <div class="form_input">
                             <label class="fw-bold mb-1" for="Nama Kelas">Alamat</label>
                             <div class="form-floating">
-                                <textarea style="height: 130px;" class="form-control" name="alamat"
-                                    id="floatingTextarea">{{user_info.alamat}}</textarea>
+                                <textarea style="height: 130px;" class="form-control" name="alamat" id="floatingTextarea">{{user_info.alamat}}</textarea>
                                 <label class="text-secondary" for="floatingTextarea">Isikan Alamat</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-4 d-flex flex-column">
-                    <div class="form_input">
+                <div class="col-12 col-lg-4">
+                    <div class="form_input mb-3">
                         <label class="fw-bold mb-1" for="Nama Kelas">Jenis Kelamin</label>
-                        <div class="input-group mb-3">
+                        <div class="input-group">
                             <select name="jenis_kelamin" class="form-select" id="jenis_kelamin">
                                 <option value="{{user_info.jenis_kelamin}}">{{user_info.jenis_kelamin}}</option>
                                 <option value="Laki-laki">Laki-laki</option>
@@ -207,33 +181,25 @@
                         </div>
                     </div>
 
-                    <div class="form_input">
+                    <div class="form_input mb-3">
                         <label class="fw-bold mb-1" for="Nama Kelas">Tempat, dan Tanggal Lahir</label>
-                        <div class="input-group mb-3">
-                            <input type="text" placeholder="Masukkan Nama Kelas"
-                                value="{{user_info.tempat_tanggal_lahir}}" name="tempat_tanggal_lahir"
-                                class="form-control" id="tempat_tanggal_lahir">
+                        <div class="input-group">
+                            <input type="text" placeholder="Masukkan Tempat, dan Tanggal Lahir" value="{{user_info.tempat_tanggal_lahir}}" name="tempat_tanggal_lahir" class="form-control" id="tempat_tanggal_lahir">
                         </div>
                     </div>
 
-                    <div class="form_input">
+                    <div class="form_input mb-3">
                         <label class="fw-bold mb-1" for="Nama Kelas">Tentang Saya</label>
                         <div class="form-floating">
-                            <textarea style="height: 130px;" class="form-control" name="deskripsi"
-                                placeholder="Leave a comment here"
-                                id="floatingTextarea">{{user_info.deskripsi}}</textarea>
+                            <textarea style="height: 130px;" class="form-control" name="deskripsi" placeholder="Leave a comment here" id="floatingTextarea">{{user_info.deskripsi}}</textarea>
                             <label class="text-secondary" for="floatingTextarea">Isikan tentang diri Kamu</label>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Form Biodata -->
-
         </form>
-
     </div>
-
-
 </section>
 
 {% include 'headfoot/footer_admin.html' %}
